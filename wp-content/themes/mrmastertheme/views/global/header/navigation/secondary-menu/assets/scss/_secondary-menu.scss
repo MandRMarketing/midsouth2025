@@ -1,8 +1,9 @@
 nav#secondary-nav {
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(229, 229, 229, 0) 3.75%, #e5e5e5 96.7%);
 
-    @media screen and (max-width: $breakpoint_before_mobile_small) {
+    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
         display: none;
     }
 
@@ -11,10 +12,11 @@ nav#secondary-nav {
             display: none;
         }
 
-        > li {
+        >li {
             position: relative;
             display: inline-block;
             margin: 0;
+            border-right: 2px solid white;
 
             &:after {
                 content: '';
@@ -24,10 +26,17 @@ nav#secondary-nav {
                 display: none;
             }
 
-            > a {
+            >a {
                 position: relative;
                 display: inline-block;
-                padding: 16px 12px;
+                padding: 16px 23px;
+
+                color: $color_red;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                text-decoration: none;
 
                 &:after {
                     content: '';
@@ -46,12 +55,12 @@ nav#secondary-nav {
             }
 
             //states & rules that provide a UX breadcrumb:
-            &:hover > a:after,
-            &:focus > a:after,
-            &:focus-within > a:after,
-            &.current-menu-item > a:after,
-            &.current-menu-ancestor > a:after,
-            &.current-menu-parent > a:after {
+            &:hover>a:after,
+            &:focus>a:after,
+            &:focus-within>a:after,
+            &.current-menu-item>a:after,
+            &.current-menu-ancestor>a:after,
+            &.current-menu-parent>a:after {
                 opacity: 1;
                 transition-delay: 0s;
             }
@@ -60,7 +69,7 @@ nav#secondary-nav {
             &:hover,
             &:focus,
             &:focus-within {
-                > ul.sub-menu {
+                >ul.sub-menu {
                     max-width: 1000px;
                     max-height: 1000px;
                     opacity: 1;
@@ -70,7 +79,7 @@ nav#secondary-nav {
             }
 
             //standard, top-level menu item's immediate sub-menu:
-            > ul.sub-menu {
+            >ul.sub-menu {
                 position: absolute;
                 top: 100%;
                 left: 12px; //to match top-level-link left padding
@@ -89,8 +98,9 @@ nav#secondary-nav {
                     padding 0.1s linear 0.85s;
 
                 //immediate sub-menu item(s)
-                > li {
-                    > a {
+                >li {
+
+                    >a {
                         display: block;
                         width: 100%;
                         height: auto;
@@ -102,16 +112,16 @@ nav#secondary-nav {
                         }
                     }
 
-                    &.current-menu-item > a {
+                    &.current-menu-item>a {
                         //
                     }
 
-                    &:last-of-type > a {
+                    &:last-of-type>a {
                         border-bottom: 0;
                     }
                 }
 
-                li + li {
+                li+li {
                     margin: 0;
                 }
             }

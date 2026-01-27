@@ -3,6 +3,21 @@ body.page-category-secondary-homepage header.title-area {
     position: relative;
     overflow: hidden;
 
+    @media screen and (min-width: $breakpoint_tablet_medium_landscape) {
+        padding-top: 150px !important;
+        padding-bottom: 220px !important;
+    }
+
+
+
+    .content {
+        max-width: 680px;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            max-width: 50%;
+        }
+    }
+
     span.overlay {
         // Overlay styles
         position: absolute;

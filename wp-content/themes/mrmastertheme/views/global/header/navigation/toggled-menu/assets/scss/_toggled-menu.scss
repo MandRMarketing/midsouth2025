@@ -10,6 +10,10 @@ button#menu-toggle-trigger {
     height: 24px;
     position: relative;
 
+    @media screen and (min-width: $breakpoint_tablet_medium_landscape) {
+        display: none;
+    }
+
     &:hover,
     &:focus {
         //
@@ -89,7 +93,7 @@ nav#toggled-nav {
         visibility: hidden;
         opacity: 0;
 
-        > div.menu-wrap {
+        >div.menu-wrap {
             padding: 0;
             transform: translateX(100%);
         }
@@ -101,7 +105,7 @@ nav#toggled-nav {
     }
 
     //the inner menu 'window'
-    > div.menu-wrap {
+    >div.menu-wrap {
         background-color: #fff;
         width: 450px;
         max-width: 100%;
@@ -113,8 +117,8 @@ nav#toggled-nav {
             width: 100%;
         }
 
-        ul > li + li,
-        ul > li > ul > li + li {
+        ul>li+li,
+        ul>li>ul>li+li {
             margin: 0;
         }
 
@@ -124,6 +128,7 @@ nav#toggled-nav {
         }
 
         @media screen and (max-width: $breakpoint_before_mobile_large) {
+
             ul.toggled-menu-desktop-primary,
             ul.toggled-menu-desktop-secondary {
                 display: none;

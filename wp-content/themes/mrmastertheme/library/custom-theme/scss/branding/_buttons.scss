@@ -8,12 +8,11 @@ input[type='submit'],
     cursor: pointer;
     background-color: $color_red;
     padding: 12px 20px;
-    padding-right: 40px;
+    padding-right: 55px;
     border: none;
     border-radius: none;
     box-shadow: none;
     margin: 0;
-    padding: 0;
     transform-style: preserve-3d;
     font-family: 'Open Sans' sans-serif;
     font-size: 20px;
@@ -21,10 +20,11 @@ input[type='submit'],
     font-weight: 700;
     line-height: normal;
     color: $color_white;
+    text-decoration: none;
 
     &::after {
         content: '';
-        background: url() no-repeat center;
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/arrow.svg) no-repeat center;
         background-size: contain;
         width: 14px;
         height: 14px;
@@ -32,11 +32,13 @@ input[type='submit'],
         top: 50%;
         right: 20px;
         transform: translateY(-50%);
+        transition: right 0.3s ease-in-out;
     }
 
     &:hover,
     &:focus {
-        //
+        color: $color_white;
+
         &::after {
             right: 12px;
         }
@@ -73,7 +75,7 @@ p.centered-button {
 }
 
 // Hide button desktop text on mobile
-.mobile-text + .text-wrap {
+.mobile-text+.text-wrap {
     @media (max-width: $breakpoint_tablet_medium_portrait) {
         display: none;
     }

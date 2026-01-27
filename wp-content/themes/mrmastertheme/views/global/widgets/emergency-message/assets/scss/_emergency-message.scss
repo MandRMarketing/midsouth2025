@@ -1,3 +1,27 @@
 aside#emergency-message { 
     padding: 8px 0; 
+    background-color: $color_red;
+    color: $color_white;
+
+    p {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 30px;
+        margin-top: 0;
+    }
+    strong {
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        letter-spacing: 0.95px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-decoration-thickness: auto;
+        text-underline-offset: 17.5%; /* 3.325px */
+        text-underline-position: from-font;
+        text-transform: uppercase;
+    }
 }

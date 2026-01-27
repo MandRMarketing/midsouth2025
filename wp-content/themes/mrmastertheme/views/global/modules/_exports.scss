@@ -1,28 +1,25 @@
 @import 'standard-content/assets/scss/standard-content';
 
-@import 'blog-post-list/assets/scss/blog-post-list';
+@import 'blog-slider/assets/scss/blog-slider';
 
 @import 'callout/assets/scss/callout';
-@import 'callout/assets/scss/callout';
 
-@import 'faqs/assets/scss/faqs';
+@import 'cards/assets/scss/cards';
+
+@import 'cards-images-hover/assets/scss/cards-images-hover';
+
+@import 'cards-links/assets/scss/cards-links';
+
+@import 'full-width-card-icons/assets/scss/full-width-card-icons';
 
 @import 'full-width-two-columns/assets/scss/full-width-two-columns';
 
-@import 'gallery-list/assets/scss/gallery-list';
-
 @import 'history-timeline/assets/scss/history-timeline';
 
-@import 'locations-map-cards/assets/scss/locations-map-cards';
-@import 'locations-search-form/assets/scss/locations-search-form';
+@import 'locations/assets/scss/locations';
 
-@import 'media-gallery/assets/scss/media-gallery';
+@import 'rates-list/assets/scss/rates-list';
 
-@import 'project-list/assets/scss/project-list';
+@import 'table/assets/scss/table';
 
-@import 'team-members/assets/scss/team-members';
-
-@import 'testimonials/assets/scss/testimonials';
-
-@import 'video-full-width/assets/scss/video-full-width';
-@import 'video-cards/assets/scss/video-cards';
+@import 'toggles/assets/scss/toggles';

@@ -1,6 +1,6 @@
 #header {
     background-color: #fff;
-    box-shadow: 0 0 10px grey;
+    box-shadow: 0 0 1rem #8080802b;
     position: static;
     //to take care of a specific styling 'bug', we apply fixed positioning with JavaScript at the exact moment we apply a top margin to the <main>
     z-index: 250;
@@ -27,6 +27,7 @@ body.scrolling-down:not(.nav-active) #header {
 
     &.transition-done {
         visibility: hidden;
+
         #primary-nav {
             visibility: hidden;
         }

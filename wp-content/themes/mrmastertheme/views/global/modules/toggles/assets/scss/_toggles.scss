@@ -97,7 +97,7 @@
 
     &:last-of-type {
         .toggle__trigger[aria-expanded='false'] {
-            border-bottom: 2px solid $color_gold;
+            border-bottom: 2px solid $color_red;
         }
     }
 
@@ -110,8 +110,8 @@
         border: none;
         padding: 25px 60px 25px 50px;
         text-align: left;
-        border-top: 2px solid $color_gold;
-        color: $color_blue;
+        border-top: 2px solid $color_red;
+        color: $color_red;
         font-size: 24px;
         font-style: normal;
         font-weight: 800;
@@ -135,7 +135,7 @@
 
         &:hover,
         &:focus {
-            color: $color_blue;
+            color: $color_red;
         }
 
         &-text {
@@ -176,7 +176,7 @@
         padding-right: 50px;
         em {
             strong {
-                color: $color_blue !important;
+                color: $color_red !important;
             }
         }
         @media (max-width: $breakpoint_tablet_medium_portrait) {

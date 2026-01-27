@@ -21,7 +21,7 @@ function mandr_custom_post_type_initialization()
         add_action('init', 'mandr_create_location_cpt');
 
         //also initialize the locations map feature:
-        require_once TEMPLATEPATH . '/views/conditional/pages/locations-page/modules/locations-map/vue-starter.php';
+        // require_once TEMPLATEPATH . '/views/conditional/pages/locations-page/modules/locations-map/vue-starter.php';
     }
 
     //Portfolio Projects

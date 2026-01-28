@@ -14,6 +14,10 @@ if (have_rows('modules', $ID)) :
         if (get_row_layout() == 'standard_content') :
             get_template_part('views/global/modules/standard-content/standard-content');
 
+        //Background Start
+        elseif (get_row_layout() == 'background_start') :
+            get_template_part('views/global/modules/background-start/background-start');
+
         //Callout
         elseif (get_row_layout() == 'callout') :
             get_template_part('views/global/modules/callout/callout');

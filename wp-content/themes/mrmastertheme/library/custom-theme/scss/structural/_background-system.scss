@@ -1,15 +1,15 @@
-main > header,
-main > section,
-main > div,
-main > aside,
-main > nav,
-main > dialog,
-article > header,
-article > section,
-article > div,
-article > aside,
-article > nav,
-article > dialog,
+main>header,
+main>section,
+main>div,
+main>aside,
+main>nav,
+main>dialog,
+article>header,
+article>section,
+article>div,
+article>aside,
+article>nav,
+article>dialog,
 footer {
     position: relative;
     z-index: 1;
@@ -34,10 +34,10 @@ footer {
             width: 100%;
             height: 100%;
             background-repeat: no-repeat;
+            background-size: cover;
 
             &[data-background-image-position='center'] {
                 background-position: center;
-                background-size: cover;
             }
 
             &[data-background-image-position='left'] {

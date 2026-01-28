@@ -2,7 +2,6 @@
 if (have_rows('modules')) :
     while (have_rows('modules')) :
         the_row();
-
         //Standard Content Module 
         if (get_row_layout() == 'standard_content') :
             get_template_part('views/global/modules/standard-content/standard-content');
@@ -11,59 +10,55 @@ if (have_rows('modules')) :
         elseif (get_row_layout() == 'callout') :
             get_template_part('views/global/modules/callout/callout');
 
-        //FAQs
-        elseif (get_row_layout() == 'faqs') :
-            get_template_part('views/global/modules/faqs/faqs');
+        //Blog Slider
+        elseif (get_row_layout() == 'slider_blog') :
+            get_template_part('views/global/modules/blog-slider/blog-slider');
+
+        //Curved Top Slider
+        elseif (get_row_layout() == 'slider_curved_top') :
+            get_template_part('views/global/modules/curved-top-slider/curved-top-slider');
+
+        //Cards
+        elseif (get_row_layout() == 'cards') :
+            get_template_part('views/global/modules/cards/cards');
+
+        //Cards - Images Hover
+        elseif (get_row_layout() == 'cards_images_hover_effect') :
+            get_template_part('views/global/modules/cards-images-hover/cards-images-hover');
+
+        //Cards - Links
+        elseif (get_row_layout() == 'cards_links') :
+            get_template_part('views/global/modules/cards-links/cards-links');
+
+        //Full Width - Card Icons
+        elseif (get_row_layout() == 'full_width_card_icons') :
+            get_template_part('views/global/modules/full-width-card-icons/full-width-card-icons');
 
         //Full Width - Two Columns
         elseif (get_row_layout() == 'full_width_two_columns') :
             get_template_part('views/global/modules/full-width-two-columns/full-width-two-columns');
 
-        //Blogs - List
-        elseif (get_row_layout() == 'blog_post_list') :
-            get_template_part('views/global/modules/blog-post-list/blog-post-list');
-
-        //Galleries - List
-        elseif (get_row_layout() == 'gallery_list') :
-            get_template_part('views/global/modules/gallery-list/gallery-list');     
-            
-        //History timeline
+        //History Timeline
         elseif (get_row_layout() == 'history_timeline') :
-            get_template_part('views/global/modules/history-timeline/history-timeline');            
-        
-        //Locations - Map & Cards
-        elseif (get_row_layout() == 'locations_map_cards') :
-            get_template_part('views/global/modules/locations-map-cards/locations-map-cards');
+            get_template_part('views/global/modules/history-timeline/history-timeline');
 
-        //Locations - Search Form
-        elseif (get_row_layout() == 'locations_search_form') :
-            get_template_part('views/global/modules/locations-search-form/locations-search-form');
+        //Locations
+        elseif (get_row_layout() == 'locations') :
+            get_template_part('views/global/modules/locations/locations');
 
-        //Media Gallery
-        elseif (get_row_layout() == 'media_gallery') :
-            get_template_part('views/global/modules/media-gallery/media-gallery');
+        //Rates List
+        elseif (get_row_layout() == 'rates_list') :
+            get_template_part('views/global/modules/rates-list/rates-list');
 
-        //Projects - List
-        elseif (get_row_layout() == 'project_list') :
-            get_template_part('views/global/modules/project-list/project-list');  
-        
-        //Team Members
-        elseif (get_row_layout() == 'team_members') :
-            get_template_part('views/global/modules/team-members/team-members');
+        //Table
+        elseif (get_row_layout() == 'table') :
+            get_template_part('views/global/modules/table/table');
 
-        //Testimonials 
-        elseif (get_row_layout() == 'testimonials') :
-            get_template_part('views/global/modules/testimonials/testimonials');
+        //Toggles
+        elseif (get_row_layout() == 'toggles') :
+            get_template_part('views/global/modules/toggles/toggles');
 
-        //Video - Full-Width
-        elseif (get_row_layout() == 'video_full_width') :
-            get_template_part('views/global/modules/video-full-width/video-full-width');
+        endif;
 
-        //Video - Cards
-        elseif (get_row_layout() == 'video_cards') :
-            get_template_part('views/global/modules/video-cards/video-cards');                    
-           
-
-        endif; // end if switching statement over layout types
-    endwhile; // end while(layouts) loop
+    endwhile;
 endif; // end have(layouts) check

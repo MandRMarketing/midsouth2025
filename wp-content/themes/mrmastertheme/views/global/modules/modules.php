@@ -19,15 +19,19 @@ if (have_rows('modules', $ID)) :
             get_template_part('views/global/modules/callout/callout');
 
         //Blog Slider
-        elseif (get_row_layout() == 'blog_slider') :
+        elseif (get_row_layout() == 'slider_blog') :
             get_template_part('views/global/modules/blog-slider/blog-slider');
+
+        //Curved Top Slider
+        elseif (get_row_layout() == 'slider_curved_top') :
+            get_template_part('views/global/modules/curved-top-slider/curved-top-slider');
 
         //Cards
         elseif (get_row_layout() == 'cards') :
             get_template_part('views/global/modules/cards/cards');
 
         //Cards - Images Hover
-        elseif (get_row_layout() == 'cards_images_hover') :
+        elseif (get_row_layout() == 'cards_images_hover_effect') :
             get_template_part('views/global/modules/cards-images-hover/cards-images-hover');
 
         //Cards - Links

@@ -1,0 +1,15 @@
+.curved-top-slider {
+    background-color: $color_red;
+
+    .curved-top-slider-container {
+        .slide-icon {
+            img {
+                height: 97px;
+                width: auto;
+                object-fit: contain;
+                object-position: center;
+                object-fit: contain;
+            }
+        }
+    }
+}

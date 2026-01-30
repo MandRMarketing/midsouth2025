@@ -31,6 +31,27 @@ $bottom_padding_mobile = $padding_settings['bottom_padding_mobile'];
 //build out the padding settings <span> HTML:
 $padding_settings_tag = '<span class="padding" data-top-padding-desktop="' . $top_padding_desktop . '" data-bottom-padding-desktop="' . $bottom_padding_desktop . '" data-top-padding-mobile="' . $top_padding_mobile . '" data-bottom-padding-mobile="' . $bottom_padding_mobile . '"><span class="validator-text" data-nosnippet>padding settings</span></span>';
 
+//establish the background settings
+$background_settings = get_sub_field('background');
+$background_type = $background_settings['background_type'];
+
+if ($background_type === 'color') {
+    $background_color = $background_settings['background_color'];
+    $background_settings_tag = '<span class="background" style="background-color:' . $background_color . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
+} else if ($background_type === 'image') {
+    $background_image = $background_settings['background_image'];
+    $background_image_url = $background_image['url'];
+    $background_image_position = $background_settings['background_image_position'];
+    if ($background_settings['include_overlay']) {
+        $background_image_overlay = $background_settings['overlay_color'];
+        $background_settings_tag = '<span class="background" style="background-image:url(' . $background_image_url . '); --overlay-color:' . $background_image_overlay . '" data-background-overlay="true" data-background-image-position="' . $background_image_position . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
+    } else {
+        $background_settings_tag = '<span class="background" style="background-image:url(' . $background_image_url . ')" data-background-image-position="' . $background_image_position . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
+    }
+} else {
+    $background_settings_tag = '';
+}
+
 //grab the container width from settings
 $container_width = get_sub_field('container_width');
 
@@ -40,79 +61,58 @@ $slides = get_sub_field('slides');
 //we're only generating HTML if the module has slides to display
 if ($slides) :
     echo $opening_tag;
-    //prevent duplicate IDs when multiple sliders exist on the same page
-    $random_integer = rand(0, 999);
+    $slider_id = 'curved-top-slider-' . rand(0, 999);
+    $slide_count = count($slides);
 ?>
-    <div id="curved-top-slider-<?= $random_integer; ?>" class="curved-top-slider-container container">
-        <?php
-        foreach ($slides as $slide) :
-            $slide_title = $slide['title'];
-            $slide_icon = $slide['icon'];
-            $slide_header = $slide['header'];
-            $slide_subtext = $slide['subtext'];
-        ?>
-            <div class="slide">
-                <?php if ($slide_icon) :
-                    $slide_icon_url = $slide_icon['url'];
-                    $slide_icon_alt = $slide_icon['alt'] ?: 'icon';
-                ?>
-                    <figure class="slide-icon">
-                        <img
-                            src="<?= $slide_icon_url ?>"
-                            alt="<?= $slide_icon_alt ?>">
-                    </figure>
-                <?php endif; ?>
-                <?php if ($slide_title) : ?>
-                    <h3 class="slide-title"><?= $slide_title ?></h3>
-                <?php endif; ?>
-                <?php if ($slide_header) : ?>
-                    <h4 class="slide-header"><?= $slide_header ?></h4>
-                <?php endif; ?>
-                <?php if ($slide_subtext) : ?>
-                    <p class="slide-subtext"><?= $slide_subtext ?></p>
-                <?php endif; ?>
+    <div id="<?= esc_attr($slider_id); ?>" class="curved-top-slider-container container" data-curved-top-slider data-slide-count="<?= $slide_count ?>">
+        <div class="curved-top-slider__panes">
+            <?php foreach ($slides as $index => $slide) :
+                $slide_title = $slide['title'];
+                $slide_icon = isset($slide['link']) ? $slide['link'] : (isset($slide['icon']) ? $slide['icon'] : null);
+                $slide_header = $slide['header'];
+                $slide_subtext = $slide['subtext'];
+                $is_first = ($index === 0);
+            ?>
+                <div class="curved-top-slider__pane" id="<?= $slider_id ?>-pane-<?= $index ?>" data-index="<?= $index ?>" role="tabpanel" aria-labelledby="<?= $slider_id ?>-tab-<?= $index ?>" aria-hidden="<?= $is_first ? 'false' : 'true' ?>" <?= $is_first ? '' : 'hidden' ?>>
+                    <?php if ($slide_icon && !empty($slide_icon['url'])) : ?>
+                        <figure class="curved-top-slider__icon">
+                            <img src="<?= esc_url($slide_icon['url']) ?>" alt="<?= esc_attr($slide_icon['alt'] ?: $slide_title ?: 'Slide icon') ?>">
+                        </figure>
+                    <?php endif; ?>
+                    <?php if ($slide_header) : ?>
+                        <h2 class="curved-top-slider__header"><?= esc_html($slide_header) ?></h2>
+                    <?php endif; ?>
+                    <?php if ($slide_subtext) : ?>
+                        <p class="curved-top-slider__subtext"><?= esc_html($slide_subtext) ?></p>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="curved-top-slider__progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="<?= $slide_count ?>" aria-label="Slide progress">
+            <div class="curved-top-slider__progress-track">
+                <div class="curved-top-slider__progress-fill" style="width: <?= $slide_count > 0 ? (100 / $slide_count) : 0 ?>%"></div>
             </div>
-        <?php
-        endforeach;
-        ?>
-        <span
-            class="container-settings"
-            data-container-width="<?= $container_width ?>">
+        </div>
+
+        <div class="curved-top-slider__titles" role="tablist" aria-label="Slide navigation">
+            <?php foreach ($slides as $index => $slide) :
+                $slide_title = $slide['title'];
+                $is_first = ($index === 0);
+            ?>
+                <button type="button" class="curved-top-slider__title<?= $is_first ? ' is-active' : '' ?>" data-index="<?= $index ?>" role="tab" aria-selected="<?= $is_first ? 'true' : 'false' ?>" aria-controls="<?= $slider_id ?>-pane-<?= $index ?>" id="<?= $slider_id ?>-tab-<?= $index ?>">
+                    <?= $slide_title ?>
+                </button>
+            <?php endforeach; ?>
+        </div>
+
+        <span class="container-settings" data-container-width="<?= esc_attr($container_width) ?>">
             <span class="validator-text" data-nosnippet>container settings</span>
         </span>
     </div>
-    <span class="slider-settings">
-        <script>
-            jQuery('#curved-top-slider-<?= $random_integer ?>').slick({
-                arrows: true,
-                autoplay: true,
-                dots: false,
-                adaptiveHeight: false,
-                responsive: [{
-                        breakpoint: 1280,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                        },
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                        },
-                    },
-                ],
-                rows: 0,
-                slide: '.slide',
-                slidesToScroll: 1,
-                slidesToShow: 4,
-            });
-        </script>
-        <span class="validator-text" data-nosnippet>slider settings</span>
-    </span>
     <span class="module-settings" data-nosnippet>
         <?= $padding_settings_tag ?>
+        <?= $background_settings_tag ?>
         <span class="validator-text">module settings</span>
     </span>
 <?php

@@ -21,6 +21,7 @@ input[type='submit'],
     line-height: normal;
     color: $color_white;
     text-decoration: none;
+    display: inline-block;
 
     &::after {
         content: '';

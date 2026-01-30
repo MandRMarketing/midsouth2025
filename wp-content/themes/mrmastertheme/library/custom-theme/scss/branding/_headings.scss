@@ -18,6 +18,7 @@ h6,
     @media (min-width: $breakpoint_before_mobile_large) {
         //
     }
+
     @media (min-width: $breakpoint_tablet_medium_portrait) {
         //
     }
@@ -36,76 +37,94 @@ h1,
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 48px;
     }
+
     @media (min-width: $breakpoint_tablet_medium_portrait) {
         font-size: 64px;
     }
 
     //set spacing between bottom of our heading and top of next sibling node:
-    + p,
-    + ol,
-    + ul,
-    + article,
-    + address,
-    + form,
-    + time,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +article,
+    +address,
+    +form,
+    +time,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_h1_bottom_margin;
     }
 }
 
 h2,
 .h2 {
+    position: relative;
     color: $color_black;
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 800;
-    line-height: 58px; /* 134.884% */
+    line-height: 58px;
+    /* 134.884% */
     letter-spacing: -0.86px;
 
     font-size: 29px;
 
+    padding-bottom: 30px;
+
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 35px;
     }
+
     @media (min-width: $breakpoint_tablet_medium_portrait) {
         font-size: 43px;
     }
 
+    &:after {
+        content: '';
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/h2-dec.svg) no-repeat center;
+        background-size: contain;
+        position: absolute;
+        width: 113px;
+        height: 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
     //set spacing between bottom of our heading and top of next sibling node:
-    + p,
-    + ol,
-    + ul,
-    + article,
-    + address,
-    + form,
-    + time,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +article,
+    +address,
+    +form,
+    +time,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_h2_bottom_margin;
     }
 }
@@ -124,27 +143,27 @@ h3,
     }
 
     //set spacing between bottom of our heading and top of next sibling node:
-    + p,
-    + ol,
-    + ul,
-    + article,
-    + address,
-    + form,
-    + time,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +article,
+    +address,
+    +form,
+    +time,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_h3_bottom_margin;
     }
 }
@@ -161,27 +180,27 @@ h4,
     text-transform: uppercase;
 
     //set spacing between bottom of our heading and top of next sibling node:
-    + p,
-    + ol,
-    + ul,
-    + article,
-    + address,
-    + form,
-    + time,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +article,
+    +address,
+    +form,
+    +time,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_h4_bottom_margin;
     }
 }
@@ -191,27 +210,27 @@ h5,
     font-size: 18px;
 
     //set spacing between bottom of our heading and top of next sibling node:
-    + p,
-    + ol,
-    + ul,
-    + article,
-    + address,
-    + form,
-    + time,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +article,
+    +address,
+    +form,
+    +time,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_h5_bottom_margin;
     }
 }
@@ -221,27 +240,27 @@ h6,
     font-size: 16px;
 
     //set spacing between bottom of our heading and top of next sibling node:
-    + p,
-    + ol,
-    + ul,
-    + article,
-    + address,
-    + form,
-    + time,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +article,
+    +address,
+    +form,
+    +time,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_h6_bottom_margin;
     }
 }

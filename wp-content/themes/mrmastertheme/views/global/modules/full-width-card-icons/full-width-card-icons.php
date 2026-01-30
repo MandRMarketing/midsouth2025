@@ -40,7 +40,6 @@ if ($background_type === 'color') {
 
     //build out the background settings <span> HTML:
     $background_settings_tag = '<span class="background" style="background-color:' . $background_color . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
-
 } else if ($background_type === 'image') {
     $background_image = $background_settings['background_image'];
     $background_image_url = $background_image['url'];
@@ -107,52 +106,62 @@ $cards = get_sub_field('cards');
 if ($cards) :
     echo $opening_tag;
 ?>
-    <?php if ($intro_content) : ?>
-        <div class="intro-content-row">
-            <div class="container">
-                <div class="content" <?= $text_color_attribute ?>>
-                    <?= $intro_content ?>
-                </div>
-                <span class="container-settings" data-container-width="<?= $container_width ?>">
-                    <span class="validator-text" data-nosnippet>settings</span>
-                </span>
-            </div>
-        </div>
-    <?php endif; ?>
+
     <div class="cards-container container">
         <div class="cards-grid">
+            <?php if ($intro_content) : ?>
+                <div class="card intro-content">
+                    <div class="card-content" <?= $text_color_attribute ?>>
+                        <?= $intro_content ?>
+                    </div>
+                </div>
+            <?php endif; ?>
             <?php
             foreach ($cards as $card) :
                 $card_content = $card['content'];
                 $add_link_to_card = $card['add_link_to_card'];
                 $card_link = $card['link'];
                 $card_link_text = $card['link_text'];
+                $card_icon = $card['icon']; // SVG icon
+                $card_icon_hover = $card['icon_hover']; // SVG icon
             ?>
                 <?php if ($add_link_to_card && $card_link) : ?>
                     <a href="<?= esc_url($card_link) ?>" class="card" <?= $text_color_attribute ?>>
-                <?php else : ?>
-                    <div class="card" <?= $text_color_attribute ?>>
-                <?php endif; ?>
-                    <div class="card-content">
-                        <?= $card_content ?>
-                    </div>
-                    <?php if ($add_link_to_card && $card_link && $card_link_text) : ?>
-                        <div class="card-link">
-                            <span class="button"><?= $card_link_text ?></span>
+                    <?php else : ?>
+                        <div class="card" <?= $text_color_attribute ?>>
+                        <?php endif; ?>
+                        <div class="card-icon-container">
+                            <?php if ($card_icon) : ?>
+                                <div class="card-icon">
+                                    <img src="<?= $card_icon['url'] ?>" alt="<?= $card_icon['alt'] ?>">
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($card_icon_hover) : ?>
+                                <div class="card-icon-hover">
+                                    <img src="<?= $card_icon_hover['url'] ?>" alt="<?= $card_icon_hover['alt'] ?>">
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    <?php endif; ?>
-                <?php if ($add_link_to_card && $card_link) : ?>
+                        <div class="card-content">
+                            <?= $card_content ?>
+                        </div>
+                        <?php if ($add_link_to_card && $card_link && $card_link_text) : ?>
+                            <div class="card-link">
+                                <span class="button"><?= $card_link_text ?></span>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($add_link_to_card && $card_link) : ?>
                     </a>
                 <?php else : ?>
-                    </div>
-                <?php endif; ?>
-            <?php
-            endforeach;
-            ?>
         </div>
-        <span class="container-settings" data-container-width="<?= $container_width ?>">
-            <span class="validator-text" data-nosnippet>settings</span>
-        </span>
+    <?php endif; ?>
+<?php
+            endforeach;
+?>
+    </div>
+    <span class="container-settings" data-container-width="<?= $container_width ?>">
+        <span class="validator-text" data-nosnippet>settings</span>
+    </span>
     </div>
     <span class="module-settings" data-nosnippet>
         <?= $padding_settings_tag ?>

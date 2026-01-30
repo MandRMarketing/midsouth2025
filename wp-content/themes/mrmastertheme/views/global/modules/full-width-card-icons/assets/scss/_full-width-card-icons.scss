@@ -1,0 +1,54 @@
+.full-width-card-icons {
+    .cards-container {
+        .cards-grid {
+            .card {
+                .card-content {}
+
+                .card-icon-container {
+                    position: relative;
+                    height: 95px;
+                    width: auto;
+
+                    .card-icon {
+                        opacity: 1;
+                        height: 95px;
+                        width: auto;
+
+                        img {
+                            height: 100%;
+                            width: auto;
+                        }
+                    }
+
+                    .card-icon-hover {
+                        opacity: 0;
+                        height: 95px;
+                        width: auto;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+
+                        img {
+                            height: 100%;
+                            width: auto;
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: $color_red;
+
+                    .card-icon {
+                        opacity: 0;
+                        transition: opacity 0.3s ease-in-out;
+                    }
+
+                    .card-icon-hover {
+                        opacity: 1;
+                        transition: opacity 0.3s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}

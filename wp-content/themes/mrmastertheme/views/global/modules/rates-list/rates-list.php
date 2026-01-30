@@ -63,7 +63,7 @@ if ($rates) :
                     <?php endif; ?>
                     <div class="rate-number-container">
                         <?php if ($rate_number !== '') : ?>
-                            <span class="rate-number"><?= number_format($rate_number, 2) ?>%</span>
+                            <span class="rate-number" data-rate-value="<?= esc_attr((float) $rate_number) ?>"><?= number_format($rate_number, 2) ?>%</span>
                         <?php endif; ?>
                         <?php if ($rate_type) : ?>
                             <span class="rate-type"><?= $rate_type ?></span>

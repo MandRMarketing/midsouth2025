@@ -72,6 +72,13 @@
         color: white;
         max-width: 400px;
 
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        &:after {
+            display: none;
+        }
+
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
             grid-column: 1;
             align-self: auto;

@@ -4,7 +4,8 @@
 
 //Button:
 add_shortcode('button', 'button_shortcode');
-function button_shortcode($atts, $content = null) {
+function button_shortcode($atts, $content = null)
+{
 
 	extract(shortcode_atts(
 		array(
@@ -73,7 +74,8 @@ function button_shortcode($atts, $content = null) {
 
 //Contact Phone
 add_shortcode('contact-phone', 'phone_link_sc');
-function phone_link_sc($atts, $content = null) {
+function phone_link_sc($atts, $content = null)
+{
 	$phone = get_field('contact_info_phone', 'options');
 
 	if ($phone) :
@@ -87,7 +89,8 @@ function phone_link_sc($atts, $content = null) {
 
 //Contact Email 
 add_shortcode('contact-email', 'contact_email_sc');
-function contact_email_sc($atts, $content = null) {
+function contact_email_sc($atts, $content = null)
+{
 	$email = antispambot(get_field('contact_info_email', 'options'));
 
 	if ($email) :
@@ -101,7 +104,8 @@ function contact_email_sc($atts, $content = null) {
 
 //Contact Address
 add_shortcode('contact-address', 'contact_address_sc');
-function contact_address_sc($atts, $content = null) {
+function contact_address_sc($atts, $content = null)
+{
 	$location_text = get_field('contact_info_address_text', 'options');
 	$location_link = get_field('contact_info_address_link', 'options');
 
@@ -116,7 +120,8 @@ function contact_address_sc($atts, $content = null) {
 
 //Email (for email addresses other than what's in Options tab)
 add_shortcode('email', 'email_shortcode');
-function email_shortcode($atts, $content = null) {
+function email_shortcode($atts, $content = null)
+{
 
 	extract(shortcode_atts(
 		array(
@@ -143,7 +148,8 @@ function email_shortcode($atts, $content = null) {
 
 //Facebook Icon
 add_shortcode('facebook-icon', 'facebook_icon_sc');
-function facebook_icon_sc($atts, $content = null) {
+function facebook_icon_sc($atts, $content = null)
+{
 
 	$facebook_link = get_field('social_facebook', 'options');
 	$output = '<a href="' . $facebook_link . '">Facebook</a>';
@@ -156,19 +162,57 @@ function facebook_icon_sc($atts, $content = null) {
 //YouTube Icon 
 //Instagram Icon
 
+//Apple App Store Icon
+add_shortcode('apple-appstore', 'apple_appstore_icon_sc');
+function apple_appstore_icon_sc($atts, $content = null)
+{
+	$apple_appstore_link = get_field('apple_appstore_link', 'options');
+
+	if ($apple_appstore_link) {
+		$svg_path = get_template_directory_uri() . '/library/custom-theme/images/icons/apple-appstore.svg';
+		$output = '<a href="' . esc_url($apple_appstore_link) . '" target="_blank" rel="noopener noreferrer" class="app-store-link">';
+		$output .= '<img src="' . esc_url($svg_path) . '" alt="Download on the App Store" />';
+		$output .= '</a>';
+	} else {
+		$output = '';
+	}
+
+	return $output;
+}
+
+//Google Play Icon
+add_shortcode('google-play', 'google_play_icon_sc');
+function google_play_icon_sc($atts, $content = null)
+{
+	$google_play_link = get_field('google_play_link', 'options');
+
+	if ($google_play_link) {
+		$svg_path = get_template_directory_uri() . '/library/custom-theme/images/icons/google-play.svg';
+		$output = '<a href="' . esc_url($google_play_link) . '" target="_blank" rel="noopener noreferrer" class="google-play-link">';
+		$output .= '<img src="' . esc_url($svg_path) . '" alt="Get it on Google Play" />';
+		$output .= '</a>';
+	} else {
+		$output = '';
+	}
+
+	return $output;
+}
+
 
 
 //Copyright Area Shortcodes:
 
 //Current Year
 add_shortcode('current-year', 'current_year_shortcode');
-function current_year_shortcode($atts, $content = null) {
+function current_year_shortcode($atts, $content = null)
+{
 	return date("Y");
 }
 
 //Site Name
 add_shortcode('site-name', 'site_name_shortcode');
-function site_name_shortcode($atts, $content = null) {
+function site_name_shortcode($atts, $content = null)
+{
 	return get_bloginfo('name');
 }
 
@@ -176,7 +220,8 @@ function site_name_shortcode($atts, $content = null) {
 
 //Client Name
 add_shortcode('client-name', 'client_name_sc');
-function client_name_sc($atts, $content = null) {
+function client_name_sc($atts, $content = null)
+{
 	$output = get_field('privacy_policy_client_name', 'options');
 
 	return $output;
@@ -184,7 +229,8 @@ function client_name_sc($atts, $content = null) {
 
 //Client Website
 add_shortcode('client-website', 'client_website_sc');
-function client_website_sc($atts, $content = null) {
+function client_website_sc($atts, $content = null)
+{
 	$website = get_field('privacy_policy_client_website', 'options');
 	ob_start();
 ?>
@@ -196,7 +242,8 @@ function client_website_sc($atts, $content = null) {
 
 //Client Contact Email
 add_shortcode('client-contact-email', 'client_contact_email_sc');
-function client_contact_email_sc($atts, $content = null) {
+function client_contact_email_sc($atts, $content = null)
+{
 	$email = get_field('privacy_policy_client_email', 'options');
 	ob_start();
 ?>
@@ -213,7 +260,8 @@ function client_contact_email_sc($atts, $content = null) {
 
 //Column Count shortcode
 //add_shortcode('column_count', 'column_count_shortcode');
-function column_count_shortcode($atts, $content = null) {
+function column_count_shortcode($atts, $content = null)
+{
 
 	if (isset($atts[0])) {
 		$number = trim($atts[0]);
@@ -231,7 +279,8 @@ function column_count_shortcode($atts, $content = null) {
 }
 //Responsive Column Width shortcode 
 //add_shortcode('responsive_column_width', 'r_column_width_shortcode');
-function r_column_width_shortcode($atts, $content = null) {
+function r_column_width_shortcode($atts, $content = null)
+{
 
 	if (isset($atts[0])) {
 		$number = trim($atts[0]);
@@ -250,7 +299,8 @@ function r_column_width_shortcode($atts, $content = null) {
 
 //Responsive Column Count shortcode 
 //add_shortcode('responsive_column_count', 'r_column_count_shortcode');
-function r_column_count_shortcode($atts, $content = null) {
+function r_column_count_shortcode($atts, $content = null)
+{
 
 	if (isset($atts[0])) {
 		$number = trim($atts[0]);
@@ -269,7 +319,8 @@ function r_column_count_shortcode($atts, $content = null) {
 
 //Toggle (NEEDS WORK, MAY REMOVE)
 //add_shortcode('toggle', 'toggle_shortcode');
-function toggle_shortcode($atts, $content = null) {
+function toggle_shortcode($atts, $content = null)
+{
 
 	extract(shortcode_atts(
 		array(

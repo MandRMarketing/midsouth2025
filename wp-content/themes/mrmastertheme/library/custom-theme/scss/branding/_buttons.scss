@@ -38,6 +38,7 @@ input[type='submit'],
     &:hover,
     &:focus {
         color: $color_white;
+        background-color: $color_red_dark;
 
         &::after {
             right: 12px;
@@ -78,6 +79,28 @@ p.centered-button {
 .mobile-text+.text-wrap {
     @media (max-width: $breakpoint_tablet_medium_portrait) {
         display: none;
+    }
+}
+
+.app-store-link {
+
+    &:hover,
+    &:focus {
+        img {
+            filter: opacity(0.75);
+            transition: filter 0.3s ease-in-out;
+        }
+    }
+}
+
+.google-play-link {
+
+    &:hover,
+    &:focus {
+        img {
+            filter: opacity(0.75);
+            transition: filter 0.3s ease-in-out;
+        }
     }
 }
 

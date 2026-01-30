@@ -38,6 +38,10 @@ div.full-width-two-columns {
         &[data-column-type='content'] {
             //
 
+            .button {
+                border: 2px solid white;
+            }
+
             &:has(span.padding[data-padding-desktop='double']) {
                 padding: $global_module_padding_double;
             }

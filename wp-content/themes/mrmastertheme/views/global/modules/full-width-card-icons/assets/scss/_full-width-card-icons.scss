@@ -15,14 +15,15 @@
         min-height: 0;
     }
 
-    // Intro column (left): fixed width, left-aligned, no card background
+    // Intro column (left): equal width with cards, left-aligned, no card background
     .card.intro-content {
-        flex: 0 0 auto;
-        padding: $global_module_padding_double 20px;
         background: transparent;
         text-align: left;
         display: flex;
         align-items: center;
+        padding: 40px;
+        margin-top: 40px;
+
 
         .card-content {
             text-align: left;
@@ -46,9 +47,8 @@
         flex-direction: column;
         align-items: left;
         text-align: left;
-        padding: $global_module_padding_double;
+        padding: 40px;
         min-width: 0;
-        flex: 1 1 0;
         border-left: 2px solid $color_white;
         text-decoration: none;
         color: inherit;
@@ -64,11 +64,21 @@
                 border-top: none;
             }
         }
+
+        .button {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+    }
+
+    // Equal width for intro and all cards (override any flex on .card so intro matches)
+    .cards-grid>* {
+        flex: 1 1 0%;
+        min-width: 0;
     }
 
 
     .card-content {
-        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -92,9 +102,14 @@
         margin-bottom: 1rem;
         flex-shrink: 0;
 
+        .card-icon,
+        .card-icon-hover {
+            transform: translate(-18px);
+        }
+
         .card-icon {
             opacity: 1;
-            height: 95px;
+            height: 125px;
             width: auto;
             transition: opacity 0.3s ease-in-out;
 
@@ -107,12 +122,11 @@
 
         .card-icon-hover {
             opacity: 0;
-            height: 95px;
+            height: 125px;
             width: 100%;
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             transition: opacity 0.3s ease-in-out;
 
             img {
@@ -137,6 +151,7 @@
         }
 
         .button {
+            opacity: 1;
             color: $color_white !important;
 
             &:after {

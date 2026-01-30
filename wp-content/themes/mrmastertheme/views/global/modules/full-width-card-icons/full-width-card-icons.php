@@ -95,9 +95,6 @@ if (
     $text_color_attribute = '';
 }
 
-//grab the container width from settings
-$container_width = get_sub_field('container_width');
-
 //declare variables for content
 $intro_content = get_sub_field('intro_content');
 $cards = get_sub_field('cards');
@@ -147,7 +144,7 @@ if ($cards) :
                         </div>
                         <?php if ($add_link_to_card && $card_link && $card_link_text) : ?>
                             <div class="card-link">
-                                <span class="button"><?= $card_link_text ?></span>
+                                <span class="button button--clear"><?= $card_link_text ?></span>
                             </div>
                         <?php endif; ?>
                         <?php if ($add_link_to_card && $card_link) : ?>
@@ -159,12 +156,11 @@ if ($cards) :
             endforeach;
 ?>
     </div>
-    <span class="container-settings" data-container-width="<?= $container_width ?>">
+    <span class="container-settings" data-container-width="widest">
         <span class="validator-text" data-nosnippet>settings</span>
     </span>
     </div>
     <span class="module-settings" data-nosnippet>
-        <?= $padding_settings_tag ?>
         <?= $background_settings_tag ?>
         <span class="validator-text">module settings</span>
     </span>

@@ -1,54 +1,169 @@
 .full-width-card-icons {
+
+    // Full-width layout: override container so the grid spans 100%
     .cards-container {
-        .cards-grid {
-            .card {
-                .card-content {}
+        width: 100%;
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
 
-                .card-icon-container {
-                    position: relative;
-                    height: 95px;
-                    width: auto;
+    .cards-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        min-height: 0;
+    }
 
-                    .card-icon {
-                        opacity: 1;
-                        height: 95px;
-                        width: auto;
+    // Intro column (left): fixed width, left-aligned, no card background
+    .card.intro-content {
+        flex: 0 0 auto;
+        padding: $global_module_padding_double 20px;
+        background: transparent;
+        text-align: left;
+        display: flex;
+        align-items: center;
 
-                        img {
-                            height: 100%;
-                            width: auto;
-                        }
-                    }
+        .card-content {
+            text-align: left;
 
-                    .card-icon-hover {
-                        opacity: 0;
-                        height: 95px;
-                        width: auto;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-
-                        img {
-                            height: 100%;
-                            width: auto;
-                        }
-                    }
-                }
-
-                &:hover {
-                    background-color: $color_red;
-
-                    .card-icon {
-                        opacity: 0;
-                        transition: opacity 0.3s ease-in-out;
-                    }
-
-                    .card-icon-hover {
-                        opacity: 1;
-                        transition: opacity 0.3s ease-in-out;
-                    }
-                }
+            h2,
+            h3 {
+                margin-top: 0;
             }
+        }
+
+        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            width: 100%;
+            max-width: none;
+            flex: 1 1 100%;
+        }
+    }
+
+    // All cards (including first): base card layout
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        text-align: left;
+        padding: $global_module_padding_double;
+        min-width: 0;
+        flex: 1 1 0;
+        border-left: 2px solid $color_white;
+        text-decoration: none;
+        color: inherit;
+        background: transparent;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            flex: 1 1 100%;
+            border-left: none;
+            border-top: 1px solid $color_white;
+            padding: 2rem 1.5rem;
+
+            &:first-of-type {
+                border-top: none;
+            }
+        }
+    }
+
+
+    .card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+
+        >*:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+    }
+
+    .card-icon-container {
+        position: relative;
+        height: 95px;
+        width: auto;
+        margin-bottom: 1rem;
+        flex-shrink: 0;
+
+        .card-icon {
+            opacity: 1;
+            height: 95px;
+            width: auto;
+            transition: opacity 0.3s ease-in-out;
+
+            img {
+                height: 100%;
+                width: auto;
+                object-fit: contain;
+            }
+        }
+
+        .card-icon-hover {
+            opacity: 0;
+            height: 95px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 0.3s ease-in-out;
+
+            img {
+                height: 100%;
+                width: auto;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .card:not(.intro-content):hover {
+        .card-icon {
+            opacity: 0;
+        }
+
+        .card-content {
+            * {
+                color: $color_white !important;
+            }
+
+
+        }
+
+        .button {
+            color: $color_white !important;
+
+            &:after {
+                filter: brightness(1);
+                right: 12px;
+            }
+        }
+
+        .card-icon-hover {
+            opacity: 1;
+        }
+    }
+
+    // First card hover: keep red, just swap icon
+    .cards-grid>.card:not(.intro-content):hover {
+        background-color: $color_red;
+        color: $color_white;
+    }
+
+    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+        .cards-grid {
+            flex-direction: column;
+        }
+
+        .card.intro-content {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
     }
 }

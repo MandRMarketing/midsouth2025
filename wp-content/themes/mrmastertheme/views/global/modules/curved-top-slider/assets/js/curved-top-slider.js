@@ -31,13 +31,34 @@
         }
     }
 
+    function setPanesHeight(container) {
+        var panesWrapper = container.querySelector('.curved-top-slider__panes');
+        var panes = container.querySelectorAll('.curved-top-slider__pane');
+        if (!panesWrapper || !panes.length) return;
+        var max = 0;
+        panes.forEach(function (pane) {
+            pane.hidden = false;
+            var h = pane.offsetHeight;
+            if (h > max) max = h;
+            pane.hidden = true;
+        });
+        panes.forEach(function (pane, i) {
+            pane.hidden = i !== 0;
+        });
+        panesWrapper.style.height = max + 'px';
+    }
+
     function initSlider(container) {
+        setPanesHeight(container);
         var titles = container.querySelectorAll('.curved-top-slider__title');
         titles.forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var index = this.getAttribute('data-index');
                 switchToSlide(container, index);
             });
+        });
+        window.addEventListener('resize', function () {
+            setPanesHeight(container);
         });
     }
 

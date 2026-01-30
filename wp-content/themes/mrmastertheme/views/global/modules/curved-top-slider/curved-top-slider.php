@@ -31,27 +31,6 @@ $bottom_padding_mobile = $padding_settings['bottom_padding_mobile'];
 //build out the padding settings <span> HTML:
 $padding_settings_tag = '<span class="padding" data-top-padding-desktop="' . $top_padding_desktop . '" data-bottom-padding-desktop="' . $bottom_padding_desktop . '" data-top-padding-mobile="' . $top_padding_mobile . '" data-bottom-padding-mobile="' . $bottom_padding_mobile . '"><span class="validator-text" data-nosnippet>padding settings</span></span>';
 
-//establish the background settings
-$background_settings = get_sub_field('background');
-$background_type = $background_settings['background_type'];
-
-if ($background_type === 'color') {
-    $background_color = $background_settings['background_color'];
-    $background_settings_tag = '<span class="background" style="background-color:' . $background_color . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
-} else if ($background_type === 'image') {
-    $background_image = $background_settings['background_image'];
-    $background_image_url = $background_image['url'];
-    $background_image_position = $background_settings['background_image_position'];
-    if ($background_settings['include_overlay']) {
-        $background_image_overlay = $background_settings['overlay_color'];
-        $background_settings_tag = '<span class="background" style="background-image:url(' . $background_image_url . '); --overlay-color:' . $background_image_overlay . '" data-background-overlay="true" data-background-image-position="' . $background_image_position . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
-    } else {
-        $background_settings_tag = '<span class="background" style="background-image:url(' . $background_image_url . ')" data-background-image-position="' . $background_image_position . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
-    }
-} else {
-    $background_settings_tag = '';
-}
-
 //grab the container width from settings
 $container_width = get_sub_field('container_width');
 
@@ -114,7 +93,6 @@ if ($slides) :
     </div>
     <span class="module-settings" data-nosnippet>
         <?= $padding_settings_tag ?>
-        <?= $background_settings_tag ?>
         <span class="validator-text">module settings</span>
     </span>
 <?php

@@ -47,12 +47,25 @@ input[type='submit'],
 }
 
 .button {
-    display: inline-block;
 
     &--clear {
         background: transparent;
-        border: none;
-        padding: 0;
+        color: $color_red;
+        padding-left: 0;
+
+        &:after {
+            filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(4868%) hue-rotate(340deg) brightness(93%) contrast(102%);
+            right: 30px;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: transparent;
+            color: $color_red;
+
+
+
+        }
     }
 }
 

@@ -42,17 +42,12 @@ $rates = get_sub_field('rates');
 if ($rates) :
     echo $opening_tag;
 ?>
-    <?php if ($intro_content) : ?>
-        <div class="intro-content-row">
-            <div class="container">
-                <?= $intro_content ?>
-                <span class="container-settings" data-container-width="<?= $container_width ?>">
-                    <span class="validator-text" data-nosnippet>settings</span>
-                </span>
-            </div>
-        </div>
-    <?php endif; ?>
     <div class="rates-container container">
+        <?php if ($intro_content) : ?>
+            <div class="intro-content">
+                <?= $intro_content ?>
+            </div>
+        <?php endif; ?>
         <div class="rates-list">
             <?php
             foreach ($rates as $rate) :
@@ -66,14 +61,16 @@ if ($rates) :
                     <?php if ($rate_pretext) : ?>
                         <span class="rate-pretext"><?= $rate_pretext ?></span>
                     <?php endif; ?>
-                    <?php if ($rate_number !== '') : ?>
-                        <span class="rate-number"><?= number_format($rate_number, 2) ?>%</span>
-                    <?php endif; ?>
-                    <?php if ($rate_type) : ?>
-                        <span class="rate-type"><?= $rate_type ?></span>
-                    <?php endif; ?>
+                    <div class="rate-number-container">
+                        <?php if ($rate_number !== '') : ?>
+                            <span class="rate-number"><?= number_format($rate_number, 2) ?>%</span>
+                        <?php endif; ?>
+                        <?php if ($rate_type) : ?>
+                            <span class="rate-type"><?= $rate_type ?></span>
+                        <?php endif; ?>
+                    </div>
                     <?php if ($rate_link && $rate_link_text) : ?>
-                        <a href="<?= esc_url($rate_link) ?>" class="rate-link button"><?= $rate_link_text ?></a>
+                        <a href="<?= esc_url($rate_link) ?>" class="rate-link button button--clear"><?= $rate_link_text ?></a>
                     <?php endif; ?>
                 </div>
             <?php

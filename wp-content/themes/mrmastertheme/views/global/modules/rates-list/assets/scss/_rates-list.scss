@@ -1,0 +1,82 @@
+.rates-list {
+    .container {
+        display: flex;
+        gap: 84px;
+
+        .intro-content {
+            max-width: 225px;
+        }
+
+        .rates-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, auto);
+            grid-auto-flow: column;
+            gap: 1.5rem 45px;
+
+            @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, auto);
+                grid-auto-flow: column;
+            }
+
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                grid-template-columns: 1fr;
+                grid-auto-flow: row;
+            }
+        }
+
+        .rate-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+            padding-bottom: 1rem;
+            position: relative;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: black;
+                margin-top: auto;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+
+        .rate-pretext {
+            font-size: 0.9em;
+            color: $color_black_alt;
+            display: block;
+        }
+
+        .rate-number,
+        .rate-type {
+            display: inline;
+            font-weight: 700;
+            color: $color_red;
+
+            font-family: "Open Sans", sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .rate-number {
+            margin-right: 0.25rem;
+        }
+
+        .rate-link {
+            display: inline-block;
+            margin-top: 0.25rem;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+}

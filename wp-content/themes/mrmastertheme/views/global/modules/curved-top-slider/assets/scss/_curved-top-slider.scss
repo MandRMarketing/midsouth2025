@@ -19,12 +19,14 @@
     .curved-top-slider-container {
         position: relative;
         z-index: 2;
+        transform: translateY(-30px);
     }
 
-    // Single visible pane: icon, header, subtext
+    // Single visible pane: icon, header, subtext (height set by JS to max of all panes so it doesn’t change when switching)
     .curved-top-slider__panes {
         position: relative;
         min-height: 120px;
+        overflow: hidden;
     }
 
     .curved-top-slider__pane {
@@ -86,11 +88,12 @@
         }
     }
 
-    // Bar with one segment per slide; active segment is larger
+    // Bar with one segment per slide; active segment is larger (fixed container height so only the bar changes)
     .curved-top-slider__progress {
         display: flex;
-        width: 100%;
         align-items: center;
+        width: 100%;
+        height: 8px;
         margin-bottom: 1.5rem;
     }
 

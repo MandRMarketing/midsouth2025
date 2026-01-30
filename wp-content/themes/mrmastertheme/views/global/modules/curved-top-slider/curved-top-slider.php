@@ -89,10 +89,12 @@ if ($slides) :
             <?php endforeach; ?>
         </div>
 
-        <div class="curved-top-slider__progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="<?= $slide_count ?>" aria-label="Slide progress">
-            <div class="curved-top-slider__progress-track">
-                <div class="curved-top-slider__progress-fill" style="width: <?= $slide_count > 0 ? (100 / $slide_count) : 0 ?>%"></div>
-            </div>
+        <div class="curved-top-slider__progress" role="tablist" aria-label="Slide position">
+            <?php foreach ($slides as $index => $slide) :
+                $is_first = ($index === 0);
+            ?>
+                <div class="curved-top-slider__progress-segment<?= $is_first ? ' is-active' : '' ?>" data-index="<?= $index ?>" role="presentation"></div>
+            <?php endforeach; ?>
         </div>
 
         <div class="curved-top-slider__titles" role="tablist" aria-label="Slide navigation">

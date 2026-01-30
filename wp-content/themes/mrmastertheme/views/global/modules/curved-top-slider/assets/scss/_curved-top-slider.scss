@@ -86,24 +86,25 @@
         }
     }
 
-    // Progress bar
+    // Bar with one segment per slide; active segment is larger
     .curved-top-slider__progress {
+        display: flex;
+        width: 100%;
+        align-items: center;
         margin-bottom: 1.5rem;
     }
 
-    .curved-top-slider__progress-track {
-        width: 100%;
+    .curved-top-slider__progress-segment {
+        flex: 1;
+        min-width: 0;
         height: 4px;
         background: rgba(255, 255, 255, 0.3);
-        border-radius: 2px;
-        overflow: hidden;
-    }
+        transition: height 0.25s ease;
 
-    .curved-top-slider__progress-fill {
-        height: 100%;
-        background: #fff;
-        border-radius: 2px;
-        transition: width 0.25s ease;
+        &.is-active {
+            height: 8px;
+            background: #fff;
+        }
     }
 
     // Clickable slide titles

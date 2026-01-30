@@ -7,7 +7,7 @@
         index = parseInt(index, 10);
         var panes = container.querySelectorAll('.curved-top-slider__pane');
         var titles = container.querySelectorAll('.curved-top-slider__title');
-        var fill = container.querySelector('.curved-top-slider__progress-fill');
+        var segments = container.querySelectorAll('.curved-top-slider__progress-segment');
         var count = panes.length;
 
         if (index < 0 || index >= count) return;
@@ -24,13 +24,11 @@
             title.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
 
-        if (fill) {
-            var percent = count > 0 ? ((index + 1) / count) * 100 : 0;
-            fill.style.width = percent + '%';
+        if (segments) {
+            segments.forEach(function (seg, i) {
+                seg.classList.toggle('is-active', i === index);
+            });
         }
-
-        var progressEl = container.querySelector('.curved-top-slider__progress');
-        if (progressEl) progressEl.setAttribute('aria-valuenow', index + 1);
     }
 
     function initSlider(container) {

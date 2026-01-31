@@ -37,6 +37,14 @@ $container_width = get_sub_field('container_width');
 //declare variables for content
 $intro_content = get_sub_field('intro_content');
 $articles = get_sub_field('articles');
+if (!$articles) {
+    $articles = get_posts(array(
+        'post_type' => 'post',
+        'posts_per_page' => 6,
+        'orderby' => 'date',
+        'order' => 'DESC',
+    ));
+}
 
 //we're only generating HTML if the module has articles to display
 if ($articles) :
@@ -47,7 +55,9 @@ if ($articles) :
     <?php if ($intro_content) : ?>
         <div class="intro-content-row">
             <div class="container">
-                <?= $intro_content ?>
+                <div class="content-wrapper">
+                    <?= $intro_content ?>
+                </div>
                 <span class="container-settings" data-container-width="<?= $container_width ?>">
                     <span class="validator-text" data-nosnippet>settings</span>
                 </span>
@@ -60,46 +70,24 @@ if ($articles) :
             $article_id = $article->ID;
             $article_link = get_permalink($article_id);
             $article_title = get_the_title($article_id);
-            $article_excerpt = get_the_excerpt($article_id);
-            $article_date = get_the_date('', $article_id);
-
-            $article_image_size_name = 'full';
-            $article_image_id = get_post_thumbnail_id($article_id);
-            $article_image_url = '';
-            $article_image_width = '';
-            $article_image_height = '';
-            $article_image_alt = '';
-
-            if ($article_image_id) {
-                $article_image_url = wp_get_attachment_image_url($article_image_id, $article_image_size_name);
-                $article_image_width = wp_get_attachment_image_src($article_image_id, $article_image_size_name)[1];
-                $article_image_height = wp_get_attachment_image_src($article_image_id, $article_image_size_name)[2];
-                $article_image_alt = get_post_meta($article_image_id, '_wp_attachment_image_alt', true);
-            }
+            $article_featured_image = get_the_post_thumbnail_url($article_id, 'full');
+            $article_featured_image_alt = get_post_meta($article_featured_image, '_wp_attachment_image_alt', true);
         ?>
             <div class="blog-slide">
-                <?php if ($article_image_id) : ?>
-                    <figure>
+                <?php if ($article_featured_image) : ?>
+                    <figure class="blog-image">
                         <a href="<?= $article_link ?>">
                             <img
-                                src="<?= $article_image_url ?>"
-                                height="<?= $article_image_height ?>"
-                                width="<?= $article_image_width ?>"
-                                alt="<?= $article_image_alt ?>">
+                                src="<?= $article_featured_image ?>"
+                                alt="<?= $article_featured_image_alt ?>">
                         </a>
                     </figure>
                 <?php endif; ?>
                 <div class="blog-content">
-                    <?php if ($article_date) : ?>
-                        <time class="blog-date" datetime="<?= get_the_date('c', $article_id) ?>"><?= $article_date ?></time>
-                    <?php endif; ?>
-                    <h3 class="blog-title">
+                    <h4 class="blog-title">
                         <a href="<?= $article_link; ?>"><?= $article_title; ?></a>
-                    </h3>
-                    <?php if ($article_excerpt) : ?>
-                        <p class="blog-excerpt"><?= $article_excerpt ?></p>
-                    <?php endif; ?>
-                    <a href="<?= $article_link; ?>" class="button">Read More</a>
+                    </h4>
+                    <a href="<?= $article_link; ?>" class="button button--clear">Read Article</a>
                 </div>
             </div>
         <?php
@@ -115,7 +103,7 @@ if ($articles) :
         <script>
             jQuery('#blog-carousel-<?= $random_integer ?>').slick({
                 arrows: true,
-                autoplay: true,
+                //autoplay: true,
                 dots: false,
                 adaptiveHeight: false,
                 responsive: [{
@@ -136,7 +124,7 @@ if ($articles) :
                 rows: 0,
                 slide: '.blog-slide',
                 slidesToScroll: 1,
-                slidesToShow: 4,
+                slidesToShow: 3,
             });
         </script>
         <span class="validator-text" data-nosnippet>slider settings</span>

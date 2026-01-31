@@ -1,0 +1,42 @@
+.cards-links {
+    .cards-grid {
+        gap: 30px 95px;
+        margin-top: $global_module_padding_single;
+
+        .card {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            background: $color_white;
+            border: 2px solid $color_white;
+            box-shadow: 0 0 1rem 0 rgb(0 0 0 / 2%);
+
+
+            .card-content {
+                padding: 24px 42px;
+            }
+
+            &:after {
+                content: '';
+                background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/card-link-arrow.svg) no-repeat center center;
+                background-size: 50% 50%;
+                position: absolute;
+                top: 50%;
+                right: -33px;
+                width: 66px;
+                height: 66px;
+                transform: translateY(-50%);
+                background-color: $color_red;
+                transition: background 0.3s ease-in-out;
+            }
+        }
+
+        .card:hover {
+            border-color: $color_red;
+
+            &:after {
+                background-color: $color_red_dark;
+            }
+        }
+    }
+}

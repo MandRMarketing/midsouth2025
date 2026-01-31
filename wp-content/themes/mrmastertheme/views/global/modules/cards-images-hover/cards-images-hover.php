@@ -40,7 +40,6 @@ if ($background_type === 'color') {
 
     //build out the background settings <span> HTML:
     $background_settings_tag = '<span class="background" style="background-color:' . $background_color . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
-
 } else if ($background_type === 'image') {
     $background_image = $background_settings['background_image'];
     $background_image_url = $background_image['url'];
@@ -121,47 +120,30 @@ if ($cards) :
         </div>
     <?php endif; ?>
     <div class="cards-container container">
-        <div class="cards-grid" data-column-count="<?= $column_count ?>">
+        <div class="cards-grid" data-flex="flex" data-column-count="<?= $column_count ?>">
             <?php
             foreach ($cards as $card) :
                 $card_content = $card['content'];
                 $card_link = $card['link'];
                 $card_image = $card['image'];
-                
-                $card_image_url = '';
-                $card_image_width = '';
-                $card_image_height = '';
-                $card_image_alt = '';
-                
-                if ($card_image) {
-                    $card_image_url = $card_image['url'];
-                    $card_image_width = $card_image['width'];
-                    $card_image_height = $card_image['height'];
-                    $card_image_alt = $card_image['alt'] ?: '';
-                }
             ?>
                 <div class="card" <?= $text_color_attribute ?>>
                     <?php if ($card_image) : ?>
                         <figure class="card-image">
                             <?php if ($card_link) : ?>
                                 <a href="<?= esc_url($card_link) ?>">
-                            <?php endif; ?>
-                            <img
-                                src="<?= $card_image_url ?>"
-                                height="<?= $card_image_height ?>"
-                                width="<?= $card_image_width ?>"
-                                alt="<?= $card_image_alt ?>">
-                            <?php if ($card_link) : ?>
+                                <?php endif; ?>
+                                <img
+                                    src="<?= $card_image['url'] ?>"
+                                    alt="<?= $card_image['alt'] ?>">
+                                <?php if ($card_link) : ?>
                                 </a>
                             <?php endif; ?>
                         </figure>
                     <?php endif; ?>
-                    <div class="card-content">
-                        <?= $card_content ?>
-                    </div>
                     <?php if ($card_link) : ?>
                         <div class="card-link">
-                            <a href="<?= esc_url($card_link) ?>" class="button">Learn More</a>
+                            <a href="<?= esc_url($card_link) ?>" class="button"><?= $card_content ?></a>
                         </div>
                     <?php endif; ?>
                 </div>

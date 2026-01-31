@@ -2,6 +2,7 @@ section.full-width-two-columns,
 aside.full-width-two-columns,
 div.full-width-two-columns {
     //
+    background: linear-gradient(177deg, #FFF 67.57%, #EDEDED 122.41%);
 
     &:has(div.columns[data-mobile-reverse-order='true']) {
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
@@ -36,6 +37,21 @@ div.full-width-two-columns {
         }
 
         &[data-column-type='content'] {
+            margin: 70px 0;
+            background-color: $color_red;
+            transform: translateX(147px);
+            z-index: 1;
+
+            * {
+                color: $color_white;
+            }
+
+            h2 {
+                &:after {
+                    filter: brightness(0) invert(1);
+                }
+            }
+
             //
 
             .button {

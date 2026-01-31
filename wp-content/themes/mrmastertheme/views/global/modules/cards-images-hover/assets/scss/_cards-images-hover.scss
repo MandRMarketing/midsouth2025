@@ -1,0 +1,50 @@
+.cards-images-hover {
+    .cards-grid {
+        .card {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                transition: background 0.3s ease-in-out;
+                pointer-events: none;
+            }
+
+            .card-image {
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .card-link {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+
+            }
+
+            &:hover,
+            &:focus {
+                &::before {
+                    background: rgba($color_red, 0.8);
+                }
+
+                .card-link {
+                    .button {
+                        background: transparent !important;
+                    }
+                }
+            }
+        }
+    }
+}

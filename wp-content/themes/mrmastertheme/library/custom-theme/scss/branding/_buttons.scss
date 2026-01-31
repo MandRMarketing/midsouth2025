@@ -96,7 +96,21 @@ p.centered-button {
     }
 }
 
+p {
+
+    +.app-store-link,
+    +.google-play-link {
+        display: inline-block;
+        margin-top: 40px;
+    }
+}
+
 .app-store-link {
+
+    +.google-play-link {
+        display: inline-block;
+        margin-top: $global_paragraph_bottom_margin;
+    }
 
     &:hover,
     &:focus {
@@ -108,6 +122,11 @@ p.centered-button {
 }
 
 .google-play-link {
+
+    +.app-store-link {
+        display: inline-block;
+        margin-top: $global_paragraph_bottom_margin;
+    }
 
     &:hover,
     &:focus {

@@ -64,45 +64,55 @@ if ($articles) :
             </div>
         </div>
     <?php endif; ?>
-    <div id="blog-carousel-<?= $random_integer; ?>" class="blog-carousel-row container">
-        <?php
-        foreach ($articles as $article) :
-            $article_id = $article->ID;
-            $article_link = get_permalink($article_id);
-            $article_title = get_the_title($article_id);
-            $article_featured_image = get_the_post_thumbnail_url($article_id, 'full');
-            $article_featured_image_alt = get_post_meta($article_featured_image, '_wp_attachment_image_alt', true);
-        ?>
-            <div class="blog-slide">
-                <?php if ($article_featured_image) : ?>
-                    <figure class="blog-image">
+    <div class="slick-wrapper">
+        <div id="blog-carousel-arrows-<?= $random_integer; ?>" class="slider-arrows container">
+            <!-- Slick arrows will be appended here -->
+        </div>
+        <div id="blog-carousel-<?= $random_integer; ?>" class="blog-carousel-row container">
+            <?php
+            foreach ($articles as $article) :
+                $article_id = $article->ID;
+                $article_link = get_permalink($article_id);
+                $article_title = get_the_title($article_id);
+                $article_featured_image = get_the_post_thumbnail_url($article_id, 'full');
+                $article_featured_image_alt = get_post_meta($article_featured_image, '_wp_attachment_image_alt', true);
+            ?>
+                <div class="blog-slide">
+                    <figure class="blog-image <?= !$article_featured_image ? 'blog-image--fallback' : '' ?>">
                         <a href="<?= $article_link ?>">
-                            <img
-                                src="<?= $article_featured_image ?>"
-                                alt="<?= $article_featured_image_alt ?>">
+                            <?php if ($article_featured_image) : ?>
+                                <img
+                                    src="<?= $article_featured_image ?>"
+                                    alt="<?= $article_featured_image_alt ?>">
+                            <?php else : ?>
+                                <img
+                                    src="/wp-content/themes/mrmastertheme/library/custom-theme/images/logos/logo.svg"
+                                    alt="<?= get_bloginfo('name') ?>">
+                            <?php endif; ?>
                         </a>
                     </figure>
-                <?php endif; ?>
-                <div class="blog-content">
-                    <h4 class="blog-title">
-                        <a href="<?= $article_link; ?>"><?= $article_title; ?></a>
-                    </h4>
-                    <a href="<?= $article_link; ?>" class="button button--clear">Read Article</a>
+                    <div class="blog-content">
+                        <h4 class="blog-title">
+                            <a href="<?= $article_link; ?>"><?= $article_title; ?></a>
+                        </h4>
+                        <a href="<?= $article_link; ?>" class="button button--clear">Read Article</a>
+                    </div>
                 </div>
-            </div>
-        <?php
-        endforeach;
-        ?>
-        <span
-            class="container-settings"
-            data-container-width="<?= $container_width ?>">
-            <span class="validator-text" data-nosnippet>container settings</span>
-        </span>
+            <?php
+            endforeach;
+            ?>
+            <span
+                class="container-settings"
+                data-container-width="<?= $container_width ?>">
+                <span class="validator-text" data-nosnippet>container settings</span>
+            </span>
+        </div>
     </div>
     <span class="slider-settings">
         <script>
             jQuery('#blog-carousel-<?= $random_integer ?>').slick({
                 arrows: true,
+                appendArrows: '#blog-carousel-arrows-<?= $random_integer ?>',
                 //autoplay: true,
                 dots: false,
                 adaptiveHeight: false,

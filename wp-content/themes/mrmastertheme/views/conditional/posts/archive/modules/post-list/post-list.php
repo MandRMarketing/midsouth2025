@@ -1,7 +1,11 @@
 <section class="post-list">
     <div class="container">
-        <ul class="posts">
         <?php
+        //if your blog needs it:
+        echo get_template_part('views/conditional/posts/archive/widgets/filter-form/filter-form');
+        ?>
+        <ul class="posts">
+            <?php
             //declare an empty arguments array, for us to fill if any query string parameters are set up by the post filter form
             $args = [];
 
@@ -14,15 +18,17 @@
 
                 //grab the post category value
                 $post_category_filter = $_GET['post-category'];
-                        
-                array_push($args['tax_query'], array(
+
+                array_push(
+                    $args['tax_query'],
+                    array(
                         'taxonomy' => 'category',
                         'terms' => array(
                             $post_category_filter
                         ),
                     )
                 );
-            } 
+            }
 
             //grab the post tags filter if used:
             if (isset($_GET['post-tags'])) {
@@ -39,18 +45,20 @@
 
                 //loop through the query string, but only deal with the tag related parameters
                 foreach ($post_filter_query_string as $parameter) {
-                    if (str_contains($parameter,'post-tags=')) {
+                    if (str_contains($parameter, 'post-tags=')) {
                         //strip it of just the ID
-                        $parameter_tag_ID = str_replace('post-tags=','',$parameter);
+                        $parameter_tag_ID = str_replace('post-tags=', '', $parameter);
 
                         //cast ID string as int and push to the array of tag IDs
                         array_push($post_tag_filter_IDs, (int)$parameter_tag_ID);
                     }
                 }
 
-                array_push($args['tax_query'], array(
+                array_push(
+                    $args['tax_query'],
+                    array(
                         'taxonomy' => 'post_tag',
-                        'terms' => $post_tag_filter_IDs 
+                        'terms' => $post_tag_filter_IDs
                     )
                 );
             }
@@ -68,7 +76,7 @@
                 }
 
                 //use explode() to separate the month from the year in the date parameter:
-                $post_date_filter_array = explode(' ',$_GET['post-date']);
+                $post_date_filter_array = explode(' ', $_GET['post-date']);
 
                 $args['date_query'] = array(
                     'year' => $post_date_filter_array[1],
@@ -80,8 +88,8 @@
             if (
                 !is_paged() &&
                 !is_category() &&
-                !isset($_GET['post-category']) && 
-                !isset($_GET['post-tags']) && 
+                !isset($_GET['post-category']) &&
+                !isset($_GET['post-tags']) &&
                 !isset($_GET['post-date']) &&
                 get_field('featured_post', get_option('page_for_posts'))
             ) {
@@ -89,16 +97,16 @@
 
                 if (!in_array('post__not_in', $args)) {
                     $args['post__not_in'] = [$featured_post->ID];
-                } 
+                }
             }
 
             //if the args array isn't empty, use them
-            if ($args) { 
+            if ($args) {
                 $post_query = new WP_Query($args);
             } else {
                 //default to the standard query 
                 $post_query = $wp_query;
-            } 
+            }
 
             //loop through the queried posts and spit out the individual listing HTML
             if ($post_query->have_posts()) :
@@ -108,35 +116,33 @@
                     get_template_part('views/conditional/posts/archive/modules/post-list/components/individual-listing', null, array('id' => get_the_ID()));
 
                 endwhile;
-                
+
             else :
-        ?>
-            <li class="no-results">
-                <h3>We're sorry, but there are currently no posts in this area.</h3>
-            </li> 
-        <?php
+            ?>
+                <li class="no-results">
+                    <h3>We're sorry, but there are currently no posts in this area.</h3>
+                </li>
+            <?php
             endif;
-        ?>
+            ?>
         </ul>
         <?php
-            if ($post_query->have_posts()) {
-                numbered_pagination($post_query);
-            }
+        if ($post_query->have_posts()) {
+            numbered_pagination($post_query);
+        }
         ?>
-        <span 
+        <span
             class="container-settings"
-            data-container-width="standard" 
-        >
+            data-container-width="standard">
             <span class="validator-text" data-nosnippet>settings</span>
         </span>
     </div>
-    <span 
+    <span
         class="padding"
         data-top-padding-desktop="double"
         data-bottom-padding-desktop="double"
         data-top-padding-mobile="single"
-        data-bottom-padding-mobile="single"
-    >
+        data-bottom-padding-mobile="single">
         <span class="validator-text" data-nosnippet>padding settings</span>
     </span>
 </section>

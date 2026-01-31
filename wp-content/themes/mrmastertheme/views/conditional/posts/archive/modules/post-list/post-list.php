@@ -4,7 +4,7 @@
         //if your blog needs it:
         echo get_template_part('views/conditional/posts/archive/widgets/filter-form/filter-form');
         ?>
-        <ul class="posts">
+        <ul class="posts posts-grid">
             <?php
             //declare an empty arguments array, for us to fill if any query string parameters are set up by the post filter form
             $args = [];
@@ -84,19 +84,22 @@
                 );
             }
 
-            //if we're not filtering posts, not in the category archive, & if a 'featured post' is selected, omit it from the query:
+            //if we're not filtering posts, not in the category archive, & if featured posts are selected, omit them from the query:
+            $featured_posts = get_field('featured_posts', get_option('page_for_posts'));
             if (
                 !is_paged() &&
                 !is_category() &&
                 !isset($_GET['post-category']) &&
                 !isset($_GET['post-tags']) &&
                 !isset($_GET['post-date']) &&
-                get_field('featured_post', get_option('page_for_posts'))
+                $featured_posts &&
+                is_array($featured_posts)
             ) {
-                $featured_post = get_field('featured_post', get_option('page_for_posts'));
-
-                if (!in_array('post__not_in', $args)) {
-                    $args['post__not_in'] = [$featured_post->ID];
+                $featured_ids = array_map(function ($p) {
+                    return is_object($p) ? $p->ID : (int) $p;
+                }, $featured_posts);
+                if (!isset($args['post__not_in'])) {
+                    $args['post__not_in'] = $featured_ids;
                 }
             }
 

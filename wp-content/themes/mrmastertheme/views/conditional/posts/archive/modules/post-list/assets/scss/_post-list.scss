@@ -1,0 +1,110 @@
+// Mirror cards-links module: grid of cards with title, date, categories, arrow, hover border
+.post-list {
+    background: linear-gradient(93deg, #EDEDED 4.4%, #EDEDED 50.89%);
+
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 95px;
+        margin-top: $global_module_padding_single;
+        list-style: none;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+
+        >li {
+            list-style: none;
+            margin: 0;
+        }
+
+        .card {
+            display: block;
+            position: relative;
+            background: $color_white;
+            border: 2px solid $color_white;
+            box-shadow: 0 0 1rem 0 rgb(0 0 0 / 2%);
+            transition: border-color 0.2s ease;
+
+            .card-content {
+                padding: 24px 42px;
+            }
+
+            h3 {
+                margin: 0 0 0.5rem;
+                color: $color_red;
+                font-weight: 700;
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+            }
+
+            time {
+                display: inline;
+                margin-bottom: 0.5rem;
+            }
+
+            // Category list (from post-category-list template)
+            ul,
+            .post-categories {
+                margin: 0 0 0.25rem;
+                padding: 0;
+                list-style: none;
+
+                a {
+                    color: inherit;
+                    text-decoration: underline;
+                    text-decoration-color: $color_red;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .card-arrow {
+                position: absolute;
+                top: 50%;
+                right: -33px;
+                width: 66px;
+                height: 66px;
+                transform: translateY(-50%);
+                background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/card-link-arrow.svg) no-repeat center center;
+                background-size: 50% 50%;
+                background-color: $color_red;
+                transition: background-color 0.3s ease-in-out;
+                text-indent: -9999px;
+                overflow: hidden;
+            }
+        }
+
+        .card:hover {
+            border-color: $color_red;
+
+            .card-arrow {
+                background-color: $color_red_dark;
+            }
+        }
+    }
+
+    // No results / single item list styling
+    .no-results {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    @media screen and (max-width: 769px) {
+        .posts-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .posts-grid .card .card-arrow {
+            right: 16px;
+        }
+    }
+}

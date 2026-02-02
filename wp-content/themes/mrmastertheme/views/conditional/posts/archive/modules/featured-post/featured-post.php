@@ -7,6 +7,7 @@ if (
     !isset($_GET['post-category']) &&
     !isset($_GET['post-tags']) &&
     !isset($_GET['post-date']) &&
+    !(isset($_GET['s']) && $_GET['s'] !== '') &&
     $featured_posts &&
     is_array($featured_posts)
 ) :

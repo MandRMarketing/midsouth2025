@@ -8,7 +8,7 @@ form#post-filters {
 
     ul.form-fields {
         position: relative;
-        column-gap: 2%;
+        column-gap: 18px;
 
         li {
             position: relative;
@@ -28,14 +28,33 @@ form#post-filters {
                 display: inline-block;
                 width: 100%;
                 max-width: 100%;
-                padding: 0;
+                padding: 20px;
                 margin: 0;
                 border: none;
-                background-color: $color_white_alt; //temporary
+                background-color: $color_white; //temporary
+                color: $color_black;
+                font-size: 22px;
+                font-weight: 600;
 
                 @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
                     width: 100%;
                 }
+            }
+
+            input::-webkit-input-placeholder {
+                color: $color_black;
+            }
+
+            input::-moz-placeholder {
+                color: $color_black;
+            }
+
+            input:-ms-input-placeholder {
+                color: $color_black;
+            }
+
+            input::placeholder {
+                color: $color_black;
             }
 
             //typically we want to override the browser's default arrow styling, & you have to do a strange work-around to accomplish this:
@@ -46,15 +65,15 @@ form#post-filters {
                     content: '';
                     position: absolute;
                     top: 50%;
-                    right: 0;
-                    width: 24px;
+                    right: 0px;
+                    width: 48px;
                     height: calc(100% - 5px);
                     transform: translateY(-50%);
                     background-image: url('library/custom-theme/images/icons/chevron-down.svg');
+                    background-position: center center;
                     background-repeat: no-repeat;
                     background-size: 20px;
-                    background-position-y: 8px;
-                    background-color: $color_white_alt; //temporary, make this match the background of the <select>
+                    background-color: $color_white; //temporary, make this match the background of the <select>
                     pointer-events: none;
                 }
 

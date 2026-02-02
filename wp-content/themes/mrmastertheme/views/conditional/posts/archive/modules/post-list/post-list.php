@@ -84,6 +84,11 @@
                 );
             }
 
+            //grab the keyword search if used:
+            if (isset($_GET['s']) && $_GET['s'] !== '') {
+                $args['s'] = sanitize_text_field(wp_unslash($_GET['s']));
+            }
+
             //if we're not filtering posts, not in the category archive, & if featured posts are selected, omit them from the query:
             $featured_posts = get_field('featured_posts', get_option('page_for_posts'));
             if (

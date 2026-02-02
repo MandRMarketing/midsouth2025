@@ -104,12 +104,21 @@ if ($post_categories || $post_tags || $post_archives) :
             <?php
             endif;
             ?>
+            <li class="post-keyword-filter">
+                <input
+                    type="search"
+                    name="s"
+                    id="post-keyword"
+                    placeholder="Keyword"
+                    value="<?= isset($_GET['s']) ? esc_attr(sanitize_text_field(wp_unslash($_GET['s']))) : ''; ?>"
+                    aria-label="Search posts by keyword">
+            </li>
             <li class="post-filter-submit">
                 <input type="submit" value="Filter Posts">
             </li>
             <?php
             //if any filters are being used, print a 'clear' button
-            if (isset($_GET['post-category']) || isset($_GET['post-tags']) || isset($_GET['post-date'])) :
+            if (isset($_GET['post-category']) || isset($_GET['post-tags']) || isset($_GET['post-date']) || (isset($_GET['s']) && $_GET['s'] !== '')) :
             ?>
                 <li class="post-filter-clear">
                     <a href="<?= get_the_permalink(get_option('page_for_posts')) ?>">Clear Filters</a>

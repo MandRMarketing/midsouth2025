@@ -1,7 +1,9 @@
 body.not-home header.title-area {
     //maybe you need to set global styles for secondary page title area(s):
+    background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/title-area-bg.jpg) no-repeat center center;
+    background-size: cover;
 
-    h1 + div.intro-content {
+    h1+div.intro-content {
         margin-top: $global_h1_bottom_margin;
     }
 }

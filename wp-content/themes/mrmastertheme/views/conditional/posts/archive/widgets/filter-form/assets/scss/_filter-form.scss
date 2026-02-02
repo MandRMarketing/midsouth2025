@@ -17,7 +17,7 @@ form#post-filters {
             @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
                 width: 100%;
 
-                + li {
+                +li {
                     margin-top: $global_list_item_bottom_margin;
                 }
             }
@@ -26,7 +26,7 @@ form#post-filters {
             select,
             button {
                 display: inline-block;
-                width: 200px;
+                width: 100%;
                 max-width: 100%;
                 padding: 0;
                 margin: 0;

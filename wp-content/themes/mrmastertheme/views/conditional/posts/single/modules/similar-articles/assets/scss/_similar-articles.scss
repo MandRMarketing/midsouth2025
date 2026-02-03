@@ -1,7 +1,14 @@
 section.similar-articles {
-    //
+    //  
 
-    .title-all-button-row .button {
-        margin: 0 0 0 auto;
-    } 
+    .intro-content-row {
+        .container {
+            border-top: 2px solid $color_red;
+            padding-top: $global_module_padding_double;
+
+            @media (max-width: 768px) {
+                padding-top: $global_module_padding_single;
+            }
+        }
+    }
 }

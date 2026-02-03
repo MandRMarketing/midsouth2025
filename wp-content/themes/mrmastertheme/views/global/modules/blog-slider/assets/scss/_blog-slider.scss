@@ -1,5 +1,10 @@
 .blog-slider {
     padding-bottom: 82px !important;
+    margin-bottom: $global_module_padding_double !important;
+
+    @media (max-width: 768px) {
+        margin-bottom: $global_module_padding_single !important;
+    }
 
     .intro-content-row {
         .container {
@@ -67,13 +72,14 @@
                 &--fallback {
                     background-color: $color_white_alt;
                     display: flex;
-                    align-items: center;
+                    align-items: flex-end;
                     justify-content: center;
 
                     img {
-                        width: 60%;
+                        width: 100%;
                         height: auto;
                         object-fit: contain;
+                        transform: translateY(-50px);
                     }
                 }
             }

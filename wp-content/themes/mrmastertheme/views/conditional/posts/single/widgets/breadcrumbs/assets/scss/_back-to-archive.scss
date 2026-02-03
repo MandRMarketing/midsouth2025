@@ -1,0 +1,30 @@
+.title-area-breadcrumb {
+    background: linear-gradient(93deg, #EDEDED 4.4%, #EDEDED 50.89%);
+
+    .breadcrumbs {
+        display: flex;
+        justify-content: space-between;
+
+        >a {
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        .post-categories {
+            color: $color_red;
+
+            a {
+                color: $color_red;
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

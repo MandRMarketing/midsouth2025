@@ -12,7 +12,7 @@ form#post-filters {
 
         li {
             position: relative;
-            width: 23%;
+            flex: 1;
 
             @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
                 width: 100%;
@@ -22,7 +22,7 @@ form#post-filters {
                 }
             }
 
-            input,
+            input:not([type='submit']),
             select,
             button {
                 display: inline-block;
@@ -38,6 +38,59 @@ form#post-filters {
 
                 @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
                     width: 100%;
+                }
+            }
+
+            &.post-filter-clear {
+                padding-top: 20px;
+            }
+
+            // Submit button: wrapper has arrow ::after (input cannot have pseudo-elements)
+            &.post-filter-submit {
+                max-width: 185px;
+                position: relative;
+                width: auto;
+                background-color: $color_red;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-left: 20px;
+                padding-right: 55px;
+                cursor: pointer;
+                display: inline-block;
+
+                &::after {
+                    content: '';
+                    background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/arrow.svg) no-repeat center;
+                    background-size: contain;
+                    width: 14px;
+                    height: 14px;
+                    position: absolute;
+                    top: 50%;
+                    right: 20px;
+                    transform: translateY(-50%);
+                    transition: right 0.3s ease-in-out;
+                }
+
+                &:hover,
+                &:focus-within {
+                    background-color: $color_red_dark;
+
+                    &::after {
+                        right: 12px;
+                    }
+                }
+
+                input.button {
+                    background: none;
+                    border: none;
+                    color: $color_white;
+                    padding: 0;
+                    width: auto;
+                    cursor: pointer;
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: normal;
                 }
             }
 

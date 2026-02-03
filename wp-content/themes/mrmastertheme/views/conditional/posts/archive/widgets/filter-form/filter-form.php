@@ -114,7 +114,7 @@ if ($post_categories || $post_tags || $post_archives) :
                     aria-label="Search posts by keyword">
             </li>
             <li class="post-filter-submit">
-                <input type="submit" value="Filter Posts">
+                <input class="button" type="submit" value="Search">
             </li>
             <?php
             //if any filters are being used, print a 'clear' button

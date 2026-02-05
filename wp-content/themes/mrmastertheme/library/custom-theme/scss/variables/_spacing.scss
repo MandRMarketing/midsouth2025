@@ -14,7 +14,7 @@ $global_container_responsive_left_right_padding: 0 5%;
 $global_gap_between_columns_large: 64px;
 $global_gap_between_columns_medium: 48px;
 $global_gap_between_columns_small: 24px;
-$global_gap_between_columns: $global_gap_between_columns_small;
+$global_gap_between_columns: $global_gap_between_columns_large;
 
 //Space between rows used in a standard flex layout
 $global_gap_between_rows_large: 64px;

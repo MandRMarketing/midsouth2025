@@ -14,8 +14,8 @@
                 .history-timeline-era-label {
                     text-align: center;
 
-                    h2 {
-                        //
+                    h3 {
+                        color: $color_black;
                     }
                 }
 
@@ -23,10 +23,26 @@
                     margin-top: $global_gap_between_rows_large;
                     list-style: none;
                     padding: 0;
+                    position: relative;
+                    padding-top: 61px;
+
+                    &:before {
+                        content: '';
+                        background: $color_red;
+                        width: 3px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
 
                     .history-timeline-item {
                         position: relative;
                         width: 100%;
+                        background: $color_white_alt;
+                        padding: 40px 140px;
+                        text-align: center;
 
                         &.image-left {
                             //
@@ -81,6 +97,7 @@
                                 //
                             }
                         }
+
                         .history-timeline-item-image {
                             //
 

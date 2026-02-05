@@ -7,7 +7,7 @@
             position: relative;
             text-decoration: none;
             color: inherit;
-            background: $color_white;
+            background: $color_white_alt;
             border: 2px solid $color_white;
             box-shadow: 0 0 1rem 0 rgb(0 0 0 / 2%);
 
@@ -36,6 +36,14 @@
 
             &:after {
                 background-color: $color_red_dark;
+            }
+        }
+    }
+
+    &:has(.background) {
+        .cards-grid {
+            .card {
+                background: $color_white;
             }
         }
     }

@@ -115,30 +115,32 @@ if ($cards) :
             <?php endif; ?>
             <?php
             foreach ($cards as $card) :
-                $card_content = $card['content'];
-                $add_link_to_card = $card['add_link_to_card'];
-                $card_link = $card['link'];
-                $card_link_text = $card['link_text'];
-                $card_icon = $card['icon']; // SVG icon
-                $card_icon_hover = $card['icon_hover']; // SVG icon
+                $card_content = $card['content'] ?? '';
+                $add_link_to_card = $card['add_link_to_card'] ?? false;
+                $card_link = $card['link'] ?? '';
+                $card_link_text = $card['link_text'] ?? '';
+                $card_icon = $card['icon'] ?? null; // SVG icon
+                $card_icon_hover = $card['icon_hover'] ?? null; // SVG icon
             ?>
                 <?php if ($add_link_to_card && $card_link) : ?>
-                    <a href="<?= esc_url($card_link) ?>" class="card" <?= $text_color_attribute ?>>
+                    <a href="<?= esc_url($card_link) ?>" class="card <?= $add_link_to_card ? 'has-link' : '' ?>" <?= $text_color_attribute ?>>
                     <?php else : ?>
                         <div class="card" <?= $text_color_attribute ?>>
                         <?php endif; ?>
-                        <div class="card-icon-container">
-                            <?php if ($card_icon) : ?>
-                                <div class="card-icon">
-                                    <img src="<?= $card_icon['url'] ?>" alt="<?= $card_icon['alt'] ?>">
-                                </div>
-                            <?php endif; ?>
-                            <?php if ($card_icon_hover) : ?>
-                                <div class="card-icon-hover">
-                                    <img src="<?= $card_icon_hover['url'] ?>" alt="<?= $card_icon_hover['alt'] ?>">
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($card_icon || $card_icon_hover) : ?>
+                            <div class="card-icon-container">
+                                <?php if ($card_icon) : ?>
+                                    <div class="card-icon">
+                                        <img src="<?= $card_icon['url'] ?>" alt="<?= $card_icon['alt'] ?>">
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($card_icon_hover) : ?>
+                                    <div class="card-icon-hover">
+                                        <img src="<?= $card_icon_hover['url'] ?>" alt="<?= $card_icon_hover['alt'] ?>">
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="card-content">
                             <?= $card_content ?>
                         </div>

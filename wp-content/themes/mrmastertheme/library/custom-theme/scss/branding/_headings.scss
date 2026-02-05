@@ -91,6 +91,13 @@ h2,
         font-size: 43px;
     }
 
+    &[text-align="center"] {
+        &:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
     &:after {
         content: '';
         background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/h2-dec.svg) no-repeat center;

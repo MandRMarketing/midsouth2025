@@ -40,7 +40,6 @@ if ($background_type === 'color') {
 
     //build out the background settings <span> HTML:
     $background_settings_tag = '<span class="background" style="background-color:' . $background_color . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
-
 } else if ($background_type === 'image') {
     $background_image = $background_settings['background_image'];
     $background_image_url = $background_image['url'];
@@ -121,7 +120,7 @@ if ($cards) :
         </div>
     <?php endif; ?>
     <div class="cards-container container">
-        <div class="cards-grid" data-column-count="<?= $column_count ?>">
+        <div class="cards-grid" data-grid="grid" data-row-gap="small" data-column-gap="small" data-column-count="<?= $column_count ?>">
             <?php
             foreach ($cards as $card) :
                 $card_content = $card['content'];

@@ -2,7 +2,7 @@
     display: flex;
 
     //basic "column-ing" of immediate child elements:
-    &[data-column-count='two'] > * {
+    &[data-column-count='two']>* {
         width: 50%;
 
         //then later default to full-width to match other columned layouts
@@ -11,7 +11,7 @@
         }
     }
 
-    &[data-column-count='three'] > * {
+    &[data-column-count='three']>* {
         width: 33.333%;
 
         //then later default to full-width to match other columned layouts
@@ -20,7 +20,7 @@
         }
     }
 
-    &[data-column-count='four'] > * {
+    &[data-column-count='four']>* {
         width: 25%;
 
         @media screen and (max-width: $breakpoint_laptop_small) {
@@ -33,7 +33,7 @@
         }
     }
 
-    &[data-column-count='five'] > * {
+    &[data-column-count='five']>* {
         width: 20%;
 
         //then later default to full-width to match other columned layouts
@@ -46,21 +46,21 @@
     &[data-column-gap='small'][data-column-count='two'] {
         column-gap: $global_gap_between_columns_small;
 
-        > * {
+        >* {
             width: calc((100% - $global_gap_between_columns_small) / 2);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -69,21 +69,21 @@
     &[data-column-gap='medium'][data-column-count='two'] {
         column-gap: $global_gap_between_columns_medium;
 
-        > * {
+        >* {
             width: calc((100% - $global_gap_between_columns_medium) / 2);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -92,21 +92,21 @@
     &[data-column-gap='large'][data-column-count='two'] {
         column-gap: $global_gap_between_columns_large;
 
-        > * {
+        >* {
             width: calc((100% - $global_gap_between_columns_large) / 2);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -115,21 +115,21 @@
     &[data-column-gap='small'][data-column-count='three'] {
         column-gap: $global_gap_between_columns_small;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_small * 2)) / 3);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -138,21 +138,21 @@
     &[data-column-gap='medium'][data-column-count='three'] {
         column-gap: $global_gap_between_columns_medium;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_medium * 2)) / 3);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -161,21 +161,21 @@
     &[data-column-gap='large'][data-column-count='three'] {
         column-gap: $global_gap_between_columns_large;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_large * 2)) / 3);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -184,12 +184,12 @@
     &[data-column-gap='small'][data-column-count='four'] {
         column-gap: $global_gap_between_columns_small;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_small * 3)) / 4);
         }
 
         @media screen and (max-width: $breakpoint_laptop_small) {
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns_small) / 2);
             }
         }
@@ -197,14 +197,14 @@
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -213,12 +213,12 @@
     &[data-column-gap='medium'][data-column-count='four'] {
         column-gap: $global_gap_between_columns_medium;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_medium * 3)) / 4);
         }
 
         @media screen and (max-width: $breakpoint_laptop_small) {
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns_medium) / 2);
             }
         }
@@ -226,14 +226,14 @@
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -242,12 +242,12 @@
     &[data-column-gap='large'][data-column-count='four'] {
         column-gap: $global_gap_between_columns_large;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_large * 3)) / 4);
         }
 
         @media screen and (max-width: $breakpoint_laptop_small) {
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns_large) / 2);
             }
         }
@@ -255,14 +255,14 @@
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             column-gap: $global_gap_between_columns;
 
-            > * {
+            >* {
                 width: calc((100% - $global_gap_between_columns) / 2);
             }
         }
 
         //then later default to full-width to match other columned layouts
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -271,12 +271,12 @@
     &[data-column-gap='small'][data-column-count='five'] {
         column-gap: $global_gap_between_columns_small;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_small * 4)) / 5);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -285,12 +285,12 @@
     &[data-column-gap='medium'][data-column-count='five'] {
         column-gap: $global_gap_between_columns_medium;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_medium * 4)) / 5);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }
@@ -299,12 +299,12 @@
     &[data-column-gap='large'][data-column-count='five'] {
         column-gap: $global_gap_between_columns_large;
 
-        > * {
+        >* {
             width: calc((100% - ($global_gap_between_columns_large * 4)) / 5);
         }
 
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-            > * {
+            >* {
                 width: 100%;
             }
         }

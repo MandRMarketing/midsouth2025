@@ -42,6 +42,14 @@ div.full-width-two-columns {
             transform: translateX(147px);
             z-index: 1;
 
+            ul:not([class]) {
+                li:not([class]) {
+                    &:before {
+                        background-color: $color_white;
+                    }
+                }
+            }
+
             * {
                 color: $color_white;
             }

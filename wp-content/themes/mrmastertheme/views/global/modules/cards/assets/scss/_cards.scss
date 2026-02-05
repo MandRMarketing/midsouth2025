@@ -1,0 +1,23 @@
+.cards {
+    .cards-grid {
+        padding-top: $global_module_padding_single;
+
+        .card {
+            background: $color_white;
+            border-bottom: 2px solid $color_red;
+            box-shadow: 0 0 1rem 0 rgb(0 0 0 / 2%);
+            padding: 32px;
+
+            h5 {
+                margin-top: 10px;
+            }
+
+            .card-content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}

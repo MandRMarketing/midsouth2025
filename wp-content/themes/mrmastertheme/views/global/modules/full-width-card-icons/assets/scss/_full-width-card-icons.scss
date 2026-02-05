@@ -137,7 +137,19 @@
         }
     }
 
-    .card:not(.intro-content):hover {
+    .card:not(.has-link) {
+        padding-bottom: 100px;
+
+        p {
+            font-family: "Open Sans";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+
+    .card:not(.intro-content).has-link:hover {
         .card-icon {
             opacity: 0;
         }
@@ -166,7 +178,7 @@
     }
 
     // First card hover: keep red, just swap icon
-    .cards-grid>.card:not(.intro-content):hover {
+    .cards-grid>.card:not(.intro-content).has-link:hover {
         background-color: $color_red;
         color: $color_white;
     }

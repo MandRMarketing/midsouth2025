@@ -180,14 +180,67 @@ function apple_appstore_icon_sc($atts, $content = null)
 	return $output;
 }
 
+/**
+ * Create newsletter archive structure
+ */
+add_shortcode('newsletter_archive', 'newsletter_archive_sc');
+function newsletter_archive_sc()
+{
+
+	if (have_rows('archive_year')) :
+		ob_start();
+		while (have_rows('archive_year')) : the_row();
+			$title = get_sub_field('newsletter_year');
+?>
+			<h2 class="newsletter-year"><?= $title; ?></h2>
+			<div class="newsletter-container">
+				<?php if (have_rows('newsletters')) :
+					$cx = 0;
+					while (have_rows('newsletters')) : the_row();
+						$cx++;
+
+						$image = get_sub_field('cover_image');
+						$pdf = get_sub_field('pdf_file');
+						$qtitle = get_sub_field('quarter_title');
+						$img = aq_resize($image['url'], 500, 700, true, true, true);
+
+						if ($cx % 4 === 1 && $cx % 2 === 1) {
+							$first = 'first med-first';
+						} elseif ($cx % 4 === 1) {
+							$first = 'first';
+						} elseif ($cx % 2 === 1) {
+							$first = 'med-first';
+						} else {
+							$first = '';
+						}
+				?>
+						<div class="one-fourth med-one-half <?= $first; ?> newsletter-single">
+							<a href="<?= $pdf; ?>" target="_blank">
+								<img src="<?= $img; ?>" alt="<?= $title . ' ' . $qtitle . ' Newsletter'; ?> Cover Image" />
+							</a>
+							<a href="https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html" class="visually-hidden" target="_blank" aria-label="Download Adobe Acrobat to view PDF">Download Adobe Acrobat to view PDF</a>
+							<h3><?= $qtitle; ?></h3>
+						</div>
+				<?php endwhile;
+				endif; ?>
+			</div>
+			<span class="clear"></span>
+	<?php endwhile;
+	endif;
+
+	// End buffering, save, return
+	$output = ob_get_clean();
+	return $output;
+}
+
 // Auto loan interest calculator
 add_shortcode('auto_calculator_interest', 'auto_calculators_sc');
 function auto_calculators_sc()
 {
 	ob_start();
-?>
+	?>
 	<div class="calc-column auto-calc-interest">
-		<script type="text/javascript" src="/wp-content/themes/mrmastertheme/library/custom-theme/js/auto-loan-calculator.js" data-calc="auto_loan_interest" data-locale="us_en"></script>
+		<script type="text/javascript" src="https://www.practicalmoneyskills.com/assets/js/calcs/embed.js" data-calc="auto_loan_interest" data-locale="us_en"></script>
 	</div>
 	<span class="clear"></span>
 <?php

@@ -1,8 +1,15 @@
+section:has(+ .callout),
+article:has(+ .callout),
+span.background-start:has(+ .callout) {
+    padding-bottom: 100px !important;
+}
+
 section.callout,
 aside.callout,
 div.callout {
+    background-color: $color_red;
+    padding-top: 0 !important;
 
-    //
     &:before {
         content: '';
         position: absolute;
@@ -18,20 +25,23 @@ div.callout {
         pointer-events: none;
     }
 
-    background-color: $color_red;
-
-    .container {
-        position: relative;
-        z-index: 2;
-        transform: translateY(-30px);
-    }
-
-    padding-top: $global_module_padding_single;
-    padding-bottom: $global_module_padding_single;
-
     .container {
         padding-top: 0;
         padding-bottom: 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .button {
+        background-color: $color_white;
+
+        .text-wrap {
+            color: $color_red !important;
+        }
+
+        &::after {
+            filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(4868%) hue-rotate(340deg) brightness(93%) contrast(102%);
+        }
     }
 
     * {

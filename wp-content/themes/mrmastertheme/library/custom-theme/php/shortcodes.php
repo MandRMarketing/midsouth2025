@@ -180,6 +180,21 @@ function apple_appstore_icon_sc($atts, $content = null)
 	return $output;
 }
 
+// Auto loan interest calculator
+add_shortcode('auto_calculator_interest', 'auto_calculators_sc');
+function auto_calculators_sc()
+{
+	ob_start();
+?>
+	<div class="calc-column auto-calc-interest">
+		<script type="text/javascript" src="/wp-content/themes/mrmastertheme/library/custom-theme/js/auto-loan-calculator.js" data-calc="auto_loan_interest" data-locale="us_en"></script>
+	</div>
+	<span class="clear"></span>
+<?php
+	$output = ob_get_clean();
+	return $output;
+}
+
 //Google Play Icon
 add_shortcode('google-play', 'google_play_icon_sc');
 function google_play_icon_sc($atts, $content = null)

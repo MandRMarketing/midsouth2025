@@ -47,18 +47,11 @@ if ($columns) :
     $rows = $first_column['rows'];
     $row_count = count($rows);
 ?>
-    <?php if ($table_header) : ?>
-        <div class="table-header-row">
-            <div class="container">
-                <h2 class="table-header"><?= $table_header ?></h2>
-                <span class="container-settings" data-container-width="<?= $container_width ?>">
-                    <span class="validator-text" data-nosnippet>settings</span>
-                </span>
-            </div>
-        </div>
-    <?php endif; ?>
     <div class="table-container container">
         <table class="data-table">
+            <?php if ($table_header) : ?>
+                <caption class="table-header"><?= $table_header ?></caption>
+            <?php endif; ?>
             <thead>
                 <tr>
                     <?php

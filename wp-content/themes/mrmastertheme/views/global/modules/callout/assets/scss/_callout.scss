@@ -1,7 +1,42 @@
 section.callout,
 aside.callout,
 div.callout {
+
     //
+    &:before {
+        content: '';
+        position: absolute;
+        top: -75px;
+        left: -10%;
+        width: 120%;
+        height: 200px;
+        background: $color_red;
+        border-top-left-radius: 100%;
+        border-top-right-radius: 100%;
+        z-index: 1;
+        display: block;
+        pointer-events: none;
+    }
+
+    background-color: $color_red;
+
+    .container {
+        position: relative;
+        z-index: 2;
+        transform: translateY(-30px);
+    }
+
+    padding-top: $global_module_padding_single;
+    padding-bottom: $global_module_padding_single;
+
+    .container {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    * {
+        color: $color_white;
+    }
 
     //module padding - desktop rules
     &:has(span.module-settings > span.padding [data-top-padding-desktop='double']),

@@ -1,0 +1,17 @@
+.table {
+    .data-table {
+        .table-header {
+            caption-side: top;
+            text-align: center;
+            background-color: $color_grey_alt;
+            color: $color_black;
+            padding: 12px 32px;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: 0.72px;
+            text-transform: uppercase;
+        }
+    }
+}

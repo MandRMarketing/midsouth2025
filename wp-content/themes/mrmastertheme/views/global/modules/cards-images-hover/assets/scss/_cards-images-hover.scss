@@ -1,4 +1,19 @@
 .cards-images-hover {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: -100px;
+        width: 1000px;
+        height: 1000px;
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/dec.svg) no-repeat center center;
+        pointer-events: none;
+        z-index: 0;
+    }
+
     .cards-grid {
         padding-top: $global_module_padding_single;
 

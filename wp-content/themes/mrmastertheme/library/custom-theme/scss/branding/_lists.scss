@@ -21,7 +21,20 @@ ul:not([class]) {
     li:not([class]) {
         position: relative;
         list-style-type: none;
-        padding-left: 20px;
+        padding-left: 24px;
+
+        ul:not([class]) {
+            li:not([class]) {
+                &:before {
+                    background-color: transparent;
+                    border: 1px solid $color_red;
+
+                    @media (max-width: $breakpoint_tablet_medium_portrait) {
+                        top: 8px;
+                    }
+                }
+            }
+        }
 
         &:before {
             content: '';
@@ -36,6 +49,10 @@ ul:not([class]) {
             height: 10px;
             line-height: 0;
             text-indent: 0;
+
+            @media (max-width: $breakpoint_tablet_medium_portrait) {
+                top: 9px;
+            }
         }
     }
 

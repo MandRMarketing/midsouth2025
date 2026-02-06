@@ -1,0 +1,83 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 20px 0;
+    margin-bottom: 0;
+
+    @media (max-width: $breakpoint_before_mobile_large) {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+        display: block;
+    }
+
+    +em {
+        margin-top: -20px;
+    }
+
+    thead {
+        tr {
+            background-color: $color_black_alt;
+        }
+
+        th {
+            padding: 16px 24px;
+            color: $color_white;
+            font-weight: 700;
+            text-align: center;
+            border: none;
+
+            @media (max-width: $breakpoint_tablet_medium_portrait) {
+                font-size: 18px;
+            }
+
+            &:last-child {
+                background-color: $color_red;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+
+            &:nth-child(odd) {
+                background-color: $color_white;
+            }
+
+            &:nth-child(even) {
+                background-color: $color_white_alt;
+            }
+
+            &:last-child {
+                td {
+                    &:last-child {
+                        border-bottom: 2px solid $color_red;
+                    }
+                }
+            }
+        }
+
+        td {
+            padding: 16px 24px;
+            text-align: center;
+            color: $color_black_alt;
+            border: none;
+            border-left: 2px solid $color_black_alt;
+
+            @media (max-width: $breakpoint_tablet_medium_portrait) {
+                font-size: 18px;
+            }
+
+            &:last-child {
+                border-right: 2px solid $color_red;
+                border-left: 2px solid $color_red;
+            }
+
+
+            &:first-child {
+                border-left: none;
+            }
+        }
+    }
+}

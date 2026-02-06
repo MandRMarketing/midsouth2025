@@ -1,11 +1,13 @@
 section.standard-content,
 aside.standard-content,
 div.standard-content {
+
     //
 
     div.content-row {
 
-        p.flex-icon {
+        p.flex-icon,
+        div.flex-icons {
             display: flex;
             align-items: center;
             gap: 20px;

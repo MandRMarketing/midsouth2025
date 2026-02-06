@@ -11,6 +11,11 @@ body {
     line-height: 30px;
     /* 136.364% */
     overflow-x: hidden;
+
+    @media (max-width: $breakpoint_tablet_medium_portrait) {
+        font-size: 20px;
+        line-height: 26px;
+    }
 }
 
 a {

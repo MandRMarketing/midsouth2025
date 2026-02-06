@@ -2,24 +2,43 @@ picture,
 img {
     //
 
-    + p,
-    + ol,
-    + ul,
-    + address,
-    + h2,
-    + .h2,
-    + h3,
-    + .h3,
-    + h4,
-    + .h4,
-    + h5,
-    + .h5,
-    + h6,
-    + .h6,
-    + a,
-    + a.button,
-    + img,
-    + picture {
+    +p,
+    +ol,
+    +ul,
+    +address,
+    +h2,
+    +.h2,
+    +h3,
+    +.h3,
+    +h4,
+    +.h4,
+    +h5,
+    +.h5,
+    +h6,
+    +.h6,
+    +a,
+    +a.button,
+    +img,
+    +picture {
         margin-top: $global_paragraph_bottom_margin;
     }
+}
+
+
+img.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+img.alignleft {
+    display: block;
+    margin: 0 0 0 auto;
+    float: left;
+}
+
+img.alignright {
+    display: block;
+    margin: 0 auto 0 0;
+    float: right;
+    margin-left: 82px;
 }

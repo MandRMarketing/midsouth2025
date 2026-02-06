@@ -77,6 +77,7 @@ if ($has_sections || $has_flat_toggles) :
         <?php foreach ($toggles_sections as $section) :
             $section_title = $section['title'] ?? '';
             $section_intro = $section['intro_content'] ?? '';
+            $section_image = $section['image'] ?? '';
             $section_toggles = $section['toggles'] ?? [];
             if (empty($section_toggles)) {
                 continue;
@@ -85,12 +86,17 @@ if ($has_sections || $has_flat_toggles) :
             <div class="toggles__section">
                 <?php if ($section_title) : ?>
                     <header class="intro-content-row">
-                        <div class="container" <?= $text_color_attribute ?>>
-                            <h2><?= esc_html($section_title) ?></h2>
+                        <div class="container" data-flex="flex" data-gap="large" <?= $text_color_attribute ?>>
+                            <!-- <h2><?= esc_html($section_title) ?></h2> -->
                             <?php if ($section_intro) : ?>
                                 <div class="intro-content"><?= wp_kses_post($section_intro) ?></div>
                             <?php endif; ?>
-                            <span class="container-settings" data-container-width="<?= esc_attr($container_width) ?>">
+                            <?php if ($section_image) : ?>
+                                <picture class="section-image">
+                                    <img src="<?= esc_url($section_image['url']) ?>" alt="<?= esc_attr($section_image['alt']) ?>">
+                                </picture>
+                            <?php endif; ?>
+                            <span class=" container-settings" data-container-width="<?= esc_attr($container_width) ?>">
                                 <span class="validator-text" data-nosnippet>settings</span>
                             </span>
                         </div>

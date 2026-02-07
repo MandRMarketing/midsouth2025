@@ -65,43 +65,48 @@ if ($locations) :
                 $location_id = $location->ID;
                 $location_link = get_permalink($location_id);
                 $location_title = get_the_title($location_id);
-                $location_excerpt = get_the_excerpt($location_id);
 
                 $location_image_size_name = 'full';
                 $location_image_id = get_post_thumbnail_id($location_id);
                 $location_image_url = '';
-                $location_image_width = '';
-                $location_image_height = '';
                 $location_image_alt = '';
 
                 if ($location_image_id) {
                     $location_image_url = wp_get_attachment_image_url($location_image_id, $location_image_size_name);
-                    $location_image_width = wp_get_attachment_image_src($location_image_id, $location_image_size_name)[1];
-                    $location_image_height = wp_get_attachment_image_src($location_image_id, $location_image_size_name)[2];
                     $location_image_alt = get_post_meta($location_image_id, '_wp_attachment_image_alt', true);
+                }
+
+                //Get location_info fields for directions & review links
+                $location_info = get_field('location_info', $location_id);
+                $geolocation = $location_info['geolocation'] ?? null;
+                $review_link = $location_info['review_link'] ?? null;
+                $directions_url = null;
+                if ($geolocation && !empty($geolocation['address'])) {
+                    $directions_url = 'https://www.google.com/maps/search/' . urlencode($geolocation['address']);
+                } else {
+                    $directions_url = null;
                 }
             ?>
                 <div class="location-card">
-                    <?php if ($location_image_id) : ?>
-                        <figure class="location-image">
-                            <a href="<?= $location_link ?>">
-                                <img
-                                    src="<?= $location_image_url ?>"
-                                    height="<?= $location_image_height ?>"
-                                    width="<?= $location_image_width ?>"
-                                    alt="<?= $location_image_alt ?>">
-                            </a>
-                        </figure>
-                    <?php endif; ?>
-                    <div class="location-content">
-                        <h3 class="location-title">
-                            <a href="<?= $location_link; ?>"><?= $location_title; ?></a>
-                        </h3>
-                        <?php if ($location_excerpt) : ?>
-                            <p class="location-excerpt"><?= $location_excerpt ?></p>
+                    <span class="location-image">
+                        <?php if ($location_image_id) : ?>
+                            <img
+                                src="<?= esc_url($location_image_url) ?>"
+                                alt="<?= esc_attr($location_image_alt) ?>">
                         <?php endif; ?>
-                        <a href="<?= $location_link; ?>" class="button">View Location</a>
+                    </span>
+                    <div class="location-content">
+                        <h3 class="location-title"><?= esc_html($location_title); ?></h3>
+                        <div class="location-links">
+                            <?php if ($directions_url) : ?>
+                                <a href="<?= esc_url($directions_url); ?>" target="_blank" class="location-link button button--clear">Get Directions</a>
+                            <?php endif; ?>
+                            <?php if ($review_link) : ?>
+                                <a href="<?= esc_url($review_link); ?>" target="_blank" class="location-link button button--clear">Leave Us a Review</a>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    <a href="<?= esc_url($location_link); ?>" class="button">See Location Details</a>
                 </div>
             <?php
             endforeach;

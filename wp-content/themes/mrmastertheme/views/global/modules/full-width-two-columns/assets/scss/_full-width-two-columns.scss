@@ -4,6 +4,10 @@ div.full-width-two-columns {
     //
     background: linear-gradient(177deg, #FFF 67.57%, #EDEDED 122.41%);
 
+    &.margin-top {
+        margin-top: $global_module_padding_double;
+    }
+
     &:has(div.columns[data-mobile-reverse-order='true']) {
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
             flex-direction: column-reverse;

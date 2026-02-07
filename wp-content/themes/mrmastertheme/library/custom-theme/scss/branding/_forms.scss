@@ -76,3 +76,36 @@ div.gform_confirmation_message {
     font-weight: 700;
     font-size: 24px;
 }
+
+.gform_required_legend {
+    display: none;
+}
+
+.gfield_label {
+    font-family: "Open Sans" !important;
+    font-size: 22px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: normal !important;
+}
+
+.gfield_required {
+    color: $color_black !important;
+}
+
+.ginput_container {
+
+    input,
+    textarea,
+    select {
+        background-color: $color_white_alt !important;
+        border: unset !important;
+        min-height: 50px !important;
+    }
+}
+
+.gform_wrapper {
+    em {
+        font-size: 16px !important;
+    }
+}

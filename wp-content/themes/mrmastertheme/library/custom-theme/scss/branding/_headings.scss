@@ -68,6 +68,31 @@ h1,
     }
 }
 
+.single-mandr_location {
+
+    .h1,
+    h1 {
+        position: relative;
+        color: $color_black;
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 58px;
+        /* 134.884% */
+        letter-spacing: -0.86px;
+
+        font-size: 29px;
+
+        @media (min-width: $breakpoint_before_mobile_large) {
+            font-size: 35px;
+        }
+
+        @media (min-width: $breakpoint_tablet_medium_portrait) {
+            font-size: 43px;
+        }
+    }
+}
+
 h2,
 .h2 {
     position: relative;
@@ -138,7 +163,7 @@ h2,
 
 h3,
 .h3 {
-    color: $color_red;
+    color: $color_black;
     font-family: 'Open Sans';
     font-size: 27px;
     font-style: normal;

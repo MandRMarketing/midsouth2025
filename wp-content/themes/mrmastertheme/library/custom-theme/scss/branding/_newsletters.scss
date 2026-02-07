@@ -1,0 +1,80 @@
+// Newsletter Archive (shortcode)
+.newsletter-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 75px;
+    row-gap: 117px;
+    padding-bottom: 51px !important;
+
+    @media (max-width: $breakpoint_mobile_iphone_large) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.newsletter-single {
+    position: relative;
+
+    &::before {
+        content: '';
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .newsletter-title {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        color: $color_white;
+        z-index: 2;
+    }
+
+    .button {
+        position: absolute;
+        bottom: -51px;
+        left: 0;
+    }
+
+    .newsletter-image {
+        display: block;
+        position: relative;
+
+        &::before {
+            content: '';
+            background: $color_red;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            z-index: -1;
+        }
+
+        picture {
+            width: 100%;
+            display: block;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                transition: transform 0.3s ease-in-out;
+                aspect-ratio: 1;
+                object-fit: cover;
+            }
+        }
+    }
+
+    h3 {
+        margin-top: 12px;
+        margin-bottom: 8px;
+    }
+
+    .button {
+        margin-top: 0;
+    }
+}

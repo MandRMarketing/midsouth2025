@@ -201,13 +201,13 @@ function newsletter_archive_sc()
 						$qtitle = get_sub_field('quarter_title');
 						$img    = aq_resize($image['url'], 500, 700, true, true, true);
 			?>
-						<div class="newsletter-single">
-							<a href="<?= $pdf; ?>" target="_blank" class="newsletter-image">
+						<a href="<?= $pdf; ?>" target="_blank" class="newsletter-single">
+							<span class="newsletter-image">
 								<img src="<?= $img; ?>" alt="<?= esc_attr($qtitle . ' ' . $year . ' Newsletter'); ?> Cover Image" />
-							</a>
+							</span>
 							<h3 class="newsletter-title"><?= esc_html($qtitle . ' - ' . $year); ?></h3>
-							<a href="<?= $pdf; ?>" target="_blank" class="button">Read Articles</a>
-						</div>
+							<span class="button">Read Articles</span>
+						</a>
 			<?php endwhile;
 				endif;
 			endwhile; ?>

@@ -37,6 +37,12 @@ $container_width = get_sub_field('container_width');
 //declare variables for content
 $intro_content = get_sub_field('intro_content');
 $locations = get_sub_field('locations');
+if (!$locations) {
+    $locations = get_posts(array(
+        'post_type' => 'mandr_location',
+        'posts_per_page' => -1,
+    ));
+}
 
 //we're only generating HTML if the module has locations to display
 if ($locations) :
@@ -60,7 +66,7 @@ if ($locations) :
                 $location_link = get_permalink($location_id);
                 $location_title = get_the_title($location_id);
                 $location_excerpt = get_the_excerpt($location_id);
-                
+
                 $location_image_size_name = 'full';
                 $location_image_id = get_post_thumbnail_id($location_id);
                 $location_image_url = '';

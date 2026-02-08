@@ -74,20 +74,50 @@ if ($has_sections || $has_flat_toggles) :
     echo $opening_tag;
 ?>
     <?php if ($has_sections) : ?>
-        <?php foreach ($toggles_sections as $section) :
+        <?php
+            // Filter out sections with no toggles for tab rendering
+            $valid_sections = [];
+            foreach ($toggles_sections as $section) {
+                $section_toggles = $section['toggles'] ?? [];
+                if (!empty($section_toggles)) {
+                    $valid_sections[] = $section;
+                }
+            }
+        ?>
+        <?php if (count($valid_sections) > 1) : ?>
+            <div class="toggles__tabs container">
+                <ul class="toggles__tab-list" role="tablist">
+                    <?php foreach ($valid_sections as $tab_index => $section) :
+                        $tab_title = $section['title'] ?? 'Section ' . ($tab_index + 1);
+                        $is_active = $tab_index === 0;
+                    ?>
+                        <li class="toggles__tab" role="presentation">
+                            <button
+                                type="button"
+                                class="toggles__tab-button<?= $is_active ? ' toggles__tab-button--active' : '' ?>"
+                                role="tab"
+                                aria-selected="<?= $is_active ? 'true' : 'false' ?>"
+                                data-tab-index="<?= $tab_index ?>"
+                            ><?= esc_html($tab_title) ?></button>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <span class="container-settings" data-container-width="<?= esc_attr($container_width) ?>">
+                    <span class="validator-text" data-nosnippet>settings</span>
+                </span>
+            </div>
+        <?php endif; ?>
+        <?php foreach ($valid_sections as $section_index => $section) :
             $section_title = $section['title'] ?? '';
             $section_intro = $section['intro_content'] ?? '';
             $section_image = $section['image'] ?? '';
             $section_toggles = $section['toggles'] ?? [];
-            if (empty($section_toggles)) {
-                continue;
-            }
+            $is_active = $section_index === 0;
         ?>
-            <div class="toggles__section">
+            <div class="toggles__section<?= $is_active ? ' toggles__section--active' : '' ?>" role="tabpanel" data-section-index="<?= $section_index ?>">
                 <?php if ($section_title) : ?>
                     <header class="intro-content-row">
                         <div class="container" data-flex="flex" data-gap="large" <?= $text_color_attribute ?>>
-                            <!-- <h2><?= esc_html($section_title) ?></h2> -->
                             <?php if ($section_intro) : ?>
                                 <div class="intro-content"><?= wp_kses_post($section_intro) ?></div>
                             <?php endif; ?>
@@ -96,7 +126,7 @@ if ($has_sections || $has_flat_toggles) :
                                     <img src="<?= esc_url($section_image['url']) ?>" alt="<?= esc_attr($section_image['alt']) ?>">
                                 </picture>
                             <?php endif; ?>
-                            <span class=" container-settings" data-container-width="<?= esc_attr($container_width) ?>">
+                            <span class="container-settings" data-container-width="<?= esc_attr($container_width) ?>">
                                 <span class="validator-text" data-nosnippet>settings</span>
                             </span>
                         </div>

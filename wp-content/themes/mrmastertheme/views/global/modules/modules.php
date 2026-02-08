@@ -66,6 +66,10 @@ if (have_rows('modules', $ID)) :
         elseif (get_row_layout() == 'rates_list') :
             get_template_part('views/global/modules/rates-list/rates-list');
 
+        // Stats List
+        elseif (get_row_layout() == 'stats_list') :
+            get_template_part('views/global/modules/stats-list/stats-list');
+
         //Table
         elseif (get_row_layout() == 'table') :
             get_template_part('views/global/modules/table/table');

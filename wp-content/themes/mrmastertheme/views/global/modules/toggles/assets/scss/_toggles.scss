@@ -4,6 +4,10 @@
         margin-bottom: 25px;
         padding: $global_module_padding_single 0;
 
+        @media (max-width: $breakpoint_tablet_medium_landscape) {
+            margin-bottom: 0 !important;
+        }
+
         .container {
             display: flex;
             gap: 82px;

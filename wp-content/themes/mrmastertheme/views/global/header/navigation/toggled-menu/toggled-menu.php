@@ -2,7 +2,7 @@
 $toggled_nav_classes = trim((string) get_field('toggled_nav_class_names', 'options'));
 $toggled_nav_attr   = $toggled_nav_classes !== '' ? ' class="' . esc_attr($toggled_nav_classes) . '"' : '';
 ?>
-<nav id="toggled-nav" aria-label="Toggled Menu" aria-hidden="true"<?= $toggled_nav_attr ?>>
+<nav id="toggled-nav" aria-label="Toggled Menu" aria-hidden="true" <?= $toggled_nav_attr ?>>
     <div class="menu-wrap">
 
         <?php
@@ -54,10 +54,10 @@ $toggled_nav_attr   = $toggled_nav_classes !== '' ? ' class="' . esc_attr($toggl
         }
         ?>
 
-        <?php
-        //When it's finally time to hide the other desktop menus and show all the menu items in one place, we have a conglomerate menu location
-        if (has_nav_menu('conglomerate_menu')) {
-            /*
+        <!-- <?php
+                //When it's finally time to hide the other desktop menus and show all the menu items in one place, we have a conglomerate menu location
+                if (has_nav_menu('conglomerate_menu')) {
+                    /*
                 wp_nav_menu(array(
                     'container'       => 'ul',
                     'menu_class'      => 'toggled-menu-mobile-conglomerate',
@@ -67,16 +67,16 @@ $toggled_nav_attr   = $toggled_nav_classes !== '' ? ' class="' . esc_attr($toggl
                 ));
                 */
 
-            //instead of the default wordpress <nav> > <ul> structure, we'll use our custom code to build out a menu that enables the use of sub-menu 'dropdown' or 'paginated' behaviour:
+                    //instead of the default wordpress <nav> > <ul> structure, we'll use our custom code to build out a menu that enables the use of sub-menu 'dropdown' or 'paginated' behaviour:
 
-            //If a menu is registered to this location, get the name & clean it:
-            $mobile_conglomerate_menu_name = str_replace(' - ', ' ', wp_get_nav_menu_name('conglomerate_menu'));
-            $mobile_conglomerate_menu_name = str_replace(' ', '-', $mobile_conglomerate_menu_name);
+                    //If a menu is registered to this location, get the name & clean it:
+                    $mobile_conglomerate_menu_name = str_replace(' - ', ' ', wp_get_nav_menu_name('conglomerate_menu'));
+                    $mobile_conglomerate_menu_name = str_replace(' ', '-', $mobile_conglomerate_menu_name);
 
-            //pass the nav items to our custom function that builds the menu HTML
-            echo mobile_nav_build_primary($mobile_conglomerate_menu_name);
-        }
-        ?>
+                    //pass the nav items to our custom function that builds the menu HTML
+                    echo mobile_nav_build_primary($mobile_conglomerate_menu_name);
+                }
+                ?> -->
     </div>
     <?php
     //This button element works with the dark overlay to add 'click to close' functionality

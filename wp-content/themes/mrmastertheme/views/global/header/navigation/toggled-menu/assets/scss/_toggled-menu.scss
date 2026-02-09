@@ -232,22 +232,22 @@ nav#toggled-nav {
             //
         }
 
-        @media screen and (max-width: $breakpoint_before_mobile_large) {
+        // @media screen and (max-width: $breakpoint_before_mobile_large) {
 
-            ul.toggled-menu-desktop-primary,
-            ul.toggled-menu-desktop-secondary {
-                display: none;
-            }
-        }
+        //     ul.toggled-menu-desktop-primary,
+        //     ul.toggled-menu-desktop-secondary {
+        //         display: none;
+        //     }
+        // }
 
-        //the toggled mobile conglomerate menu:
-        ul.mobile-menu {
-            display: none;
+        // //the toggled mobile conglomerate menu:
+        // ul.mobile-menu {
+        //     display: none;
 
-            @media screen and (max-width: $breakpoint_before_mobile_large) {
-                display: block;
-            }
-        }
+        //     @media screen and (max-width: $breakpoint_before_mobile_large) {
+        //         display: block;
+        //     }
+        // }
     }
 
     //button that closes the menu

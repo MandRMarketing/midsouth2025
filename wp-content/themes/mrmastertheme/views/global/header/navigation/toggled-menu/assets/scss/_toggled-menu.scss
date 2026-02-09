@@ -110,11 +110,100 @@ nav#toggled-nav {
         width: 450px;
         max-width: 100%;
         transform: translateX(0%);
+        overflow-y: auto;
 
         transition: transform 0.3s ease-in-out;
 
         @media screen and (max-width: $breakpoint_before_mobile_large) {
             width: 100%;
+        }
+
+        .current-menu-item,
+        .current-menu-ancestor {
+            >a {
+                color: $color-red;
+                text-decoration: underline;
+            }
+        }
+
+        .toggled-menu-desktop-primary {
+            >li {
+                text-align: left;
+                padding: 25px 40px;
+                border-bottom: 1px solid $color_red;
+
+                &:first-of-type {
+                    border-top: 1px solid $color_red;
+                }
+
+                >a {
+                    font-family: "Open Sans";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    letter-spacing: 0.96px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                }
+
+                >ul {
+                    margin-top: 20px;
+
+                    >li {
+                        >a {
+                            position: relative;
+                            font-family: "Open Sans";
+                            font-size: 22px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 40px;
+                            text-decoration: none;
+
+                            /* 181.818% */
+                            &::after {
+                                content: '';
+                                background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/arrow.svg) no-repeat center;
+                                background-size: contain;
+                                width: 14px;
+                                height: 14px;
+                                position: absolute;
+                                top: 50%;
+                                right: -30px;
+                                transform: translateY(-50%);
+                                transition: right 0.3s ease-in-out;
+                                filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(4868%) hue-rotate(340deg) brightness(93%) contrast(102%);
+                                opacity: 0;
+                                transition: opacity 0.3s ease-in-out;
+                            }
+
+                            &:hover,
+                            &:focus {
+                                &::after {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .toggled-menu-desktop-secondary {
+            >li {
+                text-align: left;
+                padding: 0px 40px;
+
+                >a {
+                    font-family: "Open Sans";
+                    font-size: 23px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 50px;
+                    color: $color-red;
+                    text-decoration: none;
+                }
+            }
         }
 
         ul>li+li,

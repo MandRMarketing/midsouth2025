@@ -52,6 +52,12 @@
         position: absolute;
         bottom: 0;
         right: -150px;
+
+        // Keep slider in flow below 1440px so it stays visible (absolute + right pushes it off-screen)
+        @media screen and (max-width: 1440px) {
+            position: static;
+            right: auto;
+        }
     }
 
     .blog-carousel-row {

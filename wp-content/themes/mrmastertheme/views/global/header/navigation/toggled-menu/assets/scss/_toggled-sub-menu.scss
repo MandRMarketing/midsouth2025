@@ -1,19 +1,19 @@
-nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
+nav#toggled-nav div.menu-wrap>ul>li.has-sub-menu {
     position: relative;
 
     //essential 'dropdown' sub-menu style rules:
-    &[data-sub-menu-style='dropdown'] > button.sub-menu-toggle {
+    &[data-sub-menu-style='dropdown']>button.sub-menu-toggle {
         border: none;
         box-shadow: none;
         padding: 0;
         position: absolute;
         display: block;
-        top: 0;
-        right: 0;
+        top: 26px;
+        right: 40px;
         width: 32px;
         height: 32px;
 
-        > span.icon {
+        >span.icon {
             position: absolute;
             top: 0;
             left: 0;
@@ -30,7 +30,7 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
                 height: 100%;
                 background-image: url('library/custom-theme/images/icons/sub-menu-toggle-open.svg');
                 background-position: center;
-                background-size: 24px;
+                background-size: 20px;
                 background-repeat: no-repeat;
                 pointer-events: none;
 
@@ -46,7 +46,7 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
                 height: 100%;
                 background-image: url('library/custom-theme/images/icons/sub-menu-toggle-close.svg');
                 background-position: center;
-                background-size: 24px;
+                background-size: 20px;
                 background-repeat: no-repeat;
                 pointer-events: none;
 
@@ -54,28 +54,27 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
             }
         }
 
-        > span.accessible-text {
+        >span.accessible-text {
             @extend .visually-hidden;
         }
 
-        &[aria-expanded='true'] > span.icon:before {
+        &[aria-expanded='true']>span.icon:before {
             opacity: 0;
         }
 
-        &[aria-expanded='true'] > span.icon:after {
+        &[aria-expanded='true']>span.icon:after {
             opacity: 1;
         }
     }
 
-    &[data-sub-menu-style='dropdown']
-        > ul.toggled-sub-menu[aria-hidden='true'] {
+    &[data-sub-menu-style='dropdown']>ul.toggled-sub-menu[aria-hidden='true'] {
         visibility: hidden;
 
         @extend .visually-hidden;
     }
 
     //essential 'paginated' sub-menu style rules:
-    &[data-sub-menu-style='paginated'] > button.sub-menu-toggle {
+    &[data-sub-menu-style='paginated']>button.sub-menu-toggle {
         border: none;
         box-shadow: none;
         padding: 0;
@@ -86,7 +85,7 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
         width: 32px;
         height: 32px;
 
-        > span.icon {
+        >span.icon {
             position: absolute;
             top: 0;
             left: 0;
@@ -111,12 +110,12 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
             }
         }
 
-        > span.accessible-text {
+        >span.accessible-text {
             @extend .visually-hidden;
         }
     }
 
-    &[data-sub-menu-style='paginated'] > ul.toggled-sub-menu {
+    &[data-sub-menu-style='paginated']>ul.toggled-sub-menu {
         position: fixed;
         top: 0;
         right: 0;
@@ -146,10 +145,10 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
             z-index: 5;
         }
 
-        > li.breadcrumb-item {
+        >li.breadcrumb-item {
             //
 
-            > button.sub-menu-back {
+            >button.sub-menu-back {
                 background-color: transparent;
                 padding: 0 0 0 32px;
                 border: none;
@@ -179,7 +178,7 @@ nav#toggled-nav div.menu-wrap > ul > li.has-sub-menu {
         }
     }
 
-    > ul > li + li {
+    >ul>li+li {
         margin: 0;
     }
 }

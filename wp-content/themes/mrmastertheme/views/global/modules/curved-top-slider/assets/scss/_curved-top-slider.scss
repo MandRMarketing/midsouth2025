@@ -12,6 +12,10 @@
         z-index: 1;
         display: block;
         pointer-events: none;
+
+        @media screen and (max-width: $breakpoint_laptop_small) {
+            display: none;
+        }
     }
 
     background-color: $color_red;
@@ -20,9 +24,13 @@
         position: relative;
         z-index: 2;
         transform: translateY(-30px);
+
+        @media screen and (max-width: $breakpoint_laptop_small) {
+            transform: none;
+        }
     }
 
-    // Single visible pane: icon, header, subtext (height set by JS to max of all panes so it doesn’t change when switching)
+    // Single visible pane: icon, header, subtext
     .curved-top-slider__panes {
         position: relative;
         min-height: 120px;
@@ -42,10 +50,21 @@
             display: none;
         }
 
+        @media screen and (max-width: $breakpoint_laptop_small) {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 10px;
+            gap: 40px;
+        }
+
         @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
             grid-template-columns: 1fr;
             gap: 0.75rem;
-            align-items: start;
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
         }
     }
 
@@ -95,7 +114,7 @@
         }
     }
 
-    // Bar with one segment per slide; active segment is larger (fixed container height so only the bar changes)
+    // Progress bar
     .curved-top-slider__progress {
         display: flex;
         align-items: center;
@@ -122,6 +141,10 @@
         display: flex;
         width: 100%;
         gap: 0 0.5rem;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            display: none;
+        }
     }
 
     .curved-top-slider__title {
@@ -144,6 +167,54 @@
         &.is-active {
             color: #fff;
             font-weight: 700;
+        }
+    }
+
+    // Mobile: current slide title (hidden on desktop)
+    .curved-top-slider__mobile-title {
+        display: none;
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        padding: 0.25rem 0;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            display: block;
+        }
+    }
+
+    // Prev/Next arrows (hidden on desktop, shown on mobile)
+    .curved-top-slider__arrows {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 0.5rem;
+        margin-top: 20px;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            display: flex;
+        }
+    }
+
+    .curved-top-slider__arrow {
+        appearance: none;
+        background: url('/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/arrow.svg') no-repeat center center;
+        background-size: contain;
+        border: none;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        padding: 0;
+        transition: opacity 0.2s ease;
+        filter: brightness(0) invert(1); // make SVG white
+
+        &--prev {
+            transform: rotate(180deg);
+        }
+
+        &:hover {
+            opacity: 0.7;
         }
     }
 }

@@ -8,9 +8,12 @@
         var panes = container.querySelectorAll('.curved-top-slider__pane');
         var titles = container.querySelectorAll('.curved-top-slider__title');
         var segments = container.querySelectorAll('.curved-top-slider__progress-segment');
+        var mobileTitle = container.querySelector('.curved-top-slider__mobile-title');
         var count = panes.length;
 
         if (index < 0 || index >= count) return;
+
+        container.setAttribute('data-current-index', index);
 
         panes.forEach(function (pane, i) {
             var isActive = i === index;
@@ -29,6 +32,11 @@
                 seg.classList.toggle('is-active', i === index);
             });
         }
+
+        // Update mobile title text
+        if (mobileTitle && titles.length > index) {
+            mobileTitle.textContent = titles[index].textContent.trim();
+        }
     }
 
     function setPanesHeight(container) {
@@ -42,21 +50,47 @@
             if (h > max) max = h;
             pane.hidden = true;
         });
+        var currentIndex = parseInt(container.getAttribute('data-current-index') || '0', 10);
         panes.forEach(function (pane, i) {
-            pane.hidden = i !== 0;
+            pane.hidden = i !== currentIndex;
         });
         panesWrapper.style.height = max + 'px';
     }
 
     function initSlider(container) {
+        container.setAttribute('data-current-index', '0');
         setPanesHeight(container);
+
         var titles = container.querySelectorAll('.curved-top-slider__title');
+        var panes = container.querySelectorAll('.curved-top-slider__pane');
+        var count = panes.length;
+
+        // Title button clicks
         titles.forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var index = this.getAttribute('data-index');
                 switchToSlide(container, index);
             });
         });
+
+        // Arrow clicks
+        var arrows = container.querySelectorAll('.curved-top-slider__arrow');
+        arrows.forEach(function (arrow) {
+            arrow.addEventListener('click', function () {
+                var current = parseInt(container.getAttribute('data-current-index') || '0', 10);
+                var dir = this.getAttribute('data-dir');
+                var next;
+
+                if (dir === 'next') {
+                    next = (current + 1) % count;
+                } else {
+                    next = (current - 1 + count) % count;
+                }
+
+                switchToSlide(container, next);
+            });
+        });
+
         window.addEventListener('resize', function () {
             setPanesHeight(container);
         });

@@ -87,6 +87,15 @@ if ($slides) :
             <?php endforeach; ?>
         </div>
 
+        <div class="curved-top-slider__mobile-title" aria-live="polite">
+            <?= esc_html($slides[0]['title']) ?>
+        </div>
+
+        <div class="curved-top-slider__arrows">
+            <button type="button" class="curved-top-slider__arrow curved-top-slider__arrow--prev" aria-label="Previous slide" data-dir="prev"></button>
+            <button type="button" class="curved-top-slider__arrow curved-top-slider__arrow--next" aria-label="Next slide" data-dir="next"></button>
+        </div>
+
         <span class="container-settings" data-container-width="<?= esc_attr($container_width) ?>">
             <span class="validator-text" data-nosnippet>container settings</span>
         </span>

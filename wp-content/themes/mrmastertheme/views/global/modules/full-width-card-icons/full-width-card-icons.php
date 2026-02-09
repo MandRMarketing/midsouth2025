@@ -123,6 +123,7 @@ if ($cards) :
                 $card_link = $card['link'] ?? '';
                 $card_link_text = $card['link_text'] ?? '';
                 $card_icon = $card['icon'] ?? null; // SVG icon
+                $add_payment_link = $card['add_payment_link'] ?? false;
                 $card_icon_hover = $card['icon_hover'] ?? null; // SVG icon
             ?>
                 <?php if ($add_link_to_card && $card_link) : ?>
@@ -147,10 +148,14 @@ if ($cards) :
                         <div class="card-content">
                             <?= $card_content ?>
                         </div>
-                        <?php if ($add_link_to_card && $card_link && $card_link_text) : ?>
-                            <div class="card-link">
-                                <span class="button button--clear"><?= $card_link_text ?></span>
-                            </div>
+                        <?php if ($add_link_to_card) : ?>
+                            <?php if ($add_payment_link) : ?>
+                                <?= do_shortcode('[loanpay-button text="' . $card_link_text . '"]') ?>
+                            <?php else : ?>
+                                <div class="card-link">
+                                    <span class="button button--clear"><?= $card_link_text ?></span>
+                                </div>
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php if ($add_link_to_card && $card_link) : ?>
                     </a>

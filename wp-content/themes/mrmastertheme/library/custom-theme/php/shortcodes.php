@@ -250,6 +250,31 @@ function personal_calculator_sc()
 	return $output;
 }
 
+// Loan Payment Button
+add_shortcode('loanpay-button', function ($atts) {
+	$atts = shortcode_atts([
+		'text'      => 'Make a Payment',
+		'client_id' => '577ee0e3-c11b-405c-b046-ce8e9118f51b',
+		'url'       => 'https://web.baconpay.com',
+		'class'     => 'button loanpay-button',
+	], $atts, 'loanpay_button');
+
+	$text      = esc_html($atts['text']);
+	$client_id = esc_attr($atts['client_id']);
+	$url       = esc_url($atts['url']);
+	$class     = esc_attr($atts['class']);
+
+	return sprintf(
+		'<button class="%s" onclick="createBaconWebClient(%s, %s);">%s</button>',
+		$class,
+		"'" . $client_id . "'",
+		"'" . $url . "'",
+		$text
+	);
+});
+
+
+
 //Google Play Icon
 add_shortcode('google-play', 'google_play_icon_sc');
 function google_play_icon_sc($atts, $content = null)

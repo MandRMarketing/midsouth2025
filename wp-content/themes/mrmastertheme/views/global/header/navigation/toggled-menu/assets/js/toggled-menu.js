@@ -1,14 +1,21 @@
 (function () {
-    initializeToggledMenu(); 
-})(); 
+    initializeToggledMenu();
+})();
+
+// Trigger header height recalculation (--header-height, --header-height-with-adminbar, main margin) after next frame so layout is updated
+function updateHeaderHeight() {
+    requestAnimationFrame(function () {
+        window.dispatchEvent(new Event('resize'));
+    });
+}
 
 function initializeToggledMenu(){
-    //if all the necessary elements exist: 
+    //if all the necessary elements exist:
     if (document.getElementById('menu-toggle-trigger') && document.getElementById('toggled-nav') && document.getElementById('close-toggled-menu')) {
 
         //declare constants for the elements:
         const menu_toggle_trigger = document.getElementById('menu-toggle-trigger');
-        const toggled_nav = document.querySelector('#toggled-nav'); 
+        const toggled_nav = document.querySelector('#toggled-nav');
         const menu_close_trigger = document.getElementById('close-toggled-menu');
 
         //add click functionality to the toggle-menu trigger button:
@@ -22,6 +29,7 @@ function initializeToggledMenu(){
 
                 document.body.classList.add('modal-open');
                 document.body.classList.add('toggled-menu-open');
+                updateHeaderHeight();
             } else {
                 //toggle the button & menu to it's "closed" state:
                 menu_toggle_trigger.setAttribute('aria-expanded', 'false');
@@ -29,6 +37,7 @@ function initializeToggledMenu(){
 
                 document.body.classList.remove('modal-open');
                 document.body.classList.remove('toggled-menu-open');
+                updateHeaderHeight();
             }
         });
 
@@ -39,6 +48,7 @@ function initializeToggledMenu(){
 
             document.body.classList.remove('modal-open');
             document.body.classList.remove('toggled-menu-open');
+            updateHeaderHeight();
         });
 
         //add focusout event listener. so when you leave the menu from tabbing, everything resets properly
@@ -48,6 +58,7 @@ function initializeToggledMenu(){
 
             document.body.classList.remove('modal-open');
             document.body.classList.remove('toggled-menu-open');
-        });  
-    } 
+            updateHeaderHeight();
+        });
+    }
 }

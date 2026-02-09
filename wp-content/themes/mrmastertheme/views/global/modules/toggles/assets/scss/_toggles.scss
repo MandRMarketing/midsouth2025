@@ -8,10 +8,20 @@
             display: flex;
             gap: 82px;
 
+            @media (max-width: $breakpoint_tablet_medium_landscape) {
+                flex-direction: column-reverse;
+                gap: 0;
+            }
+
             picture {
                 position: relative;
                 transform: translateY(30px);
                 max-width: 50%;
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    transform: translateY(0);
+                    max-width: 100%;
+                }
 
                 img {
                     z-index: 1;
@@ -45,11 +55,20 @@
         padding: 0;
         gap: 50px;
         border-bottom: 2px solid $color_red;
+
+        @media (max-width: $breakpoint_laptop_medium) {
+            flex-direction: column;
+            gap: 0;
+        }
     }
 
     .toggles__tab {
         margin: 0;
         padding: 0;
+
+        @media (max-width: $breakpoint_laptop_medium) {
+            width: 100%;
+        }
     }
 
     .toggles__tab-button {
@@ -68,6 +87,10 @@
         white-space: nowrap;
         position: relative;
         top: 2px;
+
+        @media (max-width: $breakpoint_laptop_medium) {
+            width: 100%;
+        }
 
         &:hover,
         &:focus {

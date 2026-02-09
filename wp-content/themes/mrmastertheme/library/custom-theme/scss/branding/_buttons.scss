@@ -4,7 +4,8 @@ input[type='button'],
 input[type='reset'],
 input[type='submit'],
 a.button,
-li.button>a {
+span.button,
+li.menu-item.button>a {
     width: auto;
     cursor: pointer;
     background-color: $color_red;
@@ -51,9 +52,9 @@ li.button>a {
 .button {
 
     &--clear {
-        background: transparent;
-        color: $color_red;
-        padding-left: 0;
+        background: transparent !important;
+        color: $color_red !important;
+        padding-left: 0 !important;
 
         &:after {
             filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(4868%) hue-rotate(340deg) brightness(93%) contrast(102%);

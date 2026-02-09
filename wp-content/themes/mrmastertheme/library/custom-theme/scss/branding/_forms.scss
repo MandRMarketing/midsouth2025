@@ -110,6 +110,14 @@ div.gform_confirmation_message {
     }
 }
 
+.ginput_container_fileupload {
+    input {
+        background: none !important;
+        border: none !important;
+        min-height: unset !important;
+    }
+}
+
 #calculator-container {
     margin-top: $global_module_padding_single !important;
     border: 1px solid $color_red !important;

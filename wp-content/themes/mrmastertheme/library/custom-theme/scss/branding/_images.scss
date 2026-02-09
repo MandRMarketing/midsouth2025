@@ -42,3 +42,11 @@ img.alignright {
     float: right;
     margin-left: 82px;
 }
+
+.no-img-dec {
+    picture {
+        &::before {
+            content: unset !important;
+        }
+    }
+}

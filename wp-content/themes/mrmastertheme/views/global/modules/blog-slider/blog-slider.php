@@ -36,15 +36,36 @@ $container_width = get_sub_field('container_width');
 
 //declare variables for content
 $intro_content = get_sub_field('intro_content');
-$articles = get_sub_field('articles');
-if (!$articles) {
-    $articles = get_posts(array(
+$articles_category = get_sub_field('articles_category'); //acf taxonomy field
+
+if ($articles_category) {
+    $args = array(
         'post_type' => 'post',
         'posts_per_page' => 6,
         'orderby' => 'date',
         'order' => 'DESC',
-    ));
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'category',
+                'field' => 'slug',
+                'terms' => $articles_category,
+            ),
+        ),
+    );
+    $articles = new WP_Query($args);
+} else {
+    $articles = get_sub_field('articles');
+    if (!$articles) {
+        $articles = get_posts(array(
+            'post_type' => 'post',
+            'posts_per_page' => 6,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ));
+    }
 }
+
+
 
 //we're only generating HTML if the module has articles to display
 if ($articles) :

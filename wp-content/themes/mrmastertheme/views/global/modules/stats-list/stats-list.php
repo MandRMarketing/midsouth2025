@@ -12,13 +12,13 @@ $closing_tag = '</' . $tag_type . '>';
 
 //build out the opening tag HTML:
 if ($module_id && $module_class_names) {
-    $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="rates-list ' . $module_class_names . '">';
+    $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="stats-list ' . $module_class_names . '">';
 } else if ($module_id && !$module_class_names) {
-    $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="rates-list">';
+    $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="stats-list">';
 } else if (!$module_id && $module_class_names) {
-    $opening_tag = '<' . $tag_type . ' class="rates-list ' . $module_class_names . '">';
+    $opening_tag = '<' . $tag_type . ' class="stats-list ' . $module_class_names . '">';
 } else {
-    $opening_tag = '<' . $tag_type . ' class="rates-list">';
+    $opening_tag = '<' . $tag_type . ' class="stats-list">';
 }
 
 //grab the top & bottom padding settings values, for both desktop & mobile
@@ -38,17 +38,24 @@ $container_width = get_sub_field('container_width');
 $intro_content = get_sub_field('intro_content');
 $stats = get_sub_field('stats');
 
-//we're only generating HTML if the module has rates to display
+//we're only generating HTML if the module has stats to display
 if ($stats) :
     echo $opening_tag;
 ?>
-    <div class="rates-container container">
-        <?php if ($intro_content) : ?>
-            <div class="intro-content">
-                <?= $intro_content ?>
+    <?php if ($intro_content) : ?>
+        <div class="intro-content-row">
+            <div class="container">
+                <div class="intro-content">
+                    <?= $intro_content ?>
+                </div>
+                <span class="container-settings" data-container-width="<?= $container_width ?>">
+                    <span class="validator-text" data-nosnippet>settings</span>
+                </span>
             </div>
-        <?php endif; ?>
-        <div class="rates-list">
+        </div>
+    <?php endif; ?>
+    <div class="stats-container container">
+        <div class="stats-grid" data-grid="grid" data-row-gap="small" data-column-gap="small" data-column-count="two">
             <?php
             foreach ($stats as $stat) :
                 $stat_pretext = $stat['pretext'];
@@ -56,12 +63,14 @@ if ($stats) :
                 $stat_posttext = $stat['post_text'];
             ?>
                 <div class="stat-item">
-                    <?php if ($stat_pretext) : ?>
-                        <span class="stat-pretext"><?= $stat_pretext ?></span>
-                    <?php endif; ?>
                     <div class="stat-number-container">
                         <?php if ($stat_number !== '') : ?>
-                            <span class="stat-number" data-stat-value="<?= esc_attr((float) $stat_number) ?>"><?= $stat_number ?></span>
+                            <span class="stat-number" data-stat-value="<?= esc_attr((float) $stat_number) ?>">
+                                <?php if ($stat_pretext) : ?>
+                                    <span class="stat-pretext"><?= $stat_pretext ?></span>
+                                <?php endif; ?>
+                                <?= $stat_number ?>
+                            </span>
                         <?php endif; ?>
                     </div>
                     <?php if ($stat_posttext) : ?>

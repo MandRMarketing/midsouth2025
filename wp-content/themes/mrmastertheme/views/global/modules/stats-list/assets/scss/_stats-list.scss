@@ -1,82 +1,47 @@
 .stats-list {
-    .container {
-        display: flex;
-        gap: 84px;
-
-        .intro-content {
-            max-width: 225px;
-
-        }
-
-        .stats-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, auto);
-            grid-auto-flow: column;
-            gap: 1.5rem 45px;
-
-            @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(3, auto);
-                grid-auto-flow: column;
-            }
-
-            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
-                grid-template-columns: 1fr;
-                grid-auto-flow: row;
-            }
-        }
+    .stats-grid {
+        padding-top: $global_module_padding_single;
+        width: 100%;
 
         .stat-item {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.25rem;
-            padding-bottom: 1rem;
-            position: relative;
-
-            &::after {
-                content: '';
-                display: block;
-                width: 100%;
-                height: 1px;
-                background: black;
-                margin-top: auto;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-            }
-        }
-
-        .stat-pretext {
-            font-size: 0.9em;
-            color: $color_black_alt;
-            display: block;
+            background: $color_white;
+            border-bottom: 2px solid $color_red;
+            box-shadow: 0 0 1rem 0 rgb(0 0 0 / 2%);
+            padding: 32px;
         }
 
         .stat-number {
             display: inline;
             font-weight: 700;
             color: $color_red;
-
             font-family: "Open Sans", sans-serif;
-            font-size: 30px;
+            font-size: 60px;
             font-style: normal;
-            font-weight: 700;
             line-height: normal;
-        }
-
-        .stat-number {
             margin-right: 0.25rem;
+            display: flex;
+            align-items: center;
+
+            .stat-pretext {
+                font-size: 0.9em;
+                color: $color_red;
+                display: block;
+                font-size: 60px;
+            }
         }
 
         .stat-posttext {
             display: inline-block;
             margin-top: 0.25rem;
-            font-size: 16px;
+            font-size: 30px;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
+            text-align: center;
         }
     }
 }

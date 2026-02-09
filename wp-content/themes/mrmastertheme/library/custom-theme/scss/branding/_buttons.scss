@@ -70,6 +70,12 @@ li.menu-item.button>a {
 
         }
     }
+
+    +.app-store-link,
+    +.google-play-link {
+        margin-top: 20px;
+        display: inline-block;
+    }
 }
 
 .center-button {
@@ -136,6 +142,20 @@ p {
             filter: opacity(0.75);
             transition: filter 0.3s ease-in-out;
         }
+    }
+}
+
+.apps {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .app-store-link,
+    .google-play-link {
+        display: inline-block;
+        margin-top: 0;
     }
 }
 

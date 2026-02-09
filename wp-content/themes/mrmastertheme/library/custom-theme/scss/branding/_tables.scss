@@ -5,10 +5,10 @@ table {
     margin: 20px 0;
     margin-bottom: 0;
 
-    @media (max-width: $breakpoint_before_mobile_large) {
+    @media (max-width: $breakpoint_tablet_medium_portrait) {
         width: 100%;
         max-width: 100%;
-        overflow-x: scroll;
+        overflow-x: auto;
         display: block;
     }
 
@@ -29,7 +29,8 @@ table {
             border: none;
 
             @media (max-width: $breakpoint_tablet_medium_portrait) {
-                font-size: 18px;
+                font-size: 14px;
+                padding: 10px 16px;
             }
 
             &:last-child {
@@ -66,7 +67,8 @@ table {
             border-left: 2px solid $color_black_alt;
 
             @media (max-width: $breakpoint_tablet_medium_portrait) {
-                font-size: 18px;
+                font-size: 14px;
+                padding: 10px 16px;
             }
 
             &:last-child {

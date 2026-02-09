@@ -2,6 +2,10 @@ section:has(+ .callout),
 article:has(+ .callout),
 span.background-start:has(+ .callout) {
     padding-bottom: 150px !important;
+
+    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+        padding-bottom: $global_module_padding_single !important;
+    }
 }
 
 section.callout,
@@ -9,6 +13,10 @@ aside.callout,
 div.callout {
     background-color: $color_red;
     padding-top: 0 !important;
+
+    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+        padding-top: $global_module_padding_double !important;
+    }
 
     &:before {
         content: '';
@@ -23,6 +31,10 @@ div.callout {
         z-index: 1;
         display: block;
         pointer-events: none;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            display: none;
+        }
     }
 
     .container {
@@ -30,6 +42,19 @@ div.callout {
         padding-bottom: 0;
         position: relative;
         z-index: 2;
+
+        h2 {
+            padding-bottom: 0 !important;
+
+            &:after {
+                display: none !important;
+            }
+        }
+
+        .button {
+            margin-top: 20px;
+
+        }
     }
 
     .button {

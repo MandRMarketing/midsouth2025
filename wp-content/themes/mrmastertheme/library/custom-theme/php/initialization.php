@@ -71,3 +71,11 @@
             );
         }
     }
+
+    // Make site-wide search (header search) include pages and public custom post types
+    add_action('pre_get_posts', 'mandr_expand_search_post_types');
+    function mandr_expand_search_post_types($query) {
+        if ($query->is_search() && $query->is_main_query() && !is_admin()) {
+            $query->set('post_type', array('post', 'page', 'mandr_location'));
+        }
+    }

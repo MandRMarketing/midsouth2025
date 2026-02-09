@@ -8,6 +8,7 @@
 
     @media (max-width: $breakpoint_mobile_iphone_large) {
         grid-template-columns: 1fr;
+        row-gap: 75px;
     }
 }
 

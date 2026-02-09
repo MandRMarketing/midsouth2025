@@ -1,35 +1,109 @@
-form.custom-theme-search > ul.search-form-fields {
-    position: relative;
+.search-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    order: 99; // keep at the end of the secondary nav
+    padding-left: 1.3rem;
+}
 
-    > li > input {
-        border-radius: 0;
-        margin: 0;
-        width: 100%;
+.search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: $color_red;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        display: block;
     }
 
-    > li.submit-button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 48px;
-        height: 100%;
-        margin: 0;
-        overflow: hidden;
+    .icon-close {
+        display: none;
+    }
 
-        > input {
-            display: block;
+    &:hover {
+        color: $color_black;
+    }
+}
+
+.search-toggle-wrapper.search-open .search-toggle {
+    .icon-search {
+        display: none;
+    }
+
+    .icon-close {
+        display: block;
+    }
+}
+
+form.custom-theme-search {
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-width 0.3s ease, opacity 0.3s ease;
+
+    >ul.search-form-fields {
+        position: relative;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+
+        >li>input {
+            border-radius: 0;
+            margin: 0;
+        }
+
+        >li.search-string {
+            width: 100%;
+
+            input {
+                width: 280px;
+                padding-right: 48px;
+            }
+        }
+
+        >li.submit-button {
             position: absolute;
             top: 0;
             right: 0;
-            width: 100%;
+            width: 48px;
             height: 100%;
-            padding: 0;
-            color: transparent;
-            background-color: transparent;
-            background-image: url('library/custom-theme/images/icons/search-button.svg');
-            background-size: 24px;
-            background-position: center;
-            background-repeat: no-repeat; 
+            margin: 0;
+            overflow: hidden;
+
+            >input {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                color: transparent;
+                background-color: transparent;
+                background-image: url('library/custom-theme/images/icons/search-button.svg');
+                //filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(4868%) hue-rotate(340deg) brightness(93%) contrast(102%);
+                background-size: 24px;
+                background-position: center;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                border: none;
+            }
         }
+    }
+}
+
+// Open state
+.search-toggle-wrapper.search-open {
+    form.custom-theme-search {
+        max-width: 330px;
+        opacity: 1;
     }
 }

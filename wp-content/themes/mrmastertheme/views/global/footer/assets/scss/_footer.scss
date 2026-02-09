@@ -1,7 +1,31 @@
 footer {
     //
 
+    .h4 {
+        padding-bottom: $global_h4_bottom_margin;
+
+        &::after {
+            content: unset;
+        }
+    }
+
     >.content-row {
+
+        // Single-column layout: center content
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            .columns {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
 
         &.contact-info-row {
             border-top: solid 2px $color_red;
@@ -75,6 +99,10 @@ footer {
                 justify-content: flex-end !important;
                 gap: 20px;
                 height: 100% !important;
+
+                @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                    justify-content: center !important;
+                }
 
                 li a {
                     text-decoration: none !important;

@@ -19,6 +19,19 @@ function my_script()
 	wp_enqueue_script('header-scripts', get_stylesheet_directory_uri() . '/header.min.js', array('jquery'), filemtime(get_template_directory() . '/header.min.js'));
     wp_enqueue_script('footer-scripts', get_stylesheet_directory_uri() . '/footer.min.js', '', filemtime(get_template_directory() . '/footer.min.js'), true);
 
+	// BaconPay embed (for loanpay-button): load only on pages that do NOT use the calculator shortcodes,
+	// so Practical Money Skills calculators (auto_calculator_interest, personal_calculator) can run without conflict.
+	$load_baconpay = true;
+	if (is_singular()) {
+		$content = get_post()->post_content ?? '';
+		if (has_shortcode($content, 'auto_calculator_interest') || has_shortcode($content, 'personal_calculator')) {
+			$load_baconpay = false;
+		}
+	}
+	if ($load_baconpay) {
+		wp_enqueue_script('baconpay-embed', 'https://web.baconpay.com/embed.js', [], null, true);
+	}
+
 	//Font(s) 
 	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:400,700', false, NULL);
     //wp_enqueue_style('adobe-fonts', 'INSERT_ADOBE_FONTS_URL_HERE', false, NULL);

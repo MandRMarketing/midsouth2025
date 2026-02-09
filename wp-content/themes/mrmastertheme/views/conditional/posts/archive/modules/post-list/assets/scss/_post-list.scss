@@ -123,5 +123,13 @@ section.search-results {
 
     .navigation {
         margin-top: 3rem;
+
+        .page-numbers {
+            text-decoration: none;
+
+            &.current {
+                color: $color_red;
+            }
+        }
     }
 }

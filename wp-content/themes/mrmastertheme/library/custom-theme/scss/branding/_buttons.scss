@@ -3,7 +3,8 @@ button.content-limiter-expander,
 input[type='button'],
 input[type='reset'],
 input[type='submit'],
-.button {
+a.button,
+li.button>a {
     width: auto;
     cursor: pointer;
     background-color: $color_red;

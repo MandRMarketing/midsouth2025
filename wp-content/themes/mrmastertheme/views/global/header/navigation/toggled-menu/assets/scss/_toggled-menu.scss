@@ -190,9 +190,20 @@ nav#toggled-nav {
         }
 
         .toggled-menu-desktop-secondary {
+            padding-top: 20px;
+            padding-bottom: 40px;
+
             >li {
                 text-align: left;
                 padding: 0px 40px;
+
+                &.button {
+                    margin-top: 20px;
+
+                    a {
+                        color: $color-white;
+                    }
+                }
 
                 >a {
                     font-family: "Open Sans";
@@ -202,6 +213,11 @@ nav#toggled-nav {
                     line-height: 50px;
                     color: $color-red;
                     text-decoration: none;
+
+                    &:hover,
+                    &:focus {
+                        color: $color_black;
+                    }
                 }
             }
         }

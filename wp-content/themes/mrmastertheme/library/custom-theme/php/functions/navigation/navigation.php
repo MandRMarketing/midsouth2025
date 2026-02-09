@@ -94,7 +94,7 @@ function mobile_nav_extend_nav_menu_items($menu_items) {
     return $menu_items;
 }
 
-//Build out list item class string
+//Build out list item class string (includes WordPress menu item CSS classes from the backend)
 function mobile_nav_build_classes($initial_class, $item) {
     $hasSubMenu = false;
 
@@ -110,6 +110,14 @@ function mobile_nav_build_classes($initial_class, $item) {
     }
     if ($isCurrentPage) {
         $class .= ' current-menu-item';
+    }
+
+    // Include CSS classes set in Appearance → Menus (per-item "CSS Classes" field)
+    if (!empty($item->classes) && is_array($item->classes)) {
+        $custom_classes = array_filter(array_map('esc_attr', $item->classes));
+        if (!empty($custom_classes)) {
+            $class .= ' ' . implode(' ', $custom_classes);
+        }
     }
 
     return $class;

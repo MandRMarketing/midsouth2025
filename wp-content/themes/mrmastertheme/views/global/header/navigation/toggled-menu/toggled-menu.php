@@ -1,4 +1,8 @@
-<nav id="toggled-nav" aria-label="Toggled Menu" aria-hidden="true">
+<?php
+$toggled_nav_classes = trim((string) get_field('toggled_nav_class_names', 'options'));
+$toggled_nav_attr   = $toggled_nav_classes !== '' ? ' class="' . esc_attr($toggled_nav_classes) . '"' : '';
+?>
+<nav id="toggled-nav" aria-label="Toggled Menu" aria-hidden="true"<?= $toggled_nav_attr ?>>
     <div class="menu-wrap">
 
         <?php

@@ -1,11 +1,25 @@
 .rates-list {
+    @media screen and (max-width: $breakpoint_laptop_medium) {
+        .background {
+            display: none;
+        }
+    }
+
     .container {
         display: flex;
         gap: 84px;
 
+        @media screen and (max-width: $breakpoint_laptop_medium) {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
         .intro-content {
             max-width: 225px;
 
+            @media screen and (max-width: $breakpoint_laptop_medium) {
+                max-width: 100%;
+            }
         }
 
         .rates-list {
@@ -15,9 +29,9 @@
             grid-auto-flow: column;
             gap: 1.5rem 45px;
 
-            @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            @media screen and (max-width: $breakpoint_laptop_medium) {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(3, auto);
+                grid-template-rows: repeat(2, auto);
                 grid-auto-flow: column;
             }
 

@@ -1,4 +1,10 @@
 .background-start {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+
+    &:has(.rates-list) {
+        @media screen and (max-width: $breakpoint_laptop_medium) {
+            background: unset !important;
+        }
+    }
 }

@@ -14,6 +14,11 @@
 
             .card-content {
                 padding: 24px 42px;
+
+                h3 {
+                    color: $color_red;
+                    ;
+                }
             }
 
             &:after {
@@ -45,6 +50,20 @@
             .card {
                 background: $color_white;
             }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+        .cards-container {
+            padding-right: calc(5% + 33px);
+        }
+
+        .cards-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        .card {
+            margin-right: 33px;
         }
     }
 }

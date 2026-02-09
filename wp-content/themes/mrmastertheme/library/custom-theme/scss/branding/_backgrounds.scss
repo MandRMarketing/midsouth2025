@@ -1,0 +1,7 @@
+.grey-bg-mobile {
+    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+        .background {
+            background: linear-gradient(93deg, #EDEDED 4.4%, #EDEDED 50.89%) !important;
+        }
+    }
+}

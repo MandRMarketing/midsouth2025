@@ -3,6 +3,7 @@
     $column = $args['column'];
     $padding_settings_tag = $args['padding_settings_tag'];
     $text_color_attribute = $args['text_color_attribute'];
+    $offset_content = $column['offset_content'] ?? false;
 
     $column_width = $column['width']; 
     $column_content = $column['column_content']; 
@@ -44,6 +45,7 @@
         <div 
             class="column"
             data-column-type="content"
+            <?= $offset_content ? 'data-offset="true"' : '' ?>
             data-flex="flex"
             data-justify-content="center"
             data-align-items="center"

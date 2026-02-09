@@ -41,10 +41,18 @@ div.full-width-two-columns {
         }
 
         &[data-column-type='content'] {
-            margin: 70px 0;
             background-color: $color_red;
-            transform: translateX(147px);
             z-index: 1;
+
+            &[data-offset='true'] {
+                margin: 70px 0;
+                transform: translateX(147px);
+
+                @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+                    margin: 0;
+                    transform: none;
+                }
+            }
 
             ul:not([class]) {
                 li:not([class]) {

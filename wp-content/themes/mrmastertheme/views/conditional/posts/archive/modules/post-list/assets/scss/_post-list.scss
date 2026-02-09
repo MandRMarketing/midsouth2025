@@ -2,7 +2,7 @@
 
 .post-list,
 .search-results {
-    background: linear-gradient(93deg, #EDEDED 4.4%, #EDEDED 50.89%);
+
 
     .posts-grid {
         display: grid;
@@ -115,5 +115,13 @@
     .posts-grid {
         grid-template-columns: repeat(1, 1fr) !important;
 
+    }
+}
+
+section.search-results {
+    background: #F5F5F5;
+
+    .navigation {
+        margin-top: 3rem;
     }
 }

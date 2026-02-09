@@ -138,17 +138,17 @@ if ($articles) :
                 dots: false,
                 adaptiveHeight: false,
                 responsive: [{
-                        breakpoint: 1280,
+                        breakpoint: 1780,
                         settings: {
-                            slidesToShow: 3,
+                            slidesToShow: 2,
                             slidesToScroll: 1,
                         },
                     },
                     {
-                        breakpoint: 768,
+                        breakpoint: 769,
                         settings: {
-                            slidesToScroll: 1,
                             slidesToShow: 1,
+                            slidesToScroll: 1,
                         },
                     },
                 ],

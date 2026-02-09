@@ -97,9 +97,7 @@
                     a {
                         color: $color_white;
                         text-decoration: none;
-
                     }
-
                 }
 
                 .button {
@@ -113,6 +111,46 @@
                 }
             }
         }
+    }
 
+    // Mobile: single slide, stacked column layout
+    @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+        position: relative;
+        padding-bottom: 0 !important;
+
+        .intro-content-row {
+            .container .content-wrapper {
+                width: 100%;
+                padding: 30px;
+                padding-right: 30px;
+            }
+        }
+
+        .slick-wrapper {
+            position: static;
+            flex-direction: column;
+            align-items: stretch;
+            right: auto;
+        }
+
+        .slider-arrows {
+            order: 2;
+            justify-content: flex-start;
+            padding: 1rem 0;
+
+            .slick-arrow {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .blog-carousel-row {
+            order: 1;
+
+            .blog-slide .blog-image {
+                width: 100%;
+                height: auto;
+            }
+        }
     }
 }

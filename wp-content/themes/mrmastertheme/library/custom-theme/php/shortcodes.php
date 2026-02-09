@@ -235,6 +235,21 @@ function auto_calculators_sc()
 	return $output;
 }
 
+// Personal loan calculator
+add_shortcode('personal_calculator', 'personal_calculator_sc');
+function personal_calculator_sc()
+{
+	ob_start();
+?>
+	<div class="personal-calc">
+		<script type="text/javascript" src="https://www.practicalmoneyskills.com/assets/js/calcs/embed.js" data-calc="loan_cost" data-locale="us_en"></script>
+	</div>
+	<span class="clear"></span>
+<?php
+	$output = ob_get_clean();
+	return $output;
+}
+
 //Google Play Icon
 add_shortcode('google-play', 'google_play_icon_sc');
 function google_play_icon_sc($atts, $content = null)

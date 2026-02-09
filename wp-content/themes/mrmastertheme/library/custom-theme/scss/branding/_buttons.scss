@@ -47,6 +47,10 @@ li.menu-item.button>a {
             right: 12px;
         }
     }
+
+    +.button {
+        margin-top: $global_paragraph_bottom_margin;
+    }
 }
 
 .button {

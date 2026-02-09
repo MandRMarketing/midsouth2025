@@ -112,4 +112,80 @@ div.gform_confirmation_message {
 
 #calculator-container {
     margin-top: $global_module_padding_single !important;
+    border: 1px solid $color_red !important;
+}
+
+.calc-title {
+    color: $color_red !important;
+}
+
+hr {
+    background: $color_red !important;
+}
+
+div.calc-form p.input-icon>i,
+div.calc-form p>i {
+    top: 28px !important;
+}
+
+div.calc-form input[type=button] {
+    background: $color_red !important;
+    color: $color_white !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: normal !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: background 0.3s ease-in-out !important;
+
+    &:hover,
+    &:focus {
+        background: $color_red_dark !important;
+    }
+}
+
+.calc-footer {
+    background: $color_red !important;
+
+    a:nth-of-type(2) {
+        display: none !important;
+    }
+}
+
+.calc-form {
+    select {
+        color: $color_black !important;
+        padding-left: 5px !important;
+
+        option {
+            color: $color_black !important;
+        }
+    }
+
+    input {
+        color: $color_black !important;
+    }
+}
+
+div.calc-result strong,
+div.calc-result .strong {
+    color: $color_red !important;
+}
+
+.calc-chart {
+    height: auto !important;
+}
+
+.calc-table-header-cell {
+    background: $color_black !important;
+}
+
+table thead th:last-child.calc-table-header-cell {
+    background: $color_red !important;
+}
+
+.calc-instruction {
+    margin-top: 20px !important;
 }

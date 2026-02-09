@@ -268,3 +268,22 @@ nav#toggled-nav {
         z-index: -1;
     }
 }
+
+// When toggled menu is open: show secondary nav and hide emergency message
+body.toggled-menu-open {
+    nav#secondary-nav {
+        display: block !important;
+
+        .menu-item:not(.mobile-show) {
+            display: none !important;
+        }
+    }
+
+    nav#secondary-nav ul#menu-secondary-navigation {
+        display: block !important;
+    }
+
+    aside#emergency-message {
+        display: none !important;
+    }
+}

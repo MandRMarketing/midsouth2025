@@ -13,49 +13,41 @@ function initializeToggledMenu(){
 
         //add click functionality to the toggle-menu trigger button:
         menu_toggle_trigger.addEventListener('click', function(e) {
-            
-            //if closed, toggle the menu open. Or vice-versa:
-            if (e.target.ariaExpanded === "false") {
+            var isExpanded = menu_toggle_trigger.getAttribute('aria-expanded') === 'true';
 
+            if (!isExpanded) {
                 //toggle the button & menu to it's "open" state:
-                e.target.ariaExpanded = "true";
+                menu_toggle_trigger.setAttribute('aria-expanded', 'true');
                 toggled_nav.setAttribute('aria-hidden', false);
 
-                //ensure the body element can't scroll:
                 document.body.classList.add('modal-open');
-            } else if (e.target.ariaExpanded === "true") {
-
+                document.body.classList.add('toggled-menu-open');
+            } else {
                 //toggle the button & menu to it's "closed" state:
-                e.target.ariaExpanded = "false";
+                menu_toggle_trigger.setAttribute('aria-expanded', 'false');
                 toggled_nav.setAttribute('aria-hidden', true);
 
-                //remove the class that disables <body> scrolling:
                 document.body.classList.remove('modal-open');
+                document.body.classList.remove('toggled-menu-open');
             }
         });
 
         //add click functionality to the close menu button:
         menu_close_trigger.addEventListener('click', function(e) {
-            //reset the menu toggle trigger:
-            menu_toggle_trigger.setAttribute('aria-expanded',false);
-
-            //hide the toggled nav:
+            menu_toggle_trigger.setAttribute('aria-expanded', 'false');
             toggled_nav.setAttribute('aria-hidden', true);
 
-            //remove the class that disables <body> scrolling:
             document.body.classList.remove('modal-open');
+            document.body.classList.remove('toggled-menu-open');
         });
 
         //add focusout event listener. so when you leave the menu from tabbing, everything resets properly
         menu_close_trigger.addEventListener('focusout', function(e) {
-            //reset the menu toggle trigger:
-            menu_toggle_trigger.setAttribute('aria-expanded',false);
-
-            //hide the toggled nav:
+            menu_toggle_trigger.setAttribute('aria-expanded', 'false');
             toggled_nav.setAttribute('aria-hidden', true);
 
-            //remove the class that disables <body> scrolling:
             document.body.classList.remove('modal-open');
+            document.body.classList.remove('toggled-menu-open');
         });  
     } 
 }

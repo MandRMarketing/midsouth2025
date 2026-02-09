@@ -12,10 +12,8 @@ get_header();
                             <div class="card">
                                 <div class="card-content">
                                     <h3><a href="<?= get_the_permalink(); ?>"><?= get_the_title(); ?></a></h3>
-                                    <span class="search-result-type"><?= get_post_type_object(get_post_type())->labels->singular_name; ?></span>
-                                    <?php if (has_excerpt()) : ?>
-                                        <p><?= get_the_excerpt(); ?></p>
-                                    <?php endif; ?>
+                                    <p><?= get_the_excerpt(); ?></p>
+                                    <a href="<?= get_the_permalink(); ?>" class="read-more">Read More</a>
                                 </div>
                                 <a href="<?= get_the_permalink(); ?>" class="card-arrow" aria-label="View <?= esc_attr(get_the_title()); ?>"></a>
                             </div>

@@ -14,8 +14,33 @@
         z-index: 0;
     }
 
+    .cards-container {
+        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+
     .cards-grid {
         padding-top: $global_module_padding_single;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+            flex-direction: column;
+
+            .card {
+                width: 100% !important;
+            }
+
+            .card-image {
+                height: 350px !important;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            .card-image {
+                height: 250px !important;
+            }
+        }
 
         .card {
             position: relative;

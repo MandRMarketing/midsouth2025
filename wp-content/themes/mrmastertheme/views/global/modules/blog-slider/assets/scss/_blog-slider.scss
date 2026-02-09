@@ -54,6 +54,19 @@
         bottom: 0;
         right: -150px;
 
+        @media screen and (min-width: 1921px) {
+            right: unset;
+            left: 40%;
+
+            .slick-slider {
+                overflow: hidden;
+            }
+
+            .slider-arrows {
+                transform: translateX(0) translateY(-1px);
+            }
+        }
+
         // // Keep slider in flow below 1440px so it stays visible (absolute + right pushes it off-screen)
         // @media screen and (max-width: 1440px) {
         //     position: static;

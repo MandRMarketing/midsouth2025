@@ -1,4 +1,8 @@
 (function () {
+    // Paused: set to true to re-enable the external link popup
+    var EXTERNAL_LINK_POPUP_ENABLED = false;
+    if (!EXTERNAL_LINK_POPUP_ENABLED) return;
+
     initializeExternalLinkPopup();
 })();
 

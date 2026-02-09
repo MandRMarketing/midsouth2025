@@ -60,9 +60,19 @@
         }
     }
 
+    .slick-list {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .slick-slide {
+        margin: 0 9px;
+    }
+
     .blog-carousel-row {
         .blog-slide {
             position: relative;
+            max-width: 374px;
 
             .blog-image {
                 height: 374px;

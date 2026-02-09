@@ -40,6 +40,10 @@
             flex: 1 1 100%;
             margin-top: 0;
             border-left: none;
+            background-color: var(--intro-bg-color, transparent);
+            background-image: var(--intro-bg-image, none);
+            background-size: cover;
+            background-position: center;
         }
     }
 
@@ -70,6 +74,10 @@
         .button {
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
+
+            @media screen and (max-width: $breakpoint_laptop_large) {
+                opacity: 1;
+            }
         }
     }
 
@@ -151,38 +159,38 @@
         }
     }
 
-    .card:not(.intro-content).has-link:hover {
-        .card-icon {
-            opacity: 0;
-        }
+    @media screen and (min-width: $breakpoint_laptop_large) {
+        .card:not(.intro-content).has-link:hover {
+            .card-icon {
+                opacity: 0;
+            }
 
-        .card-content {
-            * {
+            .card-content {
+                * {
+                    color: $color_white !important;
+                }
+            }
+
+            .button {
+                opacity: 1;
                 color: $color_white !important;
+
+                &:after {
+                    filter: brightness(1);
+                    right: 12px;
+                }
             }
 
-
-        }
-
-        .button {
-            opacity: 1;
-            color: $color_white !important;
-
-            &:after {
-                filter: brightness(1);
-                right: 12px;
+            .card-icon-hover {
+                opacity: 1;
             }
         }
 
-        .card-icon-hover {
-            opacity: 1;
+        // First card hover: keep red, just swap icon
+        .cards-grid>.card:not(.intro-content).has-link:hover {
+            background-color: $color_red;
+            color: $color_white;
         }
-    }
-
-    // First card hover: keep red, just swap icon
-    .cards-grid>.card:not(.intro-content).has-link:hover {
-        background-color: $color_red;
-        color: $color_white;
     }
 
     @media screen and (max-width: $breakpoint_laptop_large) {

@@ -37,6 +37,7 @@ $background_type = $background_settings['background_type'];
 
 if ($background_type === 'color') {
     $background_color = $background_settings['background_color'];
+    $intro_bg_style = 'style="--intro-bg-color:' . esc_attr($background_color) . ';"';
 
     //build out the background settings <span> HTML:
     $background_settings_tag = '<span class="background" style="background-color:' . $background_color . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
@@ -55,9 +56,11 @@ if ($background_type === 'color') {
         //build out the background settings <span> HTML:
         $background_settings_tag = '<span class="background" style="background-image:url(' . $background_image_url . ')" data-background-image-position="' . $background_image_position . '"><span class="validator-text" data-nosnippet>background settings</span></span>';
     }
+    $intro_bg_style = 'style="--intro-bg-image:url(' . esc_url($background_image_url) . ');"';
 } else {
     //transparent background, so no need for settings <span> HTML:
     $background_settings_tag = '';
+    $intro_bg_style = '';
 }
 
 //text color settings
@@ -107,7 +110,7 @@ if ($cards) :
     <div class="cards-container container">
         <div class="cards-grid">
             <?php if ($intro_content) : ?>
-                <div class="card intro-content">
+                <div class="card intro-content" <?= $intro_bg_style ?>>
                     <div class="card-content" <?= $text_color_attribute ?>>
                         <?= $intro_content ?>
                     </div>

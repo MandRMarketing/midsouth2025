@@ -3,12 +3,12 @@ nav#secondary-nav {
     z-index: 1;
     background: linear-gradient(90deg, rgba(229, 229, 229, 0) 3.75%, #e5e5e5 96.7%);
 
-    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+    @media screen and (max-width: $breakpoint_laptop_medium) {
         display: none;
     }
 
     ul#menu-secondary-navigation {
-        @media screen and (max-width: $breakpoint_tablet_large_portrait) {
+        @media screen and (max-width: $breakpoint_laptop_medium) {
             display: none;
         }
 

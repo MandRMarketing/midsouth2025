@@ -10,7 +10,7 @@ button#menu-toggle-trigger {
     height: 30px;
     position: relative;
 
-    @media screen and (min-width: $breakpoint_tablet_medium_landscape) {
+    @media screen and (min-width: $breakpoint_laptop_medium) {
         display: none;
     }
 

@@ -21,7 +21,7 @@
         </h1>
         <?php
         $title_area_field = get_field('title_area');
-        if (is_array($title_area_field) && !empty($title_area_field['include_intro_content']) && !empty($title_area_field['intro_content'])) :
+        if (!is_search() && is_array($title_area_field) && !empty($title_area_field['include_intro_content']) && !empty($title_area_field['intro_content'])) :
         ?>
             <div class="intro-content">
                 <?= $title_area_field['intro_content'] ?>

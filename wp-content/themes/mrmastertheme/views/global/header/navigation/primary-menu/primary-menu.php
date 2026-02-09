@@ -8,7 +8,7 @@
             data-flex="flex"
             data-justify-content="flex-end"
             data-align-items="center"
-            data-container-width="standard">
+            data-container-width="wide">
             <span class="validator-text" data-nosnippet>settings</span>
         </span>
 

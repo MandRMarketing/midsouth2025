@@ -138,7 +138,7 @@ if ($articles) :
                 dots: false,
                 adaptiveHeight: false,
                 responsive: [{
-                        breakpoint: 1780,
+                        breakpoint: 1280,
                         settings: {
                             slidesToShow: 2,
                             slidesToScroll: 1,

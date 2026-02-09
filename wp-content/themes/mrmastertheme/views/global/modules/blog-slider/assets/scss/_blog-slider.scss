@@ -19,6 +19,7 @@
 
     .slider-arrows {
         display: flex;
+        transform: translateX(-15px);
 
         .slick-arrow {
             position: relative;
@@ -53,21 +54,21 @@
         bottom: 0;
         right: -150px;
 
-        // Keep slider in flow below 1440px so it stays visible (absolute + right pushes it off-screen)
-        @media screen and (max-width: 1440px) {
-            position: static;
-            right: auto;
-        }
+        // // Keep slider in flow below 1440px so it stays visible (absolute + right pushes it off-screen)
+        // @media screen and (max-width: 1440px) {
+        //     position: static;
+        //     right: auto;
+        // }
     }
 
-    .slick-list {
-        margin: 0;
-        overflow: hidden;
-    }
+    // .slick-list {
+    //     // margin: 0 -9px;
+    //     overflow: hidden;
+    // }
 
-    .slick-slide {
-        margin: 0 9px;
-    }
+    // .slick-slide {
+    //     // margin: 0 9px;
+    // }
 
     .blog-carousel-row {
         .blog-slide {
@@ -102,7 +103,7 @@
 
             .blog-content {
                 position: absolute;
-                top: 0;
+                bottom: 0;
                 left: 0;
                 width: 100%;
                 background: rgba($color_red, 0.8);
@@ -130,15 +131,33 @@
     }
 
     // Mobile: single slide, stacked column layout
-    @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+    @media screen and (max-width: 1780px) {
         position: relative;
         padding-bottom: 0 !important;
 
+        .blog-slide {
+            max-width: unset !important;
+        }
+
+        &::before {
+            content: '';
+            background: #D9D9D9;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            z-index: -1;
+        }
+
         .intro-content-row {
+            //transform: translateX(9px);
+
             .container .content-wrapper {
                 width: 100%;
-                padding: 30px;
-                padding-right: 30px;
+                padding: 0px;
+                padding-bottom: $global_module_padding_single;
+                background: none;
             }
         }
 
@@ -152,13 +171,16 @@
         .slider-arrows {
             order: 2;
             justify-content: flex-start;
-            padding: 1rem 0;
+            transform: translateX(0px) translateY(-1px) !important;
+            // padding: 1rem 0;
 
             .slick-arrow {
-                width: 50px;
-                height: 50px;
+                width: 65px;
+                height: 65px;
             }
         }
+
+        .slick-list {}
 
         .blog-carousel-row {
             order: 1;

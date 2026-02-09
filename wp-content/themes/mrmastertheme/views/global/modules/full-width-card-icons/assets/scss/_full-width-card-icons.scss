@@ -34,10 +34,12 @@
             }
         }
 
-        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+        @media screen and (max-width: $breakpoint_laptop_large) {
             width: 100%;
             max-width: none;
             flex: 1 1 100%;
+            margin-top: 0;
+            border-left: none;
         }
     }
 
@@ -54,14 +56,14 @@
         color: inherit;
         background: transparent;
 
-        @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+        @media screen and (max-width: $breakpoint_laptop_large) {
             flex: 1 1 100%;
             border-left: none;
-            border-top: 1px solid $color_white;
-            padding: 2rem 1.5rem;
+            border-bottom: 2px solid $color_white;
+            padding: 2rem 5%;
 
-            &:first-of-type {
-                border-top: none;
+            &:not(.intro-content) {
+                background: #E5E5E5;
             }
         }
 
@@ -183,14 +185,13 @@
         color: $color_white;
     }
 
-    @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+    @media screen and (max-width: $breakpoint_laptop_large) {
         .cards-grid {
             flex-direction: column;
         }
 
         .card.intro-content {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+            padding: $global_module_padding_double 5%;
         }
     }
 }

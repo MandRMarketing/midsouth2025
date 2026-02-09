@@ -1,5 +1,7 @@
 // Mirror cards-links module: grid of cards with title, date, categories, arrow, hover border
-.post-list {
+
+.post-list,
+.search-results {
     background: linear-gradient(93deg, #EDEDED 4.4%, #EDEDED 50.89%);
 
     .posts-grid {
@@ -106,5 +108,12 @@
         .posts-grid .card .card-arrow {
             right: 16px;
         }
+    }
+}
+
+.search-results {
+    .posts-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+
     }
 }

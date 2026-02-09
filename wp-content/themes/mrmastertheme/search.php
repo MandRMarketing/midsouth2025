@@ -6,7 +6,7 @@ get_header();
     <section class="search-results">
         <div class="container">
             <?php if (have_posts()) : ?>
-                <ul class="posts posts-grid" data-grid="grid" data-row-gap="small" data-column-gap="small" data-column-count="two">
+                <ul class="posts posts-grid" data-grid="grid" data-row-gap="small" data-column-gap="small" data-column-count="one">
                     <?php while (have_posts()) : the_post(); ?>
                         <li>
                             <div class="card">

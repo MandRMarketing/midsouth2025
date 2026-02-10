@@ -3,8 +3,22 @@
     //Title Area (specific to single posts):
     echo get_template_part('views/conditional/posts/single/title-area/title-area');
 
-    //Global Modules
-    echo get_template_part('views/global/modules/modules');
+    ?>
+
+    <section class="section-wrap">
+        <div class="container">
+            <?php the_content(); ?>
+            <span class="container-settings" data-container-width="standard">
+                <span class="validator-text" data-nosnippet>settings</span>
+            </span>
+        </div>
+        <span class="module-settings" data-nosnippet>
+            <span class="padding" data-top-padding-desktop="single" data-bottom-padding-desktop="single" data-top-padding-mobile="single" data-bottom-padding-mobile="single">
+                <span class="validator-text" data-nosnippet>padding settings</span>
+            </span>
+            <span class="validator-text">module settings</span>
+        </span>
+    </section>
 
     ?>
     <?php

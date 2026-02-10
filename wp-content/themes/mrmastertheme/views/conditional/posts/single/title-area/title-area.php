@@ -24,20 +24,21 @@
        <div class="container">
            <h1>
                <?php
-                if (strlen(get_field('title_area')['page_title']) > 0) {
-                    echo get_field('title_area')['page_title'];
+                $title_area = get_field('title_area');
+                if ($title_area && isset($title_area['page_title']) && strlen($title_area['page_title']) > 0) {
+                    echo esc_html($title_area['page_title']);
                 } else {
-                    echo get_the_title();
+                    echo esc_html(get_the_title());
                 }
                 ?>
            </h1>
            <?php
             //Intro Content:
 
-            if (get_field('title_area')['include_intro_content'] && strlen(get_field('title_area')['intro_content']) > 0) :
+            if ($title_area && !empty($title_area['include_intro_content']) && strlen($title_area['intro_content'] ?? '') > 0) :
             ?>
                <div class="intro-content">
-                   <?= get_field('title_area')['intro_content'] ?>
+                   <?= wp_kses_post($title_area['intro_content']) ?>
                </div>
            <?php
             endif;

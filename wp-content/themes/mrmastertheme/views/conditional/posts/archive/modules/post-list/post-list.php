@@ -7,7 +7,7 @@
         <ul class="posts posts-grid">
             <?php
             //declare an empty arguments array, for us to fill if any query string parameters are set up by the post filter form
-            $args = [];
+            $args = ['posts_per_page' => 12];
 
             //grab the post category filter if used:
             if (isset($_GET['post-category'])) {

@@ -83,7 +83,7 @@
 
         &:nth-of-type(2) {
             img {
-                max-height: 100px;
+                max-height: 90px;
                 transform: translateY(10px);
             }
         }
@@ -210,6 +210,10 @@
 
         @media screen and (max-width: $breakpoint_laptop_large) {
             padding-bottom: 40px;
+        }
+
+        @media screen and (min-width: 1960px) {
+            padding-bottom: 180px;
         }
 
         p {

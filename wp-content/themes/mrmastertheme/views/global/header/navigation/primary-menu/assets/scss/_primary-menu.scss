@@ -65,6 +65,8 @@ nav#primary-nav {
                 }
             }
 
+            &:hover>a:after,
+            &:focus>a:after,
             &.current-menu-ancestor>a:after,
             &.current-menu-item>a:after {
                 content: '';
@@ -135,6 +137,22 @@ nav#primary-nav {
 
                         a {
                             color: $color_red;
+                            position: relative;
+
+                            &:after {
+                                content: '';
+                                display: inline-block;
+                                position: absolute;
+                                right: 20px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                width: 14px;
+                                height: 14px;
+                                background: url('/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/arrow.svg') no-repeat center;
+                                background-size: contain;
+                                transition: filter 0.2s;
+                                filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(4868%) hue-rotate(340deg) brightness(93%) contrast(102%);
+                            }
                         }
                     }
 
@@ -155,6 +173,8 @@ nav#primary-nav {
                         text-align: left;
                         padding: 12px 24px;
                         text-decoration: none;
+                        padding-right: 35px;
+
 
                         &:hover,
                         &:focus {

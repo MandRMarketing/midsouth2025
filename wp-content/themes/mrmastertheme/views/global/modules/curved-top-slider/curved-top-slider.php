@@ -47,9 +47,11 @@ if ($slides) :
         <div class="curved-top-slider__panes">
             <?php foreach ($slides as $index => $slide) :
                 $slide_title = $slide['title'];
-                $slide_icon = isset($slide['link']) ? $slide['link'] : (isset($slide['icon']) ? $slide['icon'] : null);
+                $slide_icon = isset($slide['icon']) ? $slide['icon'] : null;
                 $slide_header = $slide['header'];
-                $slide_subtext = $slide['subtext'];
+                $slide_subtext = $slide['subtext'] ?? '';
+                $slide_link = $slide['link'] ?? null;
+                $slide_link_url = is_array($slide_link) && !empty($slide_link['url']) ? $slide_link['url'] : (is_string($slide_link) ? $slide_link : '');
                 $is_first = ($index === 0);
             ?>
                 <div class="curved-top-slider__pane" id="<?= $slider_id ?>-pane-<?= $index ?>" data-index="<?= $index ?>" role="tabpanel" aria-labelledby="<?= $slider_id ?>-tab-<?= $index ?>" aria-hidden="<?= $is_first ? 'false' : 'true' ?>" <?= $is_first ? '' : 'hidden' ?>>
@@ -61,8 +63,15 @@ if ($slides) :
                     <?php if ($slide_header) : ?>
                         <h2 class="curved-top-slider__header"><?= esc_html($slide_header) ?></h2>
                     <?php endif; ?>
-                    <?php if ($slide_subtext) : ?>
-                        <p class="curved-top-slider__subtext"><?= esc_html($slide_subtext) ?></p>
+                    <?php if ($slide_subtext !== '' || $slide_link_url !== '') : ?>
+                        <div class="curved-top-slider__body">
+                            <?php if ($slide_subtext !== '') : ?>
+                                <p class="curved-top-slider__subtext"><?= esc_html($slide_subtext) ?></p>
+                            <?php endif; ?>
+                            <?php if ($slide_link_url !== '') : ?>
+                                <a href="<?= esc_url($slide_link_url) ?>" class="curved-top-slider__link button">Learn More</a>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>

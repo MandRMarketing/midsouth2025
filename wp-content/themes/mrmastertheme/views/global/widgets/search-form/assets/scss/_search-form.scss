@@ -66,6 +66,16 @@ form.custom-theme-search {
             input {
                 width: 280px;
                 padding-right: 48px;
+                border: 0;
+                background: transparent;
+                border-bottom: 1px solid $color_red;
+                outline: none;
+
+                &:focus {
+                    border: 0;
+                    background: transparent;
+                    outline: none;
+                }
             }
         }
 

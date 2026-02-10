@@ -15,6 +15,10 @@
         min-height: 0;
     }
 
+    h3 {
+        color: $color_red;
+    }
+
     // Intro column (left): equal width with cards, left-aligned, no card background
     .card.intro-content {
         background: transparent;
@@ -44,6 +48,12 @@
             background-image: var(--intro-bg-image, none);
             background-size: cover;
             background-position: center;
+            min-height: 300px;
+            justify-content: flex-end;
+        }
+
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            min-height: 200px;
         }
     }
 
@@ -68,6 +78,13 @@
 
             &:not(.intro-content) {
                 background: #E5E5E5;
+            }
+        }
+
+        &:nth-of-type(2) {
+            img {
+                max-height: 100px;
+                transform: translateY(10px);
             }
         }
 
@@ -116,6 +133,7 @@
         .card-icon,
         .card-icon-hover {
             transform: translate(-18px);
+            max-height: 110px;
         }
 
         .card-icon {

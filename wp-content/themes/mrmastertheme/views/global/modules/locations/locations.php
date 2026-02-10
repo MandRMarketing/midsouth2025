@@ -62,7 +62,7 @@ if ($locations) :
         <div class="locations-grid">
             <?php
             foreach ($locations as $location) :
-                $location_id = $location->ID;
+                $location_id = is_object($location) ? $location->ID : (int) $location;
                 $location_link = get_permalink($location_id);
                 $location_title = get_the_title($location_id);
 

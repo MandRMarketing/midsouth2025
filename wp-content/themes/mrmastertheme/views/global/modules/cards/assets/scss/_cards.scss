@@ -1,4 +1,10 @@
 .cards {
+    &.red-h3 {
+        h3 {
+            color: $color_red;
+        }
+    }
+
     .cards-grid {
         padding-top: $global_module_padding_single;
 

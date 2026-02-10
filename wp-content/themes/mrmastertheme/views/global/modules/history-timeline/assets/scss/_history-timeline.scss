@@ -92,9 +92,16 @@
 
                         .history-timeline-item-label {
                             text-align: center;
+                            background-color: $color_red;
+                            padding: 5px 20px;
 
                             h3 {
                                 //
+                                color: $color_white;
+                                font-size: 29px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: normal;
                             }
                         }
 

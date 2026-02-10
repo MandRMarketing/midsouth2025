@@ -24,6 +24,8 @@ ul:not([class]) {
         padding-left: 24px;
 
         ul:not([class]) {
+            margin-top: 16px;
+
             li:not([class]) {
                 &:before {
                     background-color: transparent;

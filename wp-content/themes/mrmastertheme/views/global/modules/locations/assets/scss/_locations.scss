@@ -6,7 +6,7 @@
     row-gap: 117px;
     padding-bottom: 51px;
 
-    @media (max-width: $breakpoint_mobile_iphone_large) {
+    @media (max-width: $breakpoint_tablet_medium_portrait) {
         grid-template-columns: 1fr;
     }
 }

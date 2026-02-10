@@ -1,6 +1,6 @@
 .cards-images-hover {
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
 
     @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
         padding-bottom: $global_module_padding_double !important;
@@ -27,9 +27,25 @@
 
     .cards-grid {
         padding-top: $global_module_padding_single;
+        flex-wrap: wrap;
+        gap: 0;
+        column-gap: 0;
+        row-gap: 0;
+
+        >* {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+            box-sizing: border-box;
+            max-height: 228px;
+        }
 
         @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
             flex-direction: column;
+
+            >* {
+                flex: none;
+                max-width: none;
+            }
 
             .card {
                 width: 100% !important;

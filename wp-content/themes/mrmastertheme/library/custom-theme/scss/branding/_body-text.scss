@@ -2,6 +2,10 @@ html {
     font-size: 62.5%; //10px browser default
 }
 
+article.page {
+    overflow: hidden;
+}
+
 body {
     color: $color-black;
     font-family: 'Open Sans', sans-serif;

@@ -1,6 +1,7 @@
 .blog-slider {
     padding-bottom: 82px !important;
     margin-bottom: $global_module_padding_double !important;
+    z-index: 2;
 
     @media (max-width: 768px) {
         margin-bottom: $global_module_padding_single !important;

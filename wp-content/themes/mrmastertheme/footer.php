@@ -30,7 +30,7 @@ if (get_post_type() === 'tribe_events') {
                 ?>
             </div>
             <div class="column">
-                <h4>Download Our Mobile App</h4>
+                <h4 class="download-app-title">Download Our <br>Mobile App</h4>
                 <div class="app-links">
                     <?= do_shortcode('[google-play]'); ?>
                     <?= do_shortcode('[apple-appstore]'); ?>

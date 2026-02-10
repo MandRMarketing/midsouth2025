@@ -106,7 +106,7 @@ h2,
 
     font-size: 29px;
 
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 35px;
@@ -131,7 +131,7 @@ h2,
         width: 113px;
         height: 10px;
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         left: 0;
     }
 

@@ -44,6 +44,10 @@
                         padding: 40px 140px;
                         text-align: center;
 
+                        @media (max-width: $breakpoint_tablet_medium_portrait) {
+                            padding: 20px;
+                        }
+
                         &.image-left {
                             //
 

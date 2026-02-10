@@ -33,6 +33,10 @@ div.standard-content {
             picture {
                 position: relative;
 
+                @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
+                    transform: translateY(30px);
+                }
+
                 img {
                     z-index: 1;
                     position: relative;
@@ -54,6 +58,10 @@ div.standard-content {
         .column.left {
             picture {
                 position: relative;
+
+                @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
+                    transform: translateY(30px);
+                }
 
                 img {
                     z-index: 1;
@@ -83,6 +91,14 @@ div.standard-content {
         gap: 20px;
         align-items: center;
         padding: 18px 0;
+
+        picture {
+            transform: unset !important;
+
+            &:before {
+                content: unset !important;
+            }
+        }
 
         &:first-of-type {
             padding-top: 20px;

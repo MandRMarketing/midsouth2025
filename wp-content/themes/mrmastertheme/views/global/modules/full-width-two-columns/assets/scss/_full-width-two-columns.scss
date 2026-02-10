@@ -47,10 +47,45 @@ div.full-width-two-columns {
             &[data-offset='true'] {
                 margin: 70px 0;
                 transform: translateX(147px);
+                overflow: visible;
+
+                .button {
+                    display: block;
+                    width: fit-content;
+                }
+
+                &::after {
+                    content: '';
+                    background-color: $color_red;
+                    width: 48%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: -45%;
+                    z-index: 0;
+                }
+
+                .content {
+                    position: relative;
+                    z-index: 1;
+                    min-width: 148%;
+                    margin-left: 48%;
+                    max-width: none;
+                    box-sizing: border-box;
+                }
 
                 @media screen and (max-width: $breakpoint_tablet_large_landscape) {
                     margin: 0;
                     transform: none;
+
+                    &::after {
+                        display: none;
+                    }
+
+                    .content {
+                        min-width: 100%;
+                        margin-left: 0;
+                    }
                 }
             }
 

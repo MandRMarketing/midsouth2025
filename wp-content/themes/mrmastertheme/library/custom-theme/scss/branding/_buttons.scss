@@ -130,6 +130,12 @@ p {
         margin-top: $global_paragraph_bottom_margin;
     }
 
+    picture {
+        &:before {
+            content: unset !important;
+        }
+    }
+
     &:hover,
     &:focus {
         img {
@@ -144,6 +150,12 @@ p {
     +.app-store-link {
         display: inline-block;
         margin-top: $global_paragraph_bottom_margin;
+    }
+
+    picture {
+        &:before {
+            content: unset !important;
+        }
     }
 
     &:hover,

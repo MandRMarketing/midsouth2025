@@ -6,7 +6,7 @@
 
     .posts-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         gap: 30px 95px;
         margin-top: 71px;
         list-style: none;
@@ -30,6 +30,10 @@
 
             .card-content {
                 padding: 24px 42px;
+
+                @media (max-width: $breakpoint_tablet_medium_portrait) {
+                    padding-right: 90px;
+                }
             }
 
             h3 {

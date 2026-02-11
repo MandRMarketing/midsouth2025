@@ -17,6 +17,14 @@
                 gap: 0;
             }
 
+            .intro-content {
+                width: 50%;
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    width: 100%;
+                }
+            }
+
             picture {
                 position: relative;
                 transform: translateY(30px);

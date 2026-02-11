@@ -19,8 +19,6 @@
             <span class="validator-text">module settings</span>
         </span>
     </section>
-
-    ?>
     <?php
     //Similar Articles Module (specific to single posts):
     echo get_template_part('views/conditional/posts/single/modules/similar-articles/similar-articles');

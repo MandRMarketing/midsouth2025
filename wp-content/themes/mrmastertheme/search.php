@@ -23,8 +23,8 @@ get_header();
                 <?php
                 the_posts_pagination(array(
                     'mid_size'  => 2,
-                    'prev_text' => '&laquo;',
-                    'next_text' => '&raquo;',
+                    'prev_text' => '&lt;',
+                    'next_text' => '&gt;',
                 ));
                 ?>
             <?php else : ?>

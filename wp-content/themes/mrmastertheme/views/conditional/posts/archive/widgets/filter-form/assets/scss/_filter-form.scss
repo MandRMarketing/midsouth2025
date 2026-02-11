@@ -10,6 +10,10 @@ form#post-filters {
         position: relative;
         column-gap: 18px;
 
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            flex-direction: column;
+        }
+
         li {
             position: relative;
             flex: 1;

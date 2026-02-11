@@ -67,6 +67,11 @@
 
             .slick-slider {
                 overflow: hidden;
+                // transform: translateX(13px);
+            }
+
+            .slick-list {
+                transform: translateX(13px);
             }
 
             .slider-arrows {

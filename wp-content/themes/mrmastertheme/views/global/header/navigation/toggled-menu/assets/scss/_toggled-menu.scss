@@ -132,6 +132,12 @@ nav#toggled-nav {
                 padding: 25px 40px;
                 border-bottom: 1px solid $color_red;
 
+                &.menu-item.has-sub-menu {
+                    >a {
+                        pointer-events: none;
+                    }
+                }
+
                 &:first-of-type {
                     border-top: 1px solid $color_red;
                 }

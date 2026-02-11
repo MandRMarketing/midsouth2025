@@ -12,6 +12,10 @@ table {
         display: block;
     }
 
+    &:has(.table-header) {
+        display: table !important;
+    }
+
     +em {
         margin-top: -20px;
     }

@@ -38,7 +38,13 @@
             cursor: pointer;
 
             &.slick-prev {
-                transform: rotate(180deg);
+                @media screen and (min-width: 1921px) {
+                    transform: scaleX(-1) translateX(-1px);
+                }
+
+                @media screen and (max-width: 1920px) {
+                    transform: scaleX(-1);
+                }
             }
 
             &:hover,
@@ -64,7 +70,7 @@
             }
 
             .slider-arrows {
-                transform: translateX(0) translateY(-1px);
+                transform: translateX(0) translateY(0px);
             }
         }
 

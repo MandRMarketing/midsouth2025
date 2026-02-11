@@ -75,14 +75,14 @@ if ($has_sections || $has_flat_toggles) :
 ?>
     <?php if ($has_sections) : ?>
         <?php
-            // Filter out sections with no toggles for tab rendering
-            $valid_sections = [];
-            foreach ($toggles_sections as $section) {
-                $section_toggles = $section['toggles'] ?? [];
-                if (!empty($section_toggles)) {
-                    $valid_sections[] = $section;
-                }
+        // Filter out sections with no toggles for tab rendering
+        $valid_sections = [];
+        foreach ($toggles_sections as $section) {
+            $section_toggles = $section['toggles'] ?? [];
+            if (!empty($section_toggles)) {
+                $valid_sections[] = $section;
             }
+        }
         ?>
         <?php if (count($valid_sections) > 1) : ?>
             <div class="toggles__tabs container">
@@ -97,8 +97,7 @@ if ($has_sections || $has_flat_toggles) :
                                 class="toggles__tab-button<?= $is_active ? ' toggles__tab-button--active' : '' ?>"
                                 role="tab"
                                 aria-selected="<?= $is_active ? 'true' : 'false' ?>"
-                                data-tab-index="<?= $tab_index ?>"
-                            ><?= esc_html($tab_title) ?></button>
+                                data-tab-index="<?= $tab_index ?>"><?= $tab_title ?></button>
                         </li>
                     <?php endforeach; ?>
                 </ul>

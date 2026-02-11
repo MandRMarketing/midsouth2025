@@ -61,3 +61,32 @@
         border-left: 3px solid $color_red;
     }
 }
+
+// Percentage field suffix in auto and personal loan calculator forms
+#gform_wrapper_4,
+#gform_wrapper_5 {
+    .gfield.percentage {
+        .ginput_container {
+            position: relative;
+
+            &::after {
+                content: '%';
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                pointer-events: none;
+                color: $color_black_alt;
+                font-size: 1em;
+            }
+
+            input {
+                padding-right: 28px;
+            }
+        }
+
+        .gfield_description {
+            display: none;
+        }
+    }
+}

@@ -4,8 +4,14 @@ a.site-home-link {
     max-width: 312px;
     height: auto;
 
-    > img {
+    >img {
         max-width: 100%;
         height: auto;
+    }
+}
+
+footer {
+    .site-home-link {
+        max-width: 200px;
     }
 }

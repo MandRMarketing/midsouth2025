@@ -10,26 +10,15 @@ $archive_query = new WP_Query(array('post_type' => 'post', 'posts_per_page' => -
 if ($archive_query->have_posts()) {
     $post_archives = true;
 
-    //initialize array to fill with Month & Year pairs:
-    $monthly_archives_array = [];
-
-    //loop and use each post ID to grab a month & year
+    // Collect unique years from all posts
+    $years_array = [];
     foreach ($archive_query->posts as $post_id) {
-        $post_month_numerical = get_the_date($format = 'n', $post = $post_id);
-        $post_month_string = get_the_date($format = 'F', $post = $post_id);
         $post_year = get_the_date($format = 'Y', $post = $post_id);
-
-        $post_date_array = array(
-            'post_month_numerical' => $post_month_numerical,
-            'post_month_string' => $post_month_string,
-            'post_year' => $post_year,
-        );
-
-        //push the post date to the monthly archives array if it's not already there
-        if (!in_array($post_date_array, $monthly_archives_array)) {
-            array_push($monthly_archives_array, $post_date_array);
+        if ($post_year && !in_array($post_year, $years_array)) {
+            $years_array[] = $post_year;
         }
     }
+    rsort($years_array); // Newest first
 } else {
     $post_archives = false;
 }
@@ -100,12 +89,12 @@ if ($post_categories || $post_tags || $post_archives) :
                             Date
                         </option>
                         <?php
-                        foreach ($monthly_archives_array as $month) :
+                        foreach ($years_array as $year) :
                         ?>
                             <option
-                                value="<?= $month['post_month_numerical'] . ' ' . $month['post_year'] ?>"
-                                <?= (isset($_GET['post-date']) && $_GET['post-date'] == ($month['post_month_numerical'] . ' ' . $month['post_year'])) ? 'selected' : ''; ?>>
-                                <?= $month['post_month_string'] . ' ' . $month['post_year'] ?>
+                                value="<?= esc_attr($year) ?>"
+                                <?= (isset($_GET['post-date']) && $_GET['post-date'] === $year) ? 'selected' : ''; ?>>
+                                <?= esc_html($year) ?>
                             </option>
                         <?php
                         endforeach;

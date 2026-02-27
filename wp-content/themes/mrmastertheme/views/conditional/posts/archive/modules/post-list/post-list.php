@@ -72,20 +72,14 @@
                 $args['tax_query']['relation'] = 'AND';
             }
 
-            //grab the date filter if used:
-            if (isset($_GET['post-date'])) {
-                //initialize date_query key in $args if it hasn't already:
-                if (!in_array('date_query', $args)) {
-                    $args['date_query'] = [];
+            //grab the date filter if used (year only):
+            if (isset($_GET['post-date']) && $_GET['post-date'] !== '') {
+                $post_year_filter = absint($_GET['post-date']);
+                if ($post_year_filter > 0) {
+                    $args['date_query'] = array(
+                        'year' => $post_year_filter
+                    );
                 }
-
-                //use explode() to separate the month from the year in the date parameter:
-                $post_date_filter_array = explode(' ', $_GET['post-date']);
-
-                $args['date_query'] = array(
-                    'year' => $post_date_filter_array[1],
-                    'month' => $post_date_filter_array[0]
-                );
             }
 
             //grab the keyword search if used:

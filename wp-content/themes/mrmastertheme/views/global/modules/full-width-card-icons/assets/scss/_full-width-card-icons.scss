@@ -167,7 +167,7 @@
     }
 
     // Force loanpay-button inside this module to match the clear button style
-    .card-link button.loanpay-button {
+    .card-link .loanpay-button {
         background: transparent !important;
         color: $color_red !important;
         padding-left: 0 !important;
@@ -249,7 +249,7 @@
             }
 
             // Override loanpay button specifically on card hover
-            .card-link button.loanpay-button {
+            .card-link .loanpay-button {
                 color: $color_white !important;
                 background: transparent !important;
 

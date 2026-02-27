@@ -128,8 +128,10 @@ if ($cards) :
             ?>
                 <?php if ($add_link_to_card && $card_link && !$add_payment_link) : ?>
                     <a href="<?= esc_url($card_link) ?>" class="card has-link" <?= $text_color_attribute ?>>
+                    <?php elseif ($add_payment_link) : ?>
+                        <a href="#loanpay" class="card has-link" <?= $text_color_attribute ?>>
                     <?php else : ?>
-                        <div class="card <?= ($add_link_to_card || $add_payment_link) ? 'has-link' : '' ?>" <?= $text_color_attribute ?>>
+                        <div class="card <?= $add_link_to_card ? 'has-link' : '' ?>" <?= $text_color_attribute ?>>
                         <?php endif; ?>
                         <?php if ($card_icon || $card_icon_hover) : ?>
                             <div class="card-icon-container">
@@ -151,7 +153,7 @@ if ($cards) :
                         <?php if ($add_link_to_card) : ?>
                             <?php if ($add_payment_link) : ?>
                                 <div class="card-link">
-                                    <?= do_shortcode('[loanpay-button text="' . esc_attr($card_link_text) . '" class="button button--clear loanpay-button"]') ?>
+                                    <span class="button button--clear loanpay-button"><?= esc_html($card_link_text) ?></span>
                                 </div>
                             <?php else : ?>
                                 <div class="card-link">
@@ -159,7 +161,7 @@ if ($cards) :
                                 </div>
                             <?php endif; ?>
                         <?php endif; ?>
-                        <?php if ($add_link_to_card && $card_link && !$add_payment_link) : ?>
+                        <?php if (($add_link_to_card && $card_link) || $add_payment_link) : ?>
                     </a>
                 <?php else : ?>
         </div>

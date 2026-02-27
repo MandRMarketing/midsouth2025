@@ -12,8 +12,11 @@
             if (anchor.hasAttribute('target')) return; // Respect existing target
 
             try {
-                var linkHost = new URL(anchor.href).hostname;
-                if (linkHost && linkHost !== hostname) {
+                var url = new URL(anchor.href);
+                var linkHost = url.hostname;
+                var isExternal = linkHost && linkHost !== hostname;
+                var isPdf = /\.pdf$/i.test(url.pathname);
+                if (isExternal || isPdf) {
                     anchor.setAttribute('target', '_blank');
                     anchor.setAttribute('rel', 'noopener noreferrer');
                 }

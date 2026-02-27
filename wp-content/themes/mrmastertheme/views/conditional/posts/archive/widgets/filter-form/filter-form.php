@@ -37,6 +37,17 @@ if ($archive_query->have_posts()) {
 //reset post data since we just queried
 wp_reset_postdata();
 
+// Pre-select category when viewing a category archive
+$preselected_category = null;
+if (isset($_GET['post-category'])) {
+    $preselected_category = (int) $_GET['post-category'];
+} elseif (is_category()) {
+    $queried = get_queried_object();
+    if ($queried && isset($queried->term_id)) {
+        $preselected_category = (int) $queried->term_id;
+    }
+}
+
 if ($post_categories || $post_tags || $post_archives) :
 ?>
     <form
@@ -58,7 +69,7 @@ if ($post_categories || $post_tags || $post_archives) :
                 <li class="post-category-filter">
                     <select name="post-category" id="post-category">
                         <option
-                            <?= (!isset($_GET['post-category'])) ? 'selected' : ''; ?>
+                            <?= ($preselected_category === null) ? 'selected' : ''; ?>
                             disabled>
                             Category
                         </option>
@@ -67,7 +78,7 @@ if ($post_categories || $post_tags || $post_archives) :
                         ?>
                             <option
                                 value="<?= $category->term_id ?>"
-                                <?= (isset($_GET['post-category']) && $_GET['post-category'] == $category->term_id) ? 'selected' : ''; ?>>
+                                <?= ($preselected_category === (int) $category->term_id) ? 'selected' : ''; ?>>
                                 <?= $category->name ?>
                             </option>
                         <?php
@@ -118,7 +129,7 @@ if ($post_categories || $post_tags || $post_archives) :
             </li>
             <?php
             //if any filters are being used, print a 'clear' button
-            if (isset($_GET['post-category']) || isset($_GET['post-tags']) || isset($_GET['post-date']) || (isset($_GET['post-keyword']) && $_GET['post-keyword'] !== '')) :
+            if ($preselected_category !== null || isset($_GET['post-tags']) || isset($_GET['post-date']) || (isset($_GET['post-keyword']) && $_GET['post-keyword'] !== '')) :
             ?>
                 <li class="post-filter-clear">
                     <a href="<?= get_the_permalink(get_option('page_for_posts')) ?>">Clear Filters</a>

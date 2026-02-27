@@ -79,7 +79,8 @@ ul:not([class]) {
     }
 }
 
-.blog {
+.blog,
+.category {
     .post-list {
         background-color: $color_white_alt;
     }

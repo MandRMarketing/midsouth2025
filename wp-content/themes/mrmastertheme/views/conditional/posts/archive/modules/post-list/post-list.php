@@ -9,23 +9,27 @@
             //declare an empty arguments array, for us to fill if any query string parameters are set up by the post filter form
             $args = ['posts_per_page' => 12];
 
-            //grab the post category filter if used:
+            //grab the post category filter if used (from form) or when viewing a category archive
+            $post_category_filter = null;
             if (isset($_GET['post-category'])) {
-                //initialize tax_query key in $args if it hasn't already:
-                if (!in_array('tax_query', $args)) {
+                $post_category_filter = (int) $_GET['post-category'];
+            } elseif (is_category()) {
+                $queried = get_queried_object();
+                if ($queried && isset($queried->term_id)) {
+                    $post_category_filter = (int) $queried->term_id;
+                }
+            }
+
+            if ($post_category_filter !== null) {
+                if (!isset($args['tax_query'])) {
                     $args['tax_query'] = [];
                 }
-
-                //grab the post category value
-                $post_category_filter = $_GET['post-category'];
 
                 array_push(
                     $args['tax_query'],
                     array(
                         'taxonomy' => 'category',
-                        'terms' => array(
-                            $post_category_filter
-                        ),
+                        'terms' => array($post_category_filter),
                     )
                 );
             }
@@ -64,7 +68,7 @@
             }
 
             //if both the category & tags filters are used, add the 'relation' parameter to combine the 2 queries:
-            if (isset($_GET['post-category']) && isset($_GET['post-tags'])) {
+            if ($post_category_filter !== null && isset($_GET['post-tags'])) {
                 $args['tax_query']['relation'] = 'AND';
             }
 

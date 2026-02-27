@@ -151,6 +151,10 @@ section.search-results {
 
 article.post {
     h1 {
-        font-size: 40px;
+        font-size: 34px !important;
+
+        @media (min-width: $breakpoint_before_mobile_large) {
+            font-size: 40px !important;
+        }
     }
 }

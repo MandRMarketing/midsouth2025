@@ -88,6 +88,7 @@ if ($locations) :
                 }
             ?>
                 <div class="location-card">
+                    <a href="<?= esc_url($location_link); ?>" class="location-card-link" aria-label="<?= esc_attr($location_title); ?>"></a>
                     <span class="location-image">
                         <?php if ($location_image_id) : ?>
                             <img

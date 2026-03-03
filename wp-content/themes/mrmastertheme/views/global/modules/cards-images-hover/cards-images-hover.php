@@ -129,14 +129,20 @@ if ($cards) :
             ?>
                 <div class="card" <?= $text_color_attribute ?>>
                     <?php if ($card_image) : ?>
+                        <?php
+                        $card_image_id = is_array($card_image) ? ($card_image['ID'] ?? $card_image['id'] ?? 0) : (int) $card_image;
+                        $card_image_alt = is_array($card_image) ? ($card_image['alt'] ?? '') : '';
+                        ?>
                         <figure class="card-image">
                             <?php if ($card_link) : ?>
                                 <a href="<?= esc_url($card_link) ?>">
-                                <?php endif; ?>
-                                <img
-                                    src="<?= $card_image['url'] ?>"
-                                    alt="<?= $card_image['alt'] ?>">
-                                <?php if ($card_link) : ?>
+                            <?php endif; ?>
+                            <?php if ($card_image_id) : ?>
+                                <?= wp_get_attachment_image($card_image_id, 'card-hover', false, ['alt' => esc_attr($card_image_alt)]) ?>
+                            <?php else : ?>
+                                <img src="<?= esc_url($card_image['url'] ?? '') ?>" alt="<?= esc_attr($card_image_alt) ?>">
+                            <?php endif; ?>
+                            <?php if ($card_link) : ?>
                                 </a>
                             <?php endif; ?>
                         </figure>

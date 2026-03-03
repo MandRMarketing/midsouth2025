@@ -41,7 +41,8 @@
             add_image_size('slider-main', 1300, 650, true);
             add_image_size('slider-thumbnails', 240, 150, true);
             add_image_size('medium-portrait', 600, 400, true); 
-            add_image_size('medium-square', 600, 600, true); 
+            add_image_size('medium-square', 600, 600, true);
+            add_image_size('card-hover', 800, 456, true); // Cards images hover module (~400×228 display, 2× for retina)
         }
 
         //Add custom image size to Wordpress admin area
@@ -50,6 +51,7 @@
             return array_merge($sizes, array(
                 'medium-portrait' => 'Medium Portrait',
                 'medium-square' => 'Medium Square',
+                'card-hover' => 'Card Hover',
             ));
         }
 

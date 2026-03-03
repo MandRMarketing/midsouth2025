@@ -19,3 +19,81 @@
 table+p {
     margin-top: 20px !important;
 }
+
+.privacy-policy {
+    font-family: Arial, sans-serif;
+    font-size: 0.92rem;
+    color: #333;
+    line-height: 1.6;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+    }
+
+    table td,
+    table th {
+        border: 1px solid #ccc;
+        padding: 10px 14px;
+        vertical-align: top;
+    }
+
+    /* ── Red label cells ── */
+    .red-cell {
+        background-color: #c51031;
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    /* ── Alternating row backgrounds ── */
+    .row-shaded td:not(.red-cell) {
+        background-color: #f0f0f0;
+    }
+
+    /* ── Section header rows (full-width red) ── */
+    .section-header td {
+        background-color: #c51031;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    /* ── Table 18 column header row ── */
+    .col-header td {
+        font-weight: 700;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .col-header td:first-child {
+        text-align: left;
+    }
+
+    table td.center {
+        text-align: center;
+    }
+
+    /* ── Lists inside cells ── */
+    td ul,
+    td ol {
+        margin: 6px 0 0 0;
+        padding-left: 20px;
+    }
+
+    td p {
+        margin: 0 0 6px 0;
+    }
+
+    td p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ── Heading table first row bold title ── */
+    .heading-title td {
+        font-weight: 700;
+        font-size: 1rem;
+    }
+}

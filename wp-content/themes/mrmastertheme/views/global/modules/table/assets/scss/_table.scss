@@ -35,6 +35,10 @@ table+p {
         vertical-align: top;
     }
 
+    td {
+        text-align: left;
+    }
+
     /* ── Red label cells ── */
     .red-cell {
         background-color: #c51031;

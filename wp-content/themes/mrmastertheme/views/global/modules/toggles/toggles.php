@@ -7,6 +7,7 @@ $container_width = get_sub_field('container_width');
 $tag_type = get_sub_field('tag_type') ?: 'section';
 $add_toggle_sections = get_sub_field('add_toggle_sections');
 $intro_content = get_sub_field('intro_content');
+$intro_image = get_sub_field('image');
 $toggles_sections = get_sub_field('toggles_sections');
 $toggles = get_sub_field('toggles');
 
@@ -160,10 +161,17 @@ if ($has_sections || $has_flat_toggles) :
             </div>
         <?php endforeach; ?>
     <?php else : ?>
-        <?php if ($intro_content) : ?>
+        <?php if ($intro_content || $intro_image) : ?>
             <header class="intro-content-row">
-                <div class="container" <?= $text_color_attribute ?>>
-                    <div class="intro-content"><?= wp_kses_post($intro_content) ?></div>
+                <div class="container" data-flex="flex" data-gap="large" <?= $text_color_attribute ?>>
+                    <?php if ($intro_content) : ?>
+                        <div class="intro-content"><?= wp_kses_post($intro_content) ?></div>
+                    <?php endif; ?>
+                    <?php if ($intro_image) : ?>
+                        <picture class="section-image">
+                            <img src="<?= esc_url($intro_image['url']) ?>" alt="<?= esc_attr($intro_image['alt'] ?? '') ?>">
+                        </picture>
+                    <?php endif; ?>
                     <span class="container-settings" data-container-width="<?= esc_attr($container_width) ?>">
                         <span class="validator-text" data-nosnippet>settings</span>
                     </span>

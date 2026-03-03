@@ -69,6 +69,10 @@ table+p {
         text-align: center;
     }
 
+    tbody td:last-child {
+        border-right: none !important;
+    }
+
     .col-header td:first-child {
         text-align: left;
     }

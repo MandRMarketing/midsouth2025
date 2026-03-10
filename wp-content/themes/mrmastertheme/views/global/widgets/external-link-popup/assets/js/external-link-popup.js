@@ -1,6 +1,6 @@
 (function () {
     // Paused: set to true to re-enable the external link popup
-    var EXTERNAL_LINK_POPUP_ENABLED = false;
+    var EXTERNAL_LINK_POPUP_ENABLED = true;
     if (!EXTERNAL_LINK_POPUP_ENABLED) return;
 
     initializeExternalLinkPopup();

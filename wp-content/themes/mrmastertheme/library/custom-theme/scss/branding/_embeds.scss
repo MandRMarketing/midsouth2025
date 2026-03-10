@@ -1,0 +1,7 @@
+// Responsive YouTube iframes — full width with 16:9 aspect ratio
+iframe[src*='youtube.com'],
+iframe[src*='youtube-nocookie.com'] {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+}

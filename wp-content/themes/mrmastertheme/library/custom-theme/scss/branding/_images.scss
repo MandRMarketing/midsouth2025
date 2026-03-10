@@ -45,6 +45,8 @@ img.alignright {
 
 .no-img-dec {
     picture {
+        transform: unset !important;
+
         &::before {
             content: unset !important;
         }

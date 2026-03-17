@@ -1,23 +1,87 @@
 //Sometimes, you just need to punt and write an ugly CSS rule for an odd-one-out, hyper-specific scenario. This is a safe space for that.
 
-// Newsletter category: strip all custom table styling (tables use default browser appearance)
+// Newsletter category: reset branding table styles so tables render with default browser appearance
 body.page-category-newsletter {
-    table,
-    table thead,
-    table tbody,
-    table tr,
-    table th,
-    table td {
-        all: revert;
+    table {
+        width: revert;
+        border-collapse: revert;
+        border-spacing: revert;
+        margin: revert;
+
+        @media (max-width: $breakpoint_tablet_medium_portrait) {
+            max-width: revert;
+            overflow-x: revert;
+            display: revert;
+        }
+
+        + em {
+            margin-top: revert;
+        }
+
+        + p {
+            margin-top: revert !important;
+        }
     }
 
-    table + em,
-    table + p {
-        margin-top: revert !important;
+    table thead tr {
+        background-color: revert;
+    }
+
+    table thead th {
+        padding: revert;
+        color: revert;
+        font-weight: revert;
+        text-align: revert;
+        border: revert;
+
+        @media (max-width: $breakpoint_tablet_medium_portrait) {
+            font-size: revert;
+            padding: revert;
+        }
+
+        &:last-child {
+            background-color: revert;
+        }
+    }
+
+    table tbody tr {
+        &:nth-child(odd) {
+            background-color: revert;
+        }
+
+        &:nth-child(even) {
+            background-color: revert;
+        }
+
+        &:last-child td:last-child {
+            border-bottom: revert;
+        }
+    }
+
+    table tbody td {
+        padding: revert;
+        text-align: revert;
+        color: revert;
+        border: revert;
+        border-left: revert;
+
+        @media (max-width: $breakpoint_tablet_medium_portrait) {
+            font-size: revert;
+            padding: revert;
+        }
+
+        &:last-child {
+            border-right: revert;
+            border-left: revert;
+        }
+
+        &:first-child {
+            border-left: revert;
+        }
     }
 }
 
-body.page-name section.module-name p:nth-of-type(3) > strong {
+body.page-name section.module-name p:nth-of-type(3)>strong {
     font-size: 100px !important;
     transform: rotate(32deg);
 }

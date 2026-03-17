@@ -1,4 +1,21 @@
-//Sometimes, you just need to punt and write an ugly CSS rule for an odd-one-out, hyper-specific scenario. This is a safe space for that. 
+//Sometimes, you just need to punt and write an ugly CSS rule for an odd-one-out, hyper-specific scenario. This is a safe space for that.
+
+// Newsletter category: strip all custom table styling (tables use default browser appearance)
+body.page-category-newsletter {
+    table,
+    table thead,
+    table tbody,
+    table tr,
+    table th,
+    table td {
+        all: revert;
+    }
+
+    table + em,
+    table + p {
+        margin-top: revert !important;
+    }
+}
 
 body.page-name section.module-name p:nth-of-type(3) > strong {
     font-size: 100px !important;

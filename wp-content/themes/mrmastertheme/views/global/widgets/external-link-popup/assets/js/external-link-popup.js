@@ -17,17 +17,17 @@ function initializeExternalLinkPopup() {
 
     overlay.innerHTML =
         '<div class="external-link-popup__content">' +
-            '<p class="external-link-popup__title">www.' + location.hostname + ' says</p>' +
-            '<p class="external-link-popup__body">' +
-                'You are now leaving MidSouth Community Federal Credit Union\u2019s website. ' +
-                'MidSouth Community FCU does not provide, and is not responsible for, the product, ' +
-                'service, overall website content, security, or privacy policies on any external ' +
-                'third-party sites. MidSouth Community FCU\u2019s privacy policy does not apply to ' +
-                'the linked site. Please consult the site\u2019s policies for further information.' +
-            '</p>' +
-            '<div class="external-link-popup__actions">' +
-                '<button type="button" class="external-link-popup__ok">OK</button>' +
-            '</div>' +
+        '<p class="external-link-popup__title">www.' + location.hostname + ' says</p>' +
+        '<p class="external-link-popup__body">' +
+        'You are now leaving MidSouth Community Federal Credit Union\u2019s website. ' +
+        'MidSouth Community FCU does not provide, and is not responsible for, the product, ' +
+        'service, overall website content, security, or privacy policies on any external ' +
+        'third-party sites. MidSouth Community FCU\u2019s privacy policy does not apply to ' +
+        'the linked site. Please consult the site\u2019s policies for further information.' +
+        '</p>' +
+        '<div class="external-link-popup__actions">' +
+        '<button type="button" class="external-link-popup__ok">OK</button>' +
+        '</div>' +
         '</div>';
 
     document.body.appendChild(overlay);
@@ -46,6 +46,11 @@ function initializeExternalLinkPopup() {
 
         // Skip links that open popups (magnific, etc.)
         if (anchor.classList.contains('popup-video')) {
+            return false;
+        }
+
+        // Skip excluded external URLs (e.g. online banking)
+        if (anchor.href.indexOf('onlinebanking.midsouthfcu.org/Authentication') !== -1) {
             return false;
         }
 

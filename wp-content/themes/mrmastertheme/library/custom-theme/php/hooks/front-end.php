@@ -142,29 +142,24 @@
 
         //first scrub $content and search for <img> before we proceed:
         if ($content && preg_match_all('/(<img .*?>)/', $content, $img_tag)) {
-            //convert the $content string to a PHP DOMDocument object:
             $dom = new DOMDocument();
-            libxml_use_internal_errors(true); // Suppress errors for malformed HTML
-            $dom->loadHTML('' . $content); // Add encoding declaration (I removed it, I don't think it's necessary)
+            libxml_use_internal_errors(true);
+            $dom->loadHTML('<?xml encoding="UTF-8">' . $content);
             libxml_clear_errors();
 
-            //grab all of the img tags from within the content string turned DOMDocument object:
             $images = $dom->getElementsByTagName('img');
 
-            //loop through each image tag
             foreach ($images as $image) {
-                //write a new <picture> to the DOMDocument:    
                 $wrapper = $dom->createElement('picture');
-                //move the <img> to within the <picture>
                 $image->parentNode->insertBefore($wrapper, $image);
                 $wrapper->appendChild($image); 
             }
 
-            //save the changes to the HTML
-            $dom->saveHTML();
-
-            //re-assign the $content string to be our adjusted DOMDocument object 
             $content = $dom->saveHTML();
+
+            // Strip the XML declaration, DOCTYPE, and <html><body> wrappers added by DOMDocument
+            $content = preg_replace('/^.*?<body>/s', '', $content);
+            $content = preg_replace('/<\/body>.*$/s', '', $content);
         }
 
         return $content;

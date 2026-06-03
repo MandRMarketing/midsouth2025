@@ -26,6 +26,12 @@ nav#secondary-nav {
                 display: none;
             }
 
+            &.mobile-show {
+                a {
+                    font-weight: 900 !important;
+                }
+            }
+
             >a {
                 position: relative;
                 display: inline-block;

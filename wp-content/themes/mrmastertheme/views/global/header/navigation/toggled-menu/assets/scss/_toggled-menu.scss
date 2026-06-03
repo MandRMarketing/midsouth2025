@@ -282,16 +282,16 @@ nav#toggled-nav {
     }
 }
 
+.mobile-show {
+    a {
+        font-weight: 700;
+    }
+}
+
 // When toggled menu is open: show secondary nav and hide emergency message
 body.toggled-menu-open {
     nav#secondary-nav {
         display: block !important;
-
-        .mobile-show {
-            a {
-                font-weight: 700;
-            }
-        }
 
         .menu-item:not(.mobile-show) {
             display: none !important;

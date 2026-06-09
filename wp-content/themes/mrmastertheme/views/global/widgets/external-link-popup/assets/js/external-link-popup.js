@@ -17,7 +17,7 @@ function initializeExternalLinkPopup() {
 
     overlay.innerHTML =
         '<div class="external-link-popup__content">' +
-        '<p class="external-link-popup__title">www.' + location.hostname + ' says</p>' +
+        '<p class="external-link-popup__title">' + (location.hostname.indexOf('www.') === 0 ? '' : 'www.') + location.hostname + ' says</p>' +
         '<p class="external-link-popup__body">' +
         'You are now leaving MidSouth Community Federal Credit Union\u2019s website. ' +
         'MidSouth Community FCU does not provide, and is not responsible for, the product, ' +

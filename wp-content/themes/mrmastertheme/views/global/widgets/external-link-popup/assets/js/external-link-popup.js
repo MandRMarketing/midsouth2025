@@ -51,7 +51,8 @@ function initializeExternalLinkPopup() {
 
         // Skip excluded external URLs (e.g. online banking, Growth by Design)
         if (anchor.href.indexOf('onlinebanking.midsouthfcu.org/Authentication') !== -1 ||
-            anchor.href.indexOf('growthbydesign.org') !== -1) {
+            anchor.href.indexOf('growthbydesign.org') !== -1 ||
+            anchor.href.indexOf('join.midsouthfcu.org') !== -1) {
             return false;
         }
 

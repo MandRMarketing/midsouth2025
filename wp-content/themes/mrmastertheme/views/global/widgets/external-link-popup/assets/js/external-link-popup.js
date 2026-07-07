@@ -49,11 +49,22 @@ function initializeExternalLinkPopup() {
             return false;
         }
 
-        // Skip excluded external URLs (e.g. online banking, Growth by Design)
-        if (anchor.href.indexOf('onlinebanking.midsouthfcu.org/Authentication') !== -1 ||
-            anchor.href.indexOf('growthbydesign.org') !== -1 ||
-            anchor.href.indexOf('join.midsouthfcu.org') !== -1) {
-            return false;
+        // Skip excluded external URLs (whitelisted domains/paths)
+        var whitelist = [
+            'onlinebanking.midsouthfcu.org/Authentication',
+            'growthbydesign.org',
+            'join.midsouthfcu.org',
+            'oac.fmsiportal.com',
+            'co-opcreditunions.org/locator',
+            'apps.apple.com/us/app/midsouth-community-fcu-mobile',
+            'play.google.com/store/apps/details?id=com.midsouthcommfcu.midsouthcommfcu',
+            'ourmortgageteam.org'
+        ];
+        var hrefLower = anchor.href.toLowerCase();
+        for (var i = 0; i < whitelist.length; i++) {
+            if (hrefLower.indexOf(whitelist[i].toLowerCase()) !== -1) {
+                return false;
+            }
         }
 
         // Compare hostnames

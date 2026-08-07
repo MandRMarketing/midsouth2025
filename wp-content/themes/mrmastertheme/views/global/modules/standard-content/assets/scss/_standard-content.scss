@@ -29,32 +29,8 @@ div.standard-content {
         }
 
         //
-        .column.right {
-            picture {
-                position: relative;
-
-                @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
-                    transform: translateY(25px);
-                }
-
-                img {
-                    z-index: 1;
-                    position: relative;
-                }
-
-                &::before {
-                    content: '';
-                    background: $color_red;
-                    width: 50px;
-                    height: 50px;
-                    position: absolute;
-                    top: -16px;
-                    left: -16px;
-                    z-index: -0;
-                }
-            }
-        }
-
+        .column.right,
+        .column.center,
         .column.left {
             picture {
                 position: relative;
@@ -80,6 +56,7 @@ div.standard-content {
                 }
             }
         }
+
     }
 
     picture {

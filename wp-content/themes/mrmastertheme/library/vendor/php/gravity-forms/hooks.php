@@ -76,9 +76,15 @@
     */
 	add_filter( 'gform_submit_button', 'mandr_form_submit_button', 10, 5 );
 	function mandr_form_submit_button ( $button, $form ){
-		$button = str_replace( "input", "button", $button );
-		$button = str_replace( "/", "", $button );
-		$button .= "{$form['button']['text']}</button>";
+		// Modern Gravity Forms already supplies a complete <button> element.
+		// Only convert legacy <input> markup to avoid appending a duplicate button.
+		if ( stripos( ltrim( $button ), '<input' ) !== 0 ) {
+			return $button;
+		}
+
+		$button = preg_replace( '/^<input\b/i', '<button', $button );
+		$button = preg_replace( '/\s*\/?>\s*$/', '>', $button );
+		$button .= esc_html( $form['button']['text'] ?? 'Submit' ) . '</button>';
 		return $button;
 	}
 

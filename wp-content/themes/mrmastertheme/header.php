@@ -57,6 +57,7 @@
     }
     wp_head();
     ?>
+    <script src=https://px.premion.com/pixel.js?pxid=680b8e62064820ee51866464></script>
 </head>
 
 <body <?php body_class(); ?>>

@@ -58,7 +58,19 @@
     wp_head();
     ?>
     <script src=https://px.premion.com/pixel.js?pxid=680b8e62064820ee51866464></script>
-    <script type="text/javascript" src="https://resources.digital-cloud-west.medallia.com/wdcwest/1209610/onsite/embed.js" async></script>
+
+    <?php
+        if (
+            !is_page(10456) && // /loan-application/
+            !is_page(7783) && // /donation-and-sponsorship/
+            !is_page(7802) && // /community-impact/
+            !is_page(7787) // /scholarships/
+        ) :
+    ?>
+        <script type="text/javascript" src="https://resources.digital-cloud-west.medallia.com/wdcwest/1209610/onsite/embed.js" async></script>
+    <?php
+        endif; 
+    ?>
 </head>
 
 <body <?php body_class(); ?>>

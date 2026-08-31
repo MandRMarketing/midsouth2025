@@ -58,6 +58,7 @@
     wp_head();
     ?>
     <script src=https://px.premion.com/pixel.js?pxid=680b8e62064820ee51866464></script>
+    <script type="text/javascript" src="https://resources.digital-cloud-west.medallia.com/wdcwest/1209610/onsite/embed.js" async></script>
 </head>
 
 <body <?php body_class(); ?>>

@@ -89,6 +89,19 @@ if (get_post_type() === 'tribe_events') {
 
 <?php wp_footer(); ?>
 
+<?php
+if (
+    !is_page(10456) && // /loan-application/
+    !is_page(7783) && // /donation-and-sponsorship/
+    !is_page(7802) && // /community-impact/
+    !is_page(7787) // /scholarships/
+) :
+?>
+    <script type="text/javascript" src="https://resources.digital-cloud-west.medallia.com/wdcwest/1209610/onsite/embed.js" async></script>
+<?php
+endif;
+?>
+
 </body>
 
 </html>

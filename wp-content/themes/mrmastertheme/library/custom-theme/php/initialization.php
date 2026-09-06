@@ -3,7 +3,7 @@
 
     function mandr_setup_theme() {
         //Define theme version 
-        define("THEME_VERSION", '1.0.0');
+        define("THEME_VERSION", '1.0.1');
 
         //ACF Google Maps Key - change during site build to be a key that is specific to the client
         define("MR_GOOGLE_MAPS_API_KEY", 'AIzaSyD8GEflr1NopcQOtoGClDxI7Cr2LQUXtcg'); 

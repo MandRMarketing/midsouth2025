@@ -293,6 +293,18 @@ Tracking the `performance-remediation-prompt.md` playbook.
     the files still build (and `gulp watch`/`gulp sass` work fine). Optional one-line gulpfile cleanup:
     `const compileScripts = gulp.parallel(compileHeaderScripts, compileFooterScripts);`
 
+### CSS size (build-config) — applied
+  - `gulpfile.js`: `pxtorem` → `replace: true` (was `false`; site renders in rem already since
+    `html{font-size:62.5%}`, so visually identical — drops the redundant px twin), and autoprefixer
+    `overrideBrowserslist` dropped `'ie > 8'`. Result: `style.css` **611,723 → 590,834 B raw**
+    (−3.4%), **41,595 → 38,484 B gzip** (−7.5%). Modest — the px/rem dup + IE prefixes were only ~3.4%
+    of the file. The remaining bulk is real rules (the `scss/structural/` utility-class framework, branding,
+    modules, vendor). NOTE: restart any running `gulp watch` after editing the gulpfile, or the next SCSS
+    save recompiles with the old config. `views/global/modules/_exports.scss` and
+    `views/global/widgets/_exports.scss` were reviewed and are already scoped to what's used (only the dead
+    `stats_list` module remains, kept for legacy-data safety); the real CSS-size levers are render-blocking
+    (critical CSS + defer) and trimming unused structural utility classes.
+
 ### Still to do
   - **Item E (theme-baked images — asset/SCSS, NEEDS GULP RECOMPILE):** `library/custom-theme/images/`
     `team-member-mask.svg` (~12 MB → shape-only `<path fill="#fff">`), `secondary-heaader-bg.png`
@@ -306,8 +318,12 @@ Tracking the `performance-remediation-prompt.md` playbook.
     help; Imagify covers compression), small card/slide icons, and the `team-members` component (ties to
     the item-E mask work).
 - **Do not** `git push`. Item E and any SCSS/asset change require a Gulp recompile of `style.css`.
-- **§6 re-measure** is on hold until the human's Imagify bulk-optimize finishes (it changes the `/uploads`
-  image baseline), then re-run the identical Lighthouse set.
+- **§6 re-measure (done, production, all fixes + Imagify deployed):** MOBILE median **35 → 62**,
+  DESKTOP median **90 → 97**. CLS **0.306 → 0.00–0.07 site-wide** (fixed). LCP collapsed on heavy pages
+  (locations 22.0→4.6s, home 17.0→4.4s, contact-us 13.9→4.8s); weight down sharply (contact-us −3.9MB,
+  locations −4.3MB). Remaining ceiling is **mobile TBT** (mixed/noisy; item G render-blocking JS territory)
+  and the heaviest scripted page, `/auto-loans/` (42). Fonts (A/B) would shave the residual ~0.005 CLS +
+  a little LCP on text-LCP pages like `/who-we-are/`.
 
 ---
 

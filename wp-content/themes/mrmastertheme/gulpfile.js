@@ -164,12 +164,17 @@ function compileLocationMapSCSS() {
 // Post CSS options, used above
 const processors = [
     autoprefixer({
-        overrideBrowserslist: ['last 2 versions', 'ie > 8'],
+        // Perf: dropped 'ie > 8' — IE is unsupported, and it forced legacy flexbox/prefix bloat
+        // across the whole stylesheet.
+        overrideBrowserslist: ['last 2 versions'],
     }),
     pxtorem({
         root_value: 10,
         prop_white_list: [],
-        replace: false,
+        // Perf: replace px with rem instead of emitting BOTH. The site renders in rem already
+        // (html font-size:62.5% => 1rem=10px, and the rem declaration wins), so this is visually
+        // identical on modern browsers; we only drop the redundant IE8-era px fallback.
+        replace: true,
     }),
 ];
 
